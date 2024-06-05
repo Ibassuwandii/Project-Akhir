@@ -6,7 +6,7 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
                         <div class="card-title">
-                            Peta Divisi Edukasi
+                            Peta Divisi edukasi
                         </div>
                         <div class="float-right">
                             <a href="{{ url('edukasi/peta/create') }}" class="btn btn-success">

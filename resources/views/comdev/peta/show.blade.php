@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header bg-cyan text-white">
                 <div class="card-title">
-                    Detail Peta
+                    Detail Peta Divisi Comdev
                 </div>
             </div>
             <div class="card-body">

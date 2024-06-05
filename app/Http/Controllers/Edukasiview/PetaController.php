@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Divisi\Comdevview;
+namespace App\Http\Controllers\Edukasiview;
 
 use App\Http\Controllers\Controller;
-use App\Services\Comdev\PetaService;
+use App\Services\edukasi\PetaService;
 
 class PetaController extends Controller
 {
@@ -20,6 +20,6 @@ class PetaController extends Controller
         $listPeta = $this->petaService->getAllPeta();
 
         // Tampilkan view dengan data peta
-        return view('divisi.comdevview.peta.index', ['listPeta' => $listPeta]);
+        return view('Edukasiview.peta.index', ['listPeta' => $listPeta]);
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Edukasi\Peta;
+namespace App\Http\Controllers\edukasi\peta;
 
 use App\Http\Controllers\Controller;
-use App\Models\Edukasi\peta\Peta;
+use App\Models\edukasi\peta\Peta;
 use Illuminate\Http\Request;
 
 class PetaController extends Controller
@@ -24,32 +24,25 @@ class PetaController extends Controller
     {
         $request->validate([
             'judul_peta' => 'required',
-            'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan persyaratan Anda
+            'tanggal_upload' => 'required',
+            'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $peta = new Peta;
         $peta->judul_peta = $request->judul_peta;
-
-        // if ($request->hasFile('file_foto')) {
-        //     $fileFoto = $request->file('file_foto');
-        //     $namaFileFoto = $fileFoto->getClientOriginalName(); // Dapatkan nama file asli
-        //     $fileFotoPath = $fileFoto->storeAs('public/foto/peta', $namaFileFoto); // Simpan dengan nama asli
-        //     $peta->file_foto = 'storage/foto/peta/' . $namaFileFoto; // Simpan path ke basis data
-        // }
+        $peta->tanggal_upload = $request->tanggal_upload;
 
         $peta->handleUploadFoto();
-
         $peta->save();
 
-
-        return redirect('edukasi/peta')->with('create', 'Data peta berhasil disimpan.');
+        return redirect('edukasi/peta')->with('create', 'Data peta berhasil ditambahkan.');
     }
 
 
-    public function edit( Peta $peta)
+    public function edit($id)
     {
-        $data['peta'] = $peta;
-        return view('edukasi.peta.edit', $data);
+    $peta = Peta::findOrFail($id);
+    return view('edukasi.peta.edit', compact('peta'));
     }
 
 
@@ -58,20 +51,14 @@ class PetaController extends Controller
 
     public function update(Request $request, $id)
     {
-         // Mengambil peta dari basis data berdasarkan ID
-         $peta = Peta::findOrFail($id);
-
-         // Menetapkan nilai properti dari permintaan
-         $peta->judul_peta = $request->judul_peta;
-
-
+        $peta = Peta::findOrFail($id);
+        $peta->judul_peta = $request->judul_peta;
+        $peta->tanggal_upload = $request->tanggal_upload;
         $peta->save();
-
         if(request('file_foto')) $peta->handleUploadFoto();
 
         return redirect('edukasi/peta')->with('update', 'Data peta berhasil diupdate.');
     }
-
 
     public function destroy($id)
     {
@@ -83,13 +70,9 @@ class PetaController extends Controller
     }
 
 
-
-
     public function show($id)
     {
-        $peta = Peta::findOrFail($id); // Ambil data pertanian berdasarkan ID
-
-        // Render view 'show' dan kirimkan data $pertanian
+        $peta = peta::findOrFail($id);
         return view('edukasi.peta.show', compact('peta'));
     }
 

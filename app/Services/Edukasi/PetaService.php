@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services\Comdev;
+namespace App\Services\edukasi;
 
-use App\Models\Comdev\peta\Peta; // Pastikan Anda mengimport model Peta
+use App\Models\edukasi\peta\Peta;
 
 class PetaService
 {
     public function getAllPeta()
     {
-        // Mengambil semua peta dari tabel 'petas' menggunakan Eloquent
+
         return Peta::all();
     }
 }

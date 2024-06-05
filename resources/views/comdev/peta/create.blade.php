@@ -1,7 +1,7 @@
 <x-module.comdev>
     <div class="">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Tambah Data Pertanian Lokasi SK</h5>
+            <h5 class="card-title">Tambah Data Peta Divisi Comdev</h5>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ url('comdev/peta') }}" enctype="multipart/form-data">
