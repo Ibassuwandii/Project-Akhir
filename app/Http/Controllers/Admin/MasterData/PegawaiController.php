@@ -17,14 +17,14 @@ class PegawaiController extends Controller
         // Tambahkan jabatan lain sesuai kebutuhan
     ];
 
-    // Daftar departemen yang tersedia
-    protected $departemenList = [
-        'Finance',
-        'IT',
-        'Human Resources',
-        'Marketing',
-        // Tambahkan departemen lain sesuai kebutuhan
-    ];
+    // // Daftar departemen yang tersedia
+    // protected $departemenList = [
+    //     'Finance',
+    //     'IT',
+    //     'Human Resources',
+    //     'Marketing',
+    //     // Tambahkan departemen lain sesuai kebutuhan
+    // ];
 
     public function index()
     {
@@ -35,7 +35,7 @@ class PegawaiController extends Controller
     public function create()
     {
         $data['jabatanList'] = $this->jabatanList;
-        $data['departemenList'] = $this->departemenList; // Tambahkan ini
+        // $data['departemenList'] = $this->departemenList; // Tambahkan ini
         return view('admin.master-data.pegawai.create', $data);
     }
 
@@ -48,7 +48,7 @@ class PegawaiController extends Controller
             'username' => 'required',
             'password' => 'required',
             'jabatan' => 'required',
-            'departemen' => 'required', // Tambahkan validasi departemen
+            // 'departemen' => 'required', // Tambahkan validasi departemen
         ]);
 
         $pegawai = new Pegawai;
@@ -57,7 +57,7 @@ class PegawaiController extends Controller
         $pegawai->username = $request->username;
         $pegawai->password = $request->password;
         $pegawai->jabatan = $request->jabatan;
-        $pegawai->departemen = $request->departemen;
+        // $pegawai->departemen = $request->departemen;
 
         if ($request->hasFile('file_foto')) {
             $pegawai->handleUploadFoto();
@@ -78,7 +78,7 @@ class PegawaiController extends Controller
     {
         $data['pegawai'] = $pegawai;
         $data['jabatanList'] = $this->jabatanList;
-        $data['departemenList'] = $this->departemenList; // Tambahkan ini
+        // $data['departemenList'] = $this->departemenList; // Tambahkan ini
         return view('admin.master-data.pegawai.edit', $data);
     }
 
@@ -92,14 +92,14 @@ class PegawaiController extends Controller
             'email' => 'required',
             'username' => 'required',
             'jabatan' => 'required',
-            'departemen' => 'required', // Tambahkan validasi departemen
+            // 'departemen' => 'required', // Tambahkan validasi departemen
         ]);
 
         $pegawai->nama = $request->nama;
         $pegawai->email = $request->email;
         $pegawai->username = $request->username;
         $pegawai->jabatan = $request->jabatan;
-        $pegawai->departemen = $request->departemen;
+        // $pegawai->departemen = $request->departemen;
 
         // Periksa apakah ada input password baru, jika tidak, abaikan pengubahan password
         if ($request->filled('password')) {
