@@ -76,14 +76,14 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="departemen">Departemen</label>
                                     <select class="form-control" id="departemen" name="departemen" required>
                                         @foreach($departemenList as $departemen)
                                             <option value="{{ $departemen }}" {{ $pegawai->departemen == $departemen ? 'selected' : '' }}>{{ $departemen }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="form-group row mb-0">
