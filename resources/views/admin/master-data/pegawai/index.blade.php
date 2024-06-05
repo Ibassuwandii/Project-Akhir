@@ -22,7 +22,7 @@
                             <th>Nama Pegawai</th>
                             <th>Email</th>
                             <th>Jabatan</th>
-                            <th>Departemen</th>
+                            {{-- <th>Departemen</th> --}}
                             <th class="text-right">Aksi</th>
                         </tr>
                     </thead>
@@ -37,7 +37,7 @@
                             </td>
                             <td>{{ $pegawai->email }}</td>
                             <td>{{ $pegawai->jabatan }}</td>
-                            <td>{{ $pegawai->departemen }}</td>
+                            {{-- <td>{{ $pegawai->departemen }}</td> --}}
                             <td class="text-right">
                                 <div class="btn-group">
                                     {{-- <x-template.button.info-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" /> --}}
