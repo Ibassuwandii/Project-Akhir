@@ -6,7 +6,7 @@
             <h5 class="card-title"><b>Detail Data Karhutla Lokasi SK</b></h5>
         </div>
         <div class="card-body">
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="font-weight-bold">Jangkauan Patroli:</label>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="font-weight-bold">Luas Lahan:</label>
@@ -46,26 +46,29 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row mb-4">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label class="font-weight-bold">Sosialisasi:</label>
                         <p>{{ $karhutla->sosialisasi }}</p>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    {{-- <div class="form-group">
-                        <label for="file_foto" class="font-weight-bold">Dokumentasi:</label>
-                        <!-- Pastikan $karhutla adalah objek sebelum mengakses propertinya -->
-                        @if(is_object($karhutla) && $karhutla->file_foto)
-                            <a href="{{ asset('storage/app/' . $karhutla->file_foto) }}" target="_blank">Lihat Foto</a>
-                        @else
-                            <p>Tidak ada file Foto terlampir.</p>
-                        @endif
-                    </div> --}}
-                </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="font-weight-bold">Dokumentasi:</label><br>
+                        @if ($karhutla->file_foto)
+                            <a href="{{ url('public') }}/{{ $karhutla->file_foto }}" target="_blank">
+                                <img src="{{ url('public') }}/{{ $karhutla->file_foto }}" alt="Gambar karhutla"
+                                     style="max-width: 400px; max-height: 400px;" class="img-fluid">
+                            </a>
+                        @else
+                            <p>Tidak ada gambar</p>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</x-module.divisi-comdev>
+</x-module.comdev>

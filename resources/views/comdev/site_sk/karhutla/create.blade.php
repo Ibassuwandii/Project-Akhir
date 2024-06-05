@@ -47,6 +47,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="file_foto" class="col-form-label">{{ __('Dokumentasi') }}</label>
+                        <input id="file_foto" type="file" class="form-control-file @error('file_foto') is-invalid @enderror" name="file_foto" required>
+                        @error('file_foto')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">

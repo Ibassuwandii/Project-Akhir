@@ -90,6 +90,14 @@ Route::prefix('pertanian')->group(function () {
     include "comdevview.php";
 });
 
+Route::prefix('perikanan')->group(function () {
+    include "comdevview.php";
+});
+
+Route::prefix('mangrove')->group(function () {
+    include "comdevview.php";
+});
+
 
 
 

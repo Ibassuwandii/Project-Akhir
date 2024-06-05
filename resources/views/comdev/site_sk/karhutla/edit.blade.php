@@ -56,10 +56,12 @@
                             <input type="text" name="sosialisasi" value="{{ $karhutla->sosialisasi }}" class="form-control">
                         </div>
                     </div>
-                   {{-- <div class="col-md-4">
-                        <label for="file_foto">Foto:</label>
-                        <input type="file" name="file_foto" class="form-control-file" id="file_foto">
-                    </div> --}}
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="file_foto">Dokumentasi:</label>
+                            <input type="file" name="file_foto" class="form-control-file" id="file_foto">
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-right">

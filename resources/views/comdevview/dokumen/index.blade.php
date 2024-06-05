@@ -28,7 +28,7 @@
                                 <td>
                                     @if ($dokumen->file_pdf)
                                         <a href="{{ url('public') }}/{{ $dokumen->file_pdf }}" target="_blank" class="text-primary">
-                                            <i class=""></i> Lihat Dokumen
+                                            <i class="fa fa-file-pdf"></i> Lihat Dokumen
                                         </a>
                                     @else
                                         <span class="text-muted">Tidak ada file</span>

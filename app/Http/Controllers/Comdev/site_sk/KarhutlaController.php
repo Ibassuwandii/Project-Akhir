@@ -42,8 +42,7 @@ class KarhutlaController extends Controller
         $karhutla->jumlah_patroli = $request->jumlah_patroli;
         $karhutla->sosialisasi = $request->sosialisasi;
 
-
-
+        $karhutla->handleUploadFoto();
         $karhutla->save();
 
         return redirect('comdev/site_sk/karhutla')->with('create', 'Data karhutla berhasil ditambahkan.');
@@ -71,8 +70,9 @@ class KarhutlaController extends Controller
         $karhutla->sosialisasi = $request->sosialisasi;
 
 
-
         $karhutla->save();
+        if(request('file_foto')) $karhutla->handleUploadFoto();
+        return redirect('comdev/site_sk/karhutla'); // Redirect ke index
 
         return redirect('comdev/site_sk/karhutla')->with('update', 'Data karhutla berhasil diupdate.');
     }
@@ -89,7 +89,7 @@ class KarhutlaController extends Controller
     public function destroy(Karhutla $karhutla)
     {
             $karhutla->delete();
-
+            $karhutla->handleDeleteFoto();
             return redirect()->back()->with('delete', 'Data karhutla berhasil dihapus.');
     }
 

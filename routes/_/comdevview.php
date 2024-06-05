@@ -5,6 +5,8 @@ use App\Http\Controllers\Comdevview\PetaController;
 use App\Http\Controllers\Comdevview\DokumenController;
 use App\Http\Controllers\Comdevview\LaporanController;
 use App\Http\Controllers\Comdevview\DokumentasiController;
+use App\Http\Controllers\Comdevview\site_sk\KarhutlaController;
+use App\Http\Controllers\Comdevview\site_sk\MangroveController;
 use App\Http\Controllers\Comdevview\site_sk\PerikananController;
 use App\Http\Controllers\Comdevview\site_sk\PertanianController;
 
@@ -28,9 +30,14 @@ Route::get('laporan', [LaporanController::class, 'index']);
 Route::redirect('/', 'comdevview/site_sk/pertanian');
 Route::get('site_sk/pertanian', [PertanianController::class, 'index']);
 
-
 Route::redirect('/', 'comdevview/site_sk/perikanan');
 Route::get('site_sk/perikanan', [PerikananController::class, 'index']);
+
+Route::redirect('/', 'comdevview/site_sk/mangrove');
+Route::get('site_sk/mangrove', [MangroveController::class, 'index']);
+
+Route::redirect('/', 'comdevview/site_sk/karhutla');
+Route::get('site_sk/karhutla', [KarhutlaController::class, 'index']);
 
 
 
