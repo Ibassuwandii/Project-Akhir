@@ -1,9 +1,9 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_pgsb/tpom" />
+    <x-template.button.back-button url="comdev/site_sk/tpom" />
 
     <div class="card mt-2">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title"><b>Detail Data Tpom Lokasi PGSB</b></h5>
+            <h5 class="card-title"><b>Detail Data Tpom Lokasi SK</b></h5>
         </div>
         <div class="card-body">
             <div class="row">
@@ -53,16 +53,16 @@
                         <p>{{ $tpom->sosialisasi }}</p>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="file_foto" class="font-weight-bold">Dokumentasi:</label>
-                        <!-- Pastikan $tpom adalah objek sebelum mengakses propertinya -->
-                        @if(is_object($tpom) && $tpom->file_foto)
-                            <a href="{{ asset('storage/app/' . $tpom->file_foto) }}" target="_blank">Lihat Foto</a>
-                        @else
-                            <p>Tidak ada file Foto terlampir.</p>
-                        @endif
-                    </div>
+                <div class="form-group">
+                    <label>Dokumentasi:</label><br>
+                    @if ($tpom->file_foto)
+                        <a href="{{ url('public') }}/{{ $tpom->file_foto }}" target="_blank">
+                            <img src="{{ url('public') }}/{{ $tpom->file_foto }}" alt="Gambar tpom"
+                                 style="max-width: 400px; max-height: 400px;">
+                        </a>
+                    @else
+                        <p>Tidak ada gambar</p>
+                    @endif
                 </div>
             </div>
             </div>

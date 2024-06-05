@@ -1,9 +1,9 @@
 <x-module.comdev>
     <div class="card mt-2">
-         <div class="card-header bg-cyan text-white">
+        <div class="card-header bg-cyan text-white">
             <h5 class="card-title">Edit Ayo Data Bangusman Lokasi SK</h5>
-         </div>
-         <div class="card-body">
+        </div>
+        <div class="card-body">
             <form action="{{url('comdev/site_sk/bangusman', $bangusman->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
@@ -47,6 +47,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="file_foto">Foto</label>
+                            <input type="file" name="file_foto" class="form-control-file" id="file_foto">
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4 d-flex justify-content-end">
                         <a href="{{ url('comdev/site_sk/bangusman') }}" class="btn btn-secondary mr-2">
@@ -58,7 +66,6 @@
                     </div>
                 </div>
             </form>
-         </div>
+        </div>
     </div>
 </x-module.comdev>
-

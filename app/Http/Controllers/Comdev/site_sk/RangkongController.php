@@ -47,7 +47,7 @@ class RangkongController extends Controller
         $rangkong->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
 
 
-
+        $rangkong->handleUploadFoto();
         $rangkong->save();
 
         return redirect('comdev/site_sk/rangkong');
@@ -80,19 +80,15 @@ class RangkongController extends Controller
          $rangkong->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
          $rangkong->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
 
-
-          // Menyimpan file foto jika ada unggahan baru
-
-
         $rangkong->save();
-
+        if(request('file_foto')) $rangkong->handleUploadFoto();
         return redirect('comdev/site_sk/rangkong');
     }
 
     public function destroy(Rangkong $rangkong)
     {
             $rangkong->delete();
-
+            $rangkong->handleDeleteFoto();
             return redirect()->back()->with('success', 'Data rangkong berhasil dihapus.');
     }
 

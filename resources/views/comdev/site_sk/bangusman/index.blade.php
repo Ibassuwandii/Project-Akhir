@@ -3,7 +3,7 @@
     <div class="card shadow-lg">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
                         <div class="card-title">
                             Data Ayo Bang Usman

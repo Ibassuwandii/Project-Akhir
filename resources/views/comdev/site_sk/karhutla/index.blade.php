@@ -6,7 +6,7 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
                         <div class="card-title">
-                            Data Patroli Karhutla
+                            Data Patroli Karhutla Site SK
                         </div>
                         <a href="{{ url('comdev/site_sk/karhutla/create') }}" class="btn btn-success float-right">
                             <i class="fas fa-plus-circle"></i> Tambah Data

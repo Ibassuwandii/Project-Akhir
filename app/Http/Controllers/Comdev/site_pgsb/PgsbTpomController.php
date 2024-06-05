@@ -42,6 +42,7 @@ class PgsbTpomController extends Controller
         $tpom->jumlah_patroli = $request->jumlah_patroli;
         $tpom->sosialisasi = $request->sosialisasi;
 
+        $tpom->handleUploadFoto();
         $tpom->save();
 
         return redirect('comdev/site_pgsb/tpom')->with('create', 'Data Berhasilahkan'); // Redirect ke index
@@ -69,7 +70,7 @@ class PgsbTpomController extends Controller
         $tpom->sosialisasi = $request->sosialisasi;
 
         $tpom->save();
-
+        if(request('file_foto')) $tpom->handleUploadFoto();
         return redirect('comdev/site_pgsb/tpom')->with('update', 'Data Berhasilahkan');// Redirect ke index
     }
 
@@ -85,7 +86,7 @@ class PgsbTpomController extends Controller
     public function destroy(Tpom $tpom)
     {
             $tpom->delete();
-
+            $tpom->handleDeleteFoto();
             return redirect()->back()->with('success', 'Data tpom berhasil dihapus.');
     }
 

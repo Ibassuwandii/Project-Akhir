@@ -1,75 +1,53 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_sk/karhutla" />
-    <div class="card mt-2">
+    <x-template.button.back-button url="comdev/site_pgsb/mangrove" />
+    <div class="card mt-3">
          <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Edit Data Patroli Karhutla Lokasi SK</h5>
+            <h5 class="card-title">Edit Data Mangrove Lokasi SK</h5>
          </div>
          <div class="card-body">
-            <form action="{{url('comdev/site_sk/karhutla', $karhutla->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{url('comdev/site_pgsb/mangrove', $mangrove->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label class="font-weight-bold">Jangkauan Patroli:</label>
-                            <input type="text" name="jangkauan_patroli" value="{{ $karhutla->jangkauan_patroli }}" class="form-control">
+                            <label for="semester">Semester:</label>
+                            <input type="text" name="semester" value="{{ $mangrove->semester }}" class="form-control" id="semester">
+                        </div>
+                        <div class="form-group">
+                            <label for="bibit_disemai">Disemai:</label>
+                            <input type="text" name="bibit_disemai" value="{{ $mangrove->bibit_disemai }}" class="form-control" id="bibit_disemai">
+                        </div>
+                        <div class="form-group">
+                            <label for="bibit_hidup">Hidup:</label>
+                            <input type="text" name="bibit_hidup" value="{{ $mangrove->bibit_hidup }}" class="form-control" id="bibit_hidup">
+                        </div>
+                        <div class="form-group">
+                            <label for="bibit_mati">Mati:</label>
+                            <input type="text" name="bibit_mati" value="{{ $mangrove->bibit_mati }}" class="form-control" id="bibit_mati">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label class="font-weight-bold">Tanggal Patroli:</label>
-                            <input type="date" name="tanggal_patroli" value="{{ $karhutla->tanggal_patroli }}" class="form-control">
+                            <label for="tanggal">Tanggal:</label>
+                            <input type="date" name="tanggal" value="{{ $mangrove->tanggal }}" class="form-control" id="tanggal">
                         </div>
-                    </div>
-                    <div class="col-md-4">
                         <div class="form-group">
-                            <label class="font-weight-bold">Titik Koordinat:</label>
-                            <input type="text" name="titik_koordinat" value="{{ $karhutla->titik_koordinat }}" class="form-control">
+                            <label for="keterangan">Keterangan:</label>
+                            <input type="text" name="keterangan" value="{{ $mangrove->keterangan }}" class="form-control" id="keterangan">
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
                         <div class="form-group">
-                            <label class="font-weight-bold">Luas Lahan:</label>
-                            <input type="text" name="luas_lahan" value="{{ $karhutla->luas_lahan }}" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="font-weight-bold">Pemilik Lahan:</label>
-                            <input type="text" name="pemilik_lahan" value="{{ $karhutla->pemilik_lahan }}" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="font-weight-bold">Jumlah Patroli:</label>
-                            <input type="text" name="jumlah_patroli" value="{{ $karhutla->jumlah_patroli }}" class="form-control">
+                            <label for="file_foto">Foto:</label>
+                            <input type="file" name="file_foto" class="form-control-file" id="file_foto">
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="font-weight-bold">Sosialisasi:</label>
-                            <input type="text" name="sosialisasi" value="{{ $karhutla->sosialisasi }}" class="form-control">
-                        </div>
-                    </div>
-                   {{-- <div class="col-md-4">
-                        <label for="file_foto">Foto:</label>
-                        <input type="file" name="file_foto" class="form-control-file" id="file_foto">
-                    </div> --}}
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn btn-primary">
-                            <i class="fas fa-save"></i> Simpan
-                        </button>
-                    </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Simpan
+                    </button>
                 </div>
             </form>
          </div>
     </div>
 </x-module.comdev>
-

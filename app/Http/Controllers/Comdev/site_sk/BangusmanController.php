@@ -29,7 +29,7 @@ class BangusmanController extends Controller
             'jumlah_investasi' => 'required',
             'komuditas' => 'required',
             'masa_pengembalian' => 'required',
-            // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan persyaratan Anda
+
         ]);
 
         $bangusman = new Bangusman;
@@ -40,8 +40,7 @@ class BangusmanController extends Controller
         $bangusman->komuditas = $request->komuditas;
         $bangusman->masa_pengembalian = $request->masa_pengembalian;
 
-
-
+        $bangusman->handleUploadFoto();
         $bangusman->save();
 
         return redirect('comdev/site_sk/bangusman')->with('create', 'Data Laporan berhasil disimpan.');
@@ -68,7 +67,7 @@ class BangusmanController extends Controller
         $bangusman->masa_pengembalian = $request->masa_pengembalian;
 
         $bangusman->save();
-
+        if(request('file_foto')) $bangusman->handleUploadFoto();
         return redirect('comdev/site_sk/bangusman')->with('update', 'Data Laporan berhasil diperbarui.');
     }
 
@@ -83,9 +82,9 @@ class BangusmanController extends Controller
 
     public function destroy(Bangusman $bangusman)
     {
-            $bangusman->delete();
-
-            return redirect()->back()->with('delete', 'Data bangusman berhasil dihapus.');
+        $bangusman->delete();
+        $bangusman->handleDeleteFoto();
+        return redirect()->back()->with('delete', 'Data bangusman berhasil dihapus.');
     }
 
     function batal(){

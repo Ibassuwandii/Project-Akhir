@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card shadow-lg">
                     <div class="card-header bg-cyan text-white">
                         <div class="card-title">
-                            Data Perikanan Lokasi PGSB
+                            Data perikanan Lokasi SK
                         </div>
-                        <a href="{{url('comdev/site_pgsb/perikanan/create')}}" class="btn btn-success float-right">
+                        <a href="{{url('comdev/site_sk/perikanan/create')}}" class="btn btn-success float-right">
                             <i class="fas fa-plus-circle"></i> Tambah Data
                         </a>
                     </div>
@@ -39,9 +39,9 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <x-template.button.info-button url="comdev/site_pgsb/perikanan"
+                                                <x-template.button.info-button url="comdev/site_sk/perikanan"
                                                     id="{{ $perikanan->id }}" />
-                                                <x-template.button.edit-button url="comdev/site_pgsb/perikanan"
+                                                <x-template.button.edit-button url="comdev/site_sk/perikanan"
                                                     id="{{ $perikanan->id }}" />
                                                 <x-template.button.delete-button  id="{{$perikanan->id}}" path="" />
                                             </div>

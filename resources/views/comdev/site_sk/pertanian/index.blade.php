@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card shadow-lg">
                     <div class="card-header bg-cyan text-white">
                         <div class="card-title">
                             Data Pertanian Lokasi SK

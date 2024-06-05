@@ -47,7 +47,7 @@ class TnbPerikananController extends Controller
         $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
 
 
-
+        $perikanan->handleUploadFoto();
         $perikanan->save();
 
         return redirect('comdev/site_tnb/perikanan');
@@ -84,14 +84,14 @@ class TnbPerikananController extends Controller
 
 
         $perikanan->save();
-
+        if(request('file_foto')) $perikanan->handleUploadFoto();
         return redirect('comdev/site_tnb/perikanan');
     }
 
     public function destroy(Perikanan $perikanan)
     {
             $perikanan->delete();
-
+            $perikanan->handleDeleteFoto();
             return redirect()->back()->with('success', 'Data perikan$perikanan berhasil dihapus.');
     }
 

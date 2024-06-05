@@ -29,7 +29,7 @@ class PgsbMangroveController extends Controller
             'bibit_mati' => 'required',
             'tanggal' => 'required',
             'keterangan' => 'required',
-            // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
         ]);
 
         $mangrove = new Mangrove;
@@ -40,7 +40,7 @@ class PgsbMangroveController extends Controller
         $mangrove->tanggal = $request->tanggal;
         $mangrove->keterangan = $request->keterangan;
 
-
+        $mangrove->handleUploadFoto();
         $mangrove->save();
 
         return redirect('comdev/site_pgsb/mangrove'); // Redirect ke index
@@ -67,7 +67,7 @@ class PgsbMangroveController extends Controller
         $mangrove->keterangan = $request->keterangan;
 
         $mangrove->save();
-
+        if(request('file_foto')) $mangrove->handleUploadFoto();
         return redirect('comdev/site_pgsb/mangrove'); // Redirect ke index
     }
 
@@ -83,7 +83,7 @@ class PgsbMangroveController extends Controller
     public function destroy(Mangrove $mangrove)
     {
             $mangrove->delete();
-
+            $mangrove->handleDeleteFoto();
             return redirect()->back()->with('success', 'Data mangrove berhasil dihapus.');
     }
 

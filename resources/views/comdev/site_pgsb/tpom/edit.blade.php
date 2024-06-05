@@ -1,11 +1,11 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_pgsb/tpom" />
+    <x-template.button.back-button url="comdev/site_sk/tpom" />
     <div class="card mt-2">
          <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Edit Data Tpom Lokasi PGSB</h5>
+            <h5 class="card-title">Edit Data Tpom Lokasi SK</h5>
          </div>
          <div class="card-body">
-            <form action="{{url('comdev/site_pgsb/tpom', $tpom->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{url('comdev/site_sk/tpom', $tpom->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="row">

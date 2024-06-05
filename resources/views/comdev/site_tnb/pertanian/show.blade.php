@@ -66,14 +66,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="file_foto">Dokumentasi:</label>
-                    <!-- Pastikan $pertanian adalah objek sebelum mengakses propertinya -->
-                    @if(is_object($pertanian) && $pertanian->file_foto)
-                        <a href="{{ asset('storage/app/' . $pertanian->file_foto) }}" target="_blank">Lihat Foto</a>
-                    @else
-                        <p>Tidak ada file Foto terlampir.</p>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Gambar pertanian:</label><br>
+                            @if ($pertanian->file_foto)
+                                <a href="{{ url('public') }}/{{ $pertanian->file_foto }}" target="_blank">
+                                    <img src="{{ url('public') }}/{{ $pertanian->file_foto }}" alt="Gambar pertanian"
+                                         style="max-width: 400px; max-height: 400px;">
+                                </a>
+                            @else
+                                <p>Tidak ada gambar</p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

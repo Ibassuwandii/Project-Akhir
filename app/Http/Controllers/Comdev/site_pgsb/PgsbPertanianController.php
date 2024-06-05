@@ -46,8 +46,8 @@ class PgsbPertanianController extends Controller
         $pertanian->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
         $pertanian->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
 
+        $pertanian->handleUploadFoto();
         $pertanian->save();
-
         return redirect('comdev/site_pgsb/pertanian');
     }
 
@@ -81,14 +81,14 @@ class PgsbPertanianController extends Controller
 
 
         $pertanian->save();
-
+        if(request('file_foto')) $pertanian->handleUploadFoto();
         return redirect('comdev/site_pgsb/pertanian');
     }
 
     public function destroy(Pertanian $pertanian)
     {
             $pertanian->delete();
-
+            $pertanian->handleDeleteFoto();
             return redirect()->back()->with('success', 'Data pertanian berhasil dihapus.');
     }
 

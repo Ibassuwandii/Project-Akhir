@@ -1,8 +1,8 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_pgsb/perikanan" />
+    <x-template.button.back-button url="comdev/site_sk/perikanan" />
     <div class="card mt-2">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title"><b>Detail Data Perikanan Lokasi PGSB</b></h5>
+            <h5 class="card-title"><b>Detail Data Perikanan Lokasi SK</b></h5>
         </div>
         <div class="card-body">
             <div class="row">
@@ -67,12 +67,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="file_foto">Dokumentasi:</label>
-                    <!-- Pastikan $perikanan adalah objek sebelum mengakses propertinya -->
-                    @if(is_object($perikanan) && $perikanan->file_foto)
-                        <a href="{{ asset('storage/app/' . $perikanan->file_foto) }}" target="_blank">Lihat Foto</a>
+                    <label>Dokumentasi:</label><br>
+                    @if ($perikanan->file_foto)
+                        <a href="{{ url('public') }}/{{ $perikanan->file_foto }}" target="_blank">
+                            <img src="{{ url('public') }}/{{ $perikanan->file_foto }}" alt="Gambar perikanan"
+                                 style="max-width: 400px; max-height: 400px;">
+                        </a>
                     @else
-                        <p>Tidak ada file Foto terlampir.</p>
+                        <p>Tidak ada gambar</p>
                     @endif
                 </div>
             </div>

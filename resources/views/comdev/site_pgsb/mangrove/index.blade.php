@@ -6,7 +6,7 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
                         <div class="card-title">
-                            Data Konservasi Mangrove Lokasi PGSB
+                            Data Konservasi Mangrove
                         </div>
                         <a href="{{ url('comdev/site_pgsb/mangrove/create') }}" class="btn btn-success float-right">
                             <i class="fas fa-plus-circle"></i> Tambah Data

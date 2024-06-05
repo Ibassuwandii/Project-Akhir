@@ -49,11 +49,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Input field untuk upload file jika diperlukan -->
-                    {{-- <div class="form-group">
-                        <label for="file_foto">Foto</label>
-                        <input type="file" name="file_foto" class="form-control-file" id="file_foto">
-                    </div> --}}
+                    <div class="form-group col-md-6">
+                        <label for="file_foto" class="col-form-label">{{ __('Dokumentasi') }}</label>
+                        <input id="file_foto" type="file" class="form-control-file @error('file_foto') is-invalid @enderror" name="file_foto" required>
+                        @error('file_foto')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4 d-flex justify-content-end">
                             <a href="{{ url('comdev/site_sk/bangusman') }}" class="btn btn-secondary mr-2">

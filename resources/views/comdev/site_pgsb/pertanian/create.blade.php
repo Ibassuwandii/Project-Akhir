@@ -1,11 +1,10 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_pgsb/pertanian" />
-    <div class="card mt-2">
+    <div class="">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Tambah Data Pertanian Lokasi PGSB</h5>
+            <h5 class="card-title">Tambah Data Pertanian Lokasi SK</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('comdev/site_pgsb/pertanian') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('comdev/site_sk/pertanian') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="container">
                     <div class="row">
@@ -71,14 +70,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="file_foto">Foto</label>
-                        <input type="file" name="file_foto" class="form-control-file" id="file_foto">
+                    <div class="form-group col-md-6">
+                        <label for="file_foto" class="col-form-label">{{ __('Dokumen') }}</label>
+                        <input id="file_foto" type="file" class="form-control-file @error('file_foto') is-invalid @enderror" name="file_foto" required>
+                        @error('file_foto')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 offset-md-6">
-                            <button class="btn btn-primary float-right">
+                    <div class="form-group row mb-0">
+                        <div class="col-md-8 offset-md-4 d-flex justify-content-end">
+                            <a href="{{ url('comdev/site_sk/pertanian') }}" class="btn btn-secondary mr-2">
+                                <i class="fas fa-times-circle"></i> Batal
+                            </a>
+                            <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-save"></i> Simpan
                             </button>
                         </div>
@@ -87,4 +94,4 @@
             </form>
         </div>
     </div>
-</x-module.divisi-comdev>
+</x-module.comdev>

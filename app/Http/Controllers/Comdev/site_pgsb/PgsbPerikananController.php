@@ -47,7 +47,7 @@ class PgsbPerikananController extends Controller
         $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
 
         $perikanan->save();
-
+        $perikanan->handleUploadFoto();
         return redirect('divisi/comdev/site_pgsb/perikanan');
     }
 
@@ -79,21 +79,21 @@ class PgsbPerikananController extends Controller
          $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
 
         $perikanan->save();
-
+        if(request('file_foto')) $perikanan->handleUploadFoto();
         return redirect('divisi/comdev/site_pgsb/perikanan');
     }
 
     public function destroy(Perikanan $perikanan)
     {
             $perikanan->delete();
-
+            $perikanan->handleDeleteFoto();
             return redirect()->back()->with('success', 'Data perikan$perikanan berhasil dihapus.');
     }
 
 
     public function show($id)
     {
-        $perikanan = Perikanan::findOrFail($id); 
+        $perikanan = Perikanan::findOrFail($id);
 
         return view('comdev.site_pgsb.perikanan.show', compact('perikanan'));
     }
