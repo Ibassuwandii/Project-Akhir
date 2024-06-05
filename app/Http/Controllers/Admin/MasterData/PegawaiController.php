@@ -88,7 +88,7 @@ class PegawaiController extends Controller
 
         $request->validate([
             'nama' => 'required',
-            'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+            // 'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'email' => 'required',
             'username' => 'required',
             'jabatan' => 'required',

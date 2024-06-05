@@ -6,7 +6,7 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-cyan text-white">
                         <div class="card-title">
-                            Data perikanan Lokasi SK
+                            Data Perikanan Lokasi PGSB
                         </div>
                         <a href="{{url('comdev/site_sk/perikanan/create')}}" class="btn btn-success float-right">
                             <i class="fas fa-plus-circle"></i> Tambah Data

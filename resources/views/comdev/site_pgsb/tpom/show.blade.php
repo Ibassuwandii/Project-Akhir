@@ -1,9 +1,8 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_sk/tpom" />
-
+    <x-template.button.back-button url="comdev/site_pgsb/tpom"/>
     <div class="card mt-2">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title"><b>Detail Data Tpom Lokasi SK</b></h5>
+            <h5 class="card-title"><b>Detail Data Tpom Lokasi PGSB</b></h5>
         </div>
         <div class="card-body">
             <div class="row">
@@ -68,4 +67,4 @@
             </div>
         </div>
     </div>
-</x-module.divisi-comdev>
+</x-module.comdev>

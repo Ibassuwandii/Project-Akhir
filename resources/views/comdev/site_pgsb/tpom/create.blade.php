@@ -4,7 +4,7 @@
             <h5 class="card-title">Tambah Data Tpom Lokasi SK</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('comdev/site_sk/tpom') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('comdev/site_pgsb/tpom') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="container">
                     <div class="row">
@@ -58,13 +58,13 @@
 
                         @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="file_foto">Foto</label>
+                    <div class="form-group">
+                        <label for="file_foto">Dokumentasi</label>
                         <input type="file" name="file_foto" class="form-control-file" id="file_foto">
-                    </div> --}}
+                    </div>
                     </div>
                     <div class="col-md-8 offset-md-4 d-flex justify-content-end">
-                        <a href="{{ url('comdev/site_sk/tpom') }}" class="btn btn-secondary mr-2">
+                        <a href="{{ url('comdev/site_pgsb/tpom') }}" class="btn btn-secondary mr-2">
                             <i class="fas fa-times-circle"></i> Batal
                         </a>
                         <button type="submit" class="btn btn-primary">

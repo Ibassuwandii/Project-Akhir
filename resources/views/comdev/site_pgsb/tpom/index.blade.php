@@ -6,9 +6,9 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
                         <div class="card-title">
-                            Data Tpom Site SK
+                            Data Tpom Site PGSB
                         </div>
-                        <a href="{{ url('comdev/site_sk/tpom/create') }}" class="btn btn-success float-right">
+                        <a href="{{ url('comdev/site_pgsb/tpom/create') }}" class="btn btn-success float-right">
                             <i class="fas fa-plus-circle"></i> Tambah Data
                         </a>
                     </div>
@@ -35,8 +35,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <x-template.button.info-button url="comdev/site_sk/tpom" id="{{ $tpom->id }}" />
-                                                <x-template.button.edit-button url="comdev/site_sk/tpom" id="{{ $tpom->id }}" />
+                                                <x-template.button.info-button url="comdev/site_pgsb/tpom" id="{{ $tpom->id }}" />
+                                                <x-template.button.edit-button url="comdev/site_pgsb/tpom" id="{{ $tpom->id }}" />
                                                 <x-template.button.delete-button  id="{{$tpom->id}}" path="" />
                                             </div>
                                         </td>
