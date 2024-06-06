@@ -5,7 +5,7 @@
             <div class="card-title">
                Data Produksi Gula Tebu Site TNB
             </div>
-            <a href="{{url('divisi/comdev/site_tnb/produksitebu/create')}}" class="btn btn-success float-right">
+            <a href="{{url('comdev/site_tnb/produksitebu/create')}}" class="btn btn-success float-right">
                 <i class="fas fa-plus-circle"></i> Tambah Data
             </a>
         </div>
@@ -29,8 +29,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <x-template.button.info-button url="divisi/comdev/site_tnb" id="{{ $produksitebu->id }}" />
-                                    <x-template.button.edit-button url="divisi/comdev/site_tnb" id="{{ $produksitebu->id }}" />
+                                    <x-template.button.info-button url="comdev/site_tnb" id="{{ $produksitebu->id }}" />
+                                    <x-template.button.edit-button url="comdev/site_tnb" id="{{ $produksitebu->id }}" />
                                     <x-template.button.delete-button  id="{{$produksitebu->id}}" path="" />
                                 </div>
                             </td>

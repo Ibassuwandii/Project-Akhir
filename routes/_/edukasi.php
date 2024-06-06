@@ -5,6 +5,7 @@ use App\Http\Controllers\Edukasi\Peta\PetaController;
 use App\Http\Controllers\Edukasi\Dokumen\DokumenController;
 use App\Http\Controllers\Edukasi\laporan\LaporanController;
 use App\Http\Controllers\Edukasi\TamanBaca\TamanBacaController;
+use App\Http\Controllers\edukasi\Aksisampah\AksisampahController;
 use App\Http\Controllers\edukasi\Dokumentasi\DokumentasiController;
 
 
@@ -36,4 +37,10 @@ Route::redirect('/', 'edukasi/dokumentasi');
 Route::resource('dokumentasi', DokumentasiController::class);
 Route::controller(DokumentasiController::class)->group(function(){
     Route::get('edukasi/dokumentasi', 'batal');
+});
+
+Route::redirect('/', 'edukasi/aksisampah');
+Route::resource('aksisampah', AksisampahController::class);
+Route::controller(AksisampahController::class)->group(function(){
+    Route::get('edukasi/aksisampah', 'batal');
 });

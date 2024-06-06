@@ -37,7 +37,7 @@ class TnbKapalsayurController extends Controller
         $kapalsayur->keterangan = $request->keterangan;
 
 
-
+        $kapalsayur->handleUploadFoto();
         $kapalsayur->save();
 
         return redirect('comdev/site_tnb/kapalsayur');
@@ -69,7 +69,7 @@ class TnbKapalsayurController extends Controller
 
 
         $kapalsayur->save();
-
+        if(request('file_foto')) $kapalsayur->handleUploadFoto();
         return redirect('comdev/site_tnb/kapalsayur');
     }
 

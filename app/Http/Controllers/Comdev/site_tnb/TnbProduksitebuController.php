@@ -40,7 +40,7 @@ class TnbProduksitebuController extends Controller
 
 
         $produksitebu->save();
-
+        $produksitebu->handleUploadFoto();
         return redirect('comdev/site_tnb/produksitebu');
     }
 
@@ -68,7 +68,7 @@ class TnbProduksitebuController extends Controller
 
 
         $produksitebu->save();
-
+        if(request('file_foto')) $produksitebu->handleUploadFoto();
         return redirect('comdev/site_tnb/produksitebu');
     }
 
