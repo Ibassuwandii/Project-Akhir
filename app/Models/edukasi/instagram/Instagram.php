@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models\Edukasi\Aksisampah;
+namespace App\Models\Edukasi\Instagram;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
-class Aksisampah extends Model
+class Instagram extends Model
 {
-    protected $table ='edukasi__aksisampah';
+    protected $table ='edukasi__instagram';
 
     function handleUploadFoto()
     {
         $this->handleDeleteFoto();
         if (request()->hasFile('file_Foto')) {
             $file_Foto = request()->file('file_Foto');
-            $destination = "AksiSampah/Foto";
+            $destination = "Instagram/Foto";
             $randomStr = Str::random(5);
             $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $file_Foto->extension();
             $url = $file_Foto->storeAs($destination, $filename);

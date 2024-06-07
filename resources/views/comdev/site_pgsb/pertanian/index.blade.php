@@ -8,7 +8,7 @@
                         <div class="card-title">
                             Data Pertanian Lokasi PGSB
                         </div>
-                        <a href="{{url('comdev/site_sk/pertanian/create')}}" class="btn btn-success float-right">
+                        <a href="{{url('comdev/site_pgsb/pertanian/create')}}" class="btn btn-success float-right">
                             <i class="fas fa-plus-circle"></i> Tambah Data
                         </a>
                     </div>
@@ -39,9 +39,9 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <x-template.button.info-button url="comdev/site_sk/pertanian"
+                                                <x-template.button.info-button url="comdev/site_pgsb/pertanian"
                                                     id="{{ $pertanian->id }}" />
-                                                <x-template.button.edit-button url="comdev/site_sk/pertanian"
+                                                <x-template.button.edit-button url="comdev/site_pgsb/pertanian"
                                                     id="{{ $pertanian->id }}" />
                                                 <x-template.button.delete-button  id="{{$pertanian->id}}" path="" />
                                             </div>

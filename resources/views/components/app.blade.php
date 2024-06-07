@@ -61,7 +61,8 @@
             "responsive": true,
         });
     });
-    </script>
+</script>
+
 
 
 <script>

@@ -43,13 +43,13 @@
                                         <td>{{ $laporan->judul_laporan }}</td>
                                         <td>
                                             @if ($laporan->file_pdf)
-                                                <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-danger">
+                                                <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-primary">
                                                     <i class="far fa-file-pdf"></i> Unduh Laporan
                                                 </a>
                                             @else
                                                 <span class="text-muted">Tidak ada file</span>
                                             @endif
-                                        </td>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

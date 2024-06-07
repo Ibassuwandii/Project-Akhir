@@ -1,10 +1,10 @@
 <x-module.comdev>
     <div class="">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Tambah Data Pertanian Lokasi SK</h5>
+            <h5 class="card-title">Tambah Data Pertanian Lokasi PGSB</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('comdev/site_sk/pertanian') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('comdev/site_pgsb/pertanian') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="container">
                     <div class="row">
@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4 d-flex justify-content-end">
-                            <a href="{{ url('comdev/site_sk/pertanian') }}" class="btn btn-secondary mr-2">
+                            <a href="{{ url('comdev/site_pgsb/pertanian') }}" class="btn btn-secondary mr-2">
                                 <i class="fas fa-times-circle"></i> Batal
                             </a>
                             <button type="submit" class="btn btn-primary">

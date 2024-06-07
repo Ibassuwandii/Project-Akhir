@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produksitebu extends Model
 {
-    protected $table ='site_tnb__Produksitebu';
+    protected $table ='site_tnb__produksitebu';
 
     function handleUploadFoto()
    {

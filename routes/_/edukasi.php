@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Edukasi\Peta\PetaController;
 use App\Http\Controllers\Edukasi\Dokumen\DokumenController;
 use App\Http\Controllers\Edukasi\laporan\LaporanController;
+use App\Http\Controllers\Edukasi\Dashboard\DashboardController;
+use App\Http\Controllers\edukasi\Instagram\InstagramController;
 use App\Http\Controllers\Edukasi\TamanBaca\TamanBacaController;
 use App\Http\Controllers\edukasi\Aksisampah\AksisampahController;
 use App\Http\Controllers\edukasi\Dokumentasi\DokumentasiController;
+use App\Http\Controllers\edukasi\Visitschool\VisitschoolController;
 
 
 
@@ -44,3 +47,17 @@ Route::resource('aksisampah', AksisampahController::class);
 Route::controller(AksisampahController::class)->group(function(){
     Route::get('edukasi/aksisampah', 'batal');
 });
+
+Route::redirect('/', 'edukasi/visitschool');
+Route::resource('visitschool', VisitschoolController::class);
+Route::controller(VisitschoolController::class)->group(function(){
+    Route::get('edukasi/visitschool', 'batal');
+});
+
+Route::redirect('/', 'edukasi/instagram');
+Route::resource('instagram', InstagramController::class);
+Route::controller(InstagramController::class)->group(function(){
+    Route::get('edukasi/instagram', 'batal');
+});
+
+// Route::get('/dashboard', [DashboardController::class, 'index']);

@@ -1,8 +1,8 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_sk/pertanian" />
+    <x-template.button.back-button url="comdev/site_pgsb/pertanian" />
     <div class="card mt-2">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title"><b>Detail Data Pertanian Lokasi SK</b></h5>
+            <h5 class="card-title"><b>Detail Data Pertanian Lokasi PGSB</b></h5>
         </div>
         <div class="card-body">
             <div class="row">

@@ -1,5 +1,5 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_sk/perikanan" />
+    <x-template.button.back-button url="comdev/site_pgsb/perikanan" />
     <div class="card mt-2">
         <div class="card-header bg-cyan text-white">
             <h5 class="card-title"><b>Detail Data Perikanan Lokasi SK</b></h5>
