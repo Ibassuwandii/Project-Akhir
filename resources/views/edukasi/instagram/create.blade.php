@@ -24,21 +24,11 @@
                 @enderror
                 </div>
                 <div class="form-group">
-                    <label for="bulan">Bulan</label>
-                    <select name="bulan" id="bulan" class="form-control" required>
-                        <option value="Jan">Januari</option>
-                        <option value="Feb">Februari</option>
-                        <option value="Mar">Maret</option>
-                        <option value="Apr">April</option>
-                        <option value="May">Mei</option>
-                        <option value="Jun">Juni</option>
-                        <option value="Jul">Juli</option>
-                        <option value="Aug">Agustus</option>
-                        <option value="Sep">September</option>
-                        <option value="Oct">Oktober</option>
-                        <option value="Nov">November</option>
-                        <option value="Dec">Desember</option>
-                    </select>
+                    <label for="bulan">Bulan dan Tahun</label>
+                    <input type="text" name="bulan" id="bulan" class="form-control" required>
+                    @error('bulan')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 </div>
                 <div class="form-group">
                     <label for="penayangan">Penayangan</label>

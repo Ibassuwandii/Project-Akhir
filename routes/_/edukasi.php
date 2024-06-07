@@ -60,4 +60,5 @@ Route::controller(InstagramController::class)->group(function(){
     Route::get('edukasi/instagram', 'batal');
 });
 
-// Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

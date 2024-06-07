@@ -18,7 +18,7 @@
                             <th rowspan="2" class="text-center align-middle">Aksi</th>
                             <th rowspan="2" class="text-center align-middle">Jenis Postingan</th>
                             <th rowspan="2" class="text-center align-middle">Jumlah Follower</th>
-                            <th rowspan="2" class="text-center align-middle">Bulan</th>
+                            <th rowspan="2" class="text-center align-middle">Bulan dan Tahun</th>
                             <th colspan="4" class="text-center">Engagement Rate</th>
                         </tr>
                         <tr class="bg-secondary text-white">

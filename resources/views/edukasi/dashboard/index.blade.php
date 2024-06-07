@@ -1,41 +1,143 @@
-<x-module-edukasi>
-    @section('content')
-    <div class="container">
-        <h1>Dashboard</h1>
+<x-module.edukasi>
+    <x-utils.notif />
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <div class="card-title" style="font-weight: bold;">
+                Selamat Datang di Halaman Dashboard Divisi Edukasi
+            </div>
+        </div>
+        <div class="card-body" style="display: flex; flex-direction: row;">
 
-        <!-- Menampilkan grafik data dari menu Visit School -->
-        <div class="card">
-            <div class="card-header">Grafik Visit School</div>
-            <div class="card-body">
-                <canvas id="visitSchoolChart"></canvas>
+            <!-- Diagram Instagram -->
+            <div style="width: 45%; margin-right: 5%;">
+                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Instagram</p>
+                <div class="chart-container" style="position: relative; height: 300px;">
+                    <canvas id="instagramChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Diagram Aksi Sampah -->
+            <div style="width: 45%;">
+                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Aksi Sampah</p>
+                <div class="chart-container" style="position: relative; height: 300px;">
+                    <canvas id="aksiSampahChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
-@endsection
-@section('scripts')
-    <script src="{{ asset('js/chart.min.js') }}"></script>
+
     <script>
-        var ctx = document.getElementById('visitSchoolChart').getContext('2d');
-        var visitSchoolChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: {!! json_encode($visitSchoolData->pluck('month')) !!},
-                datasets: [{
-                    label: 'Jumlah Visit School',
-                    data: {!! json_encode($visitSchoolData->pluck('count')) !!},
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        document.addEventListener('DOMContentLoaded', function () {
+            // Chart Instagram
+            const instagramCtx = document.getElementById('instagramChart').getContext('2d');
+            const instagramData = @json($list_instagram);
+
+            const instagramLabels = instagramData.map(item => item.bulan);
+            const instagramFollowers = instagramData.map(item => item.jumlah_folower);
+            const instagramViews = instagramData.map(item => item.penayangan);
+            const instagramLikes = instagramData.map(item => item.like);
+            const instagramComments = instagramData.map(item => item.coment);
+            const instagramShares = instagramData.map(item => item.share);
+
+            const instagramChart = new Chart(instagramCtx, {
+                type: 'bar',
+                data: {
+                    labels: instagramLabels,
+                    datasets: [{
+                            label: 'Followers',
+                            data: instagramFollowers,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Views',
+                            data: instagramViews,
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Likes',
+                            data: instagramLikes,
+                            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Comments',
+                            data: instagramComments,
+                            backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                            borderColor: 'rgba(255, 205, 86, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Shares',
+                            data: instagramShares,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
+            });
+
+            // Chart Aksi Sampah
+            const aksiSampahCtx = document.getElementById('aksiSampahChart').getContext('2d');
+            const aksiSampahData = @json($list_aksisampah);
+
+            const aksiSampahLabels = aksiSampahData.map(item => item.tanggal);
+            const aksiSampahJumlahPeserta = aksiSampahData.map(item => item.jumlah_peserta);
+            const aksiSampahJumlahSampah = aksiSampahData.map(item => item.jumlah_sampah);
+            const aksiSampahTanggal = aksiSampahData.map(item => item.aksiSampahTanggal);
+
+
+            const aksiSampahChart = new Chart(aksiSampahCtx, {
+                type: 'pie',
+                data: {
+                    labels: aksiSampahLabels,
+                    datasets: [{
+                            label: 'Jumlah Peserta',
+                            data: aksiSampahJumlahPeserta,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Jumlah Sampah (Kilogram)',
+                            data: aksiSampahJumlahSampah,
+                            backgroundColor: 'rgba(153, 102, 255,2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Tanggal Kegiatan',
+                            data: aksiSampahTanggal,
+                            backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                            borderColor: 'rgba(255, 205, 86, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
         });
     </script>
-@endsection
-</x-module-edukasi>
+</x-module.edukasi>

@@ -43,4 +43,7 @@
             }
         }
     </style>
+
+
+@stack('script')
 </x-app>

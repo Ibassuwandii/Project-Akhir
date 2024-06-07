@@ -25,21 +25,11 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="bulan">Bulan</label>
-                    <select name="bulan" id="bulan" class="form-control" required>
-                        <option value="Jan" {{ $instagram->bulan == 'Jan' ? 'selected' : '' }}>Januari</option>
-                        <option value="Feb" {{ $instagram->bulan == 'Feb' ? 'selected' : '' }}>Februari</option>
-                        <option value="Mar" {{ $instagram->bulan == 'Mar' ? 'selected' : '' }}>Maret</option>
-                        <option value="Apr" {{ $instagram->bulan == 'Apr' ? 'selected' : '' }}>April</option>
-                        <option value="May" {{ $instagram->bulan == 'May' ? 'selected' : '' }}>Mei</option>
-                        <option value="Jun" {{ $instagram->bulan == 'Jun' ? 'selected' : '' }}>Juni</option>
-                        <option value="Jul" {{ $instagram->bulan == 'Jul' ? 'selected' : '' }}>Juli</option>
-                        <option value="Aug" {{ $instagram->bulan == 'Aug' ? 'selected' : '' }}>Agustus</option>
-                        <option value="Sep" {{ $instagram->bulan == 'Sep' ? 'selected' : '' }}>September</option>
-                        <option value="Oct" {{ $instagram->bulan == 'Oct' ? 'selected' : '' }}>Oktober</option>
-                        <option value="Nov" {{ $instagram->bulan == 'Nov' ? 'selected' : '' }}>November</option>
-                        <option value="Desember" {{ $instagram->bulan == 'Desember' ? 'selected' : '' }}>Desember</option>
-                    </select>
+                    <label for="bulan">Bulan dan Tahun</label>
+                    <input type="text" name="bulan" id="bulan" class="form-control" value="{{ $instagram->bulan }}" required>
+                    @error('bulan')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="penayangan">Penayangan</label>

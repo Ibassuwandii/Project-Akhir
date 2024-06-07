@@ -45,7 +45,7 @@
 <script src="{{ url('public') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="{{ url('public') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{ url('public') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
 <script>
     $(function () {
       $("#example1").DataTable({
@@ -62,8 +62,10 @@
         });
     });
 </script>
-
-
+<head>
+    <!-- Other head contents -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
 <script>
     // JavaScript for Bootstrap's form validation

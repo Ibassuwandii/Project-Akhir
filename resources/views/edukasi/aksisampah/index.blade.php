@@ -22,8 +22,8 @@
                             <th colspan="2" class="text-center">Sampah</th>
                         </tr>
                         <tr class="bg-secondary text-white">
-                            <th class="text-center">Jenis</th>
-                            <th class="text-center">Jumlah</th>
+                            <th class="text-center">Jenis </th>
+                            <th class="text-center">Jumlah </th>
                         </tr>
                     </thead>
                     <tbody>
