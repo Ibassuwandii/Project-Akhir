@@ -21,6 +21,7 @@
                                         <th rowspan="2">Aksi</th>
                                         <th rowspan="2">Jangkauan Patroli</th>
                                         <th colspan="3" style="text-align: center">Insiden Kebakaran</th>
+                                        <th rowspan="2">Tanggal Patroli</th>
                                         {{-- <th rowspan="2" style="text-align: center">Sosialisasi</th> --}}
                                     </tr>
                                     <tr style="text-align: center">
@@ -44,6 +45,7 @@
                                         <td class="text-left">{{ $tpom->titik_koordinat }}</td>
                                         <td class="text-left">{{ $tpom->luas_lahan }}</td>
                                         <td class="text-left">{{ $tpom->pemilik_lahan }}</td>
+                                        <td class="text-left">{{ $tpom->formatted_tanggal_patroli }}</td>
                                         {{-- <td>{{ $tpom->sosialisasi }}</td> --}}
                                     </tr>
                                     @endforeach
