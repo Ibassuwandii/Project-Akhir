@@ -2,7 +2,7 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title">
+            <div class="card-title" style="font-weight: bold;">
                 Dokumen Divisi Edukasi
             </div>
             <a href="{{ url('edukasi/dokumen/create') }}" class="btn btn-success float-right">
@@ -14,8 +14,8 @@
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="bg-secondary text-white">
                         <tr>
-                            <th>No</th>
-                            <th>Aksi</th>
+                            <th style="width: 50px;">No</th>
+                            <th style="width: 100px;">Aksi</th>
                             <th>Judul Dokumen</th>
                             <th>Tanggal</th>
                             <th>Dokumen</th>
@@ -32,8 +32,8 @@
                                     <x-template.button.delete-button  id="{{$dokumen->id}}" path="" />
                                 </div>
                             </td>
-                            <td>{{ $dokumen->judul_dokumen }}</td>
-                            <td>{{ $dokumen->tanggal}}</td>
+                            <td class="text-left">{{ $dokumen->judul_dokumen }}</td>
+                            <td class="text-left">{{ $dokumen->formatted_tanggal}}</td>
                             <td>
                                 @if ($dokumen->file_pdf)
                                     <a href="{{ url('public') }}/{{ $dokumen->file_pdf }}" target="_blank" class="text-primary">

@@ -8,7 +8,7 @@
                 </div>
                 <div>
                     <a href="{{ url('admin/master-data/pegawai/create') }}" class="btn btn-success">
-                        <i class="fas fa-plus"></i> Tambah Pegawai
+                        <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                             <th>Email</th>
                             <th>Jabatan</th>
                             {{-- <th>Departemen</th> --}}
-                            <th class="text-right">Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,8 +35,8 @@
                                     <span>{{ $pegawai->nama }}</span>
                                 </div>
                             </td>
-                            <td>{{ $pegawai->email }}</td>
-                            <td>{{ $pegawai->jabatan }}</td>
+                            <td class="text-left">{{ $pegawai->email }}</td>
+                            <td class="text-left">{{ $pegawai->jabatan }}</td>
                             {{-- <td>{{ $pegawai->departemen }}</td> --}}
                             <td class="text-right">
                                 <div class="btn-group">

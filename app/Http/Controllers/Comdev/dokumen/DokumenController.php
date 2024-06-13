@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Comdev\Dokumen;
 
+use carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -19,8 +20,11 @@ class DokumenController extends Controller
 
     public function index()
     {
-        $data['list_dokumen'] = $this->dokumenService->getAllDokumen();
-        return view('comdev.dokumen.index', $data);
+        $list_dokumen = dokumen::all()->map(function($dokumen) {
+            $dokumen->formatted_tanggal = Carbon::parse($dokumen->tanggal)->translatedFormat('d F Y');
+            return $dokumen;
+        });
+        return view('comdev.dokumen.index', compact('list_dokumen'));
     }
 
     public function create()

@@ -2,7 +2,7 @@
     <x-utils.notif />
     <div class="card">
         <div class="card-header bg-cyan text-white">
-            <div class="card-title">
+            <div class="card-title" style="font-weight: bold;">
                Data Kapal Sayur Site TNB
             </div>
             <a href="{{url('comdev/site_tnb/kapalsayur/create')}}" class="btn btn-success float-right">

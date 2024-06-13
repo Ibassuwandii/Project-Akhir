@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\edukasi;
+namespace App\Models\edukasi\Tamanbaca;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class Tamanbaca extends Model
        $this->handleDeleteFoto();
        if (request()->hasFile('file_foto')) {
            $file_foto = request()->file('file_foto');
-           $destination = "Edukasi/tamanbaca";
+           $destination = "Edukasi/Tamanbaca";
            $randomStr = Str::random(5);
            $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $file_foto->extension();
            $url = $file_foto->storeAs($destination, $filename);

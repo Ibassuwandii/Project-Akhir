@@ -6,10 +6,10 @@
                 Selamat Datang di Halaman Dashboard Divisi Edukasi
             </div>
         </div>
-        <div class="card-body" style="display: flex; flex-direction: row;">
+        <div class="card-body" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
 
             <!-- Diagram Instagram -->
-            <div style="width: 45%; margin-right: 5%;">
+            <div style="width: 100%; margin-bottom: 100px;">
                 <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Instagram</p>
                 <div class="chart-container" style="position: relative; height: 300px;">
                     <canvas id="instagramChart"></canvas>
@@ -17,15 +17,26 @@
             </div>
 
             <!-- Diagram Aksi Sampah -->
-            <div style="width: 45%;">
+            <div style="width: 100%; margin-bottom: 100px;">
                 <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Aksi Sampah</p>
                 <div class="chart-container" style="position: relative; height: 300px;">
                     <canvas id="aksiSampahChart"></canvas>
                 </div>
             </div>
         </div>
+        <div>
+            <!-- Diagram Taman Baca -->
+            <div style="width: 100%; margin-bottom: 50px;">
+                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Taman Baca</p>
+                <div class="chart-container" style="position: relative; height: 300px;">
+                    <canvas id="tamanBacaChart"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Chart Instagram
@@ -98,11 +109,9 @@
             const aksiSampahLabels = aksiSampahData.map(item => item.tanggal);
             const aksiSampahJumlahPeserta = aksiSampahData.map(item => item.jumlah_peserta);
             const aksiSampahJumlahSampah = aksiSampahData.map(item => item.jumlah_sampah);
-            const aksiSampahTanggal = aksiSampahData.map(item => item.aksiSampahTanggal);
-
 
             const aksiSampahChart = new Chart(aksiSampahCtx, {
-                type: 'pie',
+                type: 'bar',
                 data: {
                     labels: aksiSampahLabels,
                     datasets: [{
@@ -115,15 +124,55 @@
                         {
                             label: 'Jumlah Sampah (Kilogram)',
                             data: aksiSampahJumlahSampah,
-                            backgroundColor: 'rgba(153, 102, 255,2)',
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Chart Taman Baca
+            const tamanBacaCtx = document.getElementById('tamanBacaChart').getContext('2d');
+            const tamanBacaData = @json($list_tamanbaca);
+
+            const tamanBacaLabels = tamanBacaData.map(item => item.bulan_pinjam);
+            const tamanBacaTotalBuku = tamanBacaData.map(item => item.total_buku);
+            const tamanBacaTotalPengunjung = tamanBacaData.map(item => item.total_pengunjung);
+            const tamanBacaTotalPinjam = tamanBacaData.map(item => item.total_pinjam);
+
+            const tamanBacaChart = new Chart(tamanBacaCtx, {
+                type: 'bar',
+                data: {
+                    labels: tamanBacaLabels,
+                    datasets: [{
+                            label: 'Total Buku',
+                            data: tamanBacaTotalBuku,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Total Pengunjung',
+                            data: tamanBacaTotalPengunjung,
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
                             borderColor: 'rgba(153, 102, 255, 1)',
                             borderWidth: 1
                         },
                         {
-                            label: 'Tanggal Kegiatan',
-                            data: aksiSampahTanggal,
-                            backgroundColor: 'rgba(255, 205, 86, 0.2)',
-                            borderColor: 'rgba(255, 205, 86, 1)',
+                            label: 'Total Buku Dipinjam',
+                            data: tamanBacaTotalPinjam,
+                            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            borderColor: 'rgba(255, 159, 64, 1)',
                             borderWidth: 1
                         }
                     ]

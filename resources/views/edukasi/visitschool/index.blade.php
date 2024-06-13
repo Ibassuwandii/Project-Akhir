@@ -2,7 +2,7 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title">
+            <div class="card-title" style="font-weight: bold;">
                 Data Visit School
             </div>
             <a href="{{url('edukasi/visitschool/create')}}" class="btn btn-success float-right">
@@ -14,13 +14,13 @@
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr class="bg-secondary text-white">
-                            <th rowspan="2" class="text-center align-middle">No</th>
-                            <th rowspan="2" class="text-center align-middle">Aksi</th>
-                            <th rowspan="2" class="text-center align-middle">Nama Sekolah</th>
-                            <th rowspan="2" class="text-center align-middle">Lokasi Kegiatan</th>
+                            <th rowspan="2" class="text-center">No</th>
+                            <th rowspan="2" class="text-center">Aksi</th>
+                            <th rowspan="2" class="text-center">Nama Sekolah</th>
+                            <th rowspan="2" class="text-center">Lokasi Kegiatan</th>
                             <th colspan="2" class="text-center">Jumlah Peserta</th>
-                            <th rowspan="2" class="text-center align-middle">Tanggal Kunjungan</th>
-                            <th rowspan="2" class="text-center align-middle">Materi Kegiatan</th>
+                            <th rowspan="2" class="text-center">Tanggal Kunjungan</th>
+                            <th rowspan="2" class="text-center">Materi Kegiatan</th>
                         </tr>
                         <tr class="bg-secondary text-white">
                             <th class="text-center">L</th>
@@ -32,18 +32,18 @@
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">
-                                <div class="btn-group">
-                                    <x-template.button.info-button url="edukasi/visitschool" id="{{ $visitschool->id }}" />
-                                    <x-template.button.edit-button url="edukasi/visitschool" id="{{ $visitschool->id }}" />
-                                    <x-template.button.delete-button id="{{ $visitschool->id }}" path="" />
-                                </div>
+                            <div class="btn-group">
+                                <x-template.button.info-button url="edukasi/visitschool" id="{{ $visitschool->id }}" />
+                                <x-template.button.edit-button url="edukasi/visitschool" id="{{ $visitschool->id }}" />
+                                <x-template.button.delete-button id="{{ $visitschool->id }}" path="" />
+                            </div>
                             </td>
-                            <td>{{ $visitschool->nama_sekolah }}</td>
-                            <td>{{ $visitschool->lokasi }}</td>
-                            <td>{{ $visitschool->laki_laki }}</td>
-                            <td>{{ $visitschool->perempuan }}</td>
-                            <td>{{ $visitschool->tanggal }}</td>
-                            <td>{{ $visitschool->materi }}</td>
+                            <td class="text-left">{{ $visitschool->nama_sekolah }}</td>
+                            <td class="text-left">{{ $visitschool->lokasi }}</td>
+                            <td class="text-left">{{ $visitschool->laki_laki }}</td>
+                            <td class="text-left">{{ $visitschool->perempuan }}</td>
+                            <td class="text-left">{{ $visitschool->formatted_tanggal }}</td>
+                            <td class="text-left">{{ $visitschool->materi }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -52,3 +52,4 @@
         </div>
     </div>
 </x-module.edukasi>
+

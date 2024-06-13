@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header bg-cyan text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Data Perikanan Lokasi TNB
                         </div>
                         <a href="{{url('comdev/site_tnb/perikanan/create')}}" class="btn btn-success float-right">

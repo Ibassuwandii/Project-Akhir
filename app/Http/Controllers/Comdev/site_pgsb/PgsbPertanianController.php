@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Comdev\site_pgsb;
 
+use carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_pgsb\Pertanian;
 use Illuminate\Http\Request;
@@ -10,8 +11,11 @@ class PgsbPertanianController extends Controller
 {
     public function index()
     {
-        $data['list_pertanian'] = Pertanian::all();
-        return view('comdev.site_pgsb.pertanian.index',$data);
+        $list_pertanian = pertanian::all()->map(function($pertanian) {
+            $pertanian->formatted_tanggal = Carbon::parse($pertanian->tanggal)->translatedFormat('d F Y');
+            return $pertanian;
+        });
+        return view('comdev.site_pgsb.pertanian.index', compact('list_pertanian'));
     }
 
 

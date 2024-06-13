@@ -2,7 +2,7 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title">
+            <div class="card-title" style="font-weight: bold;">
                 Laporan Divisi Comdev
             </div>
             <a href="{{ url('comdev/laporan/create') }}" class="btn btn-success float-right">
@@ -26,19 +26,19 @@
                         @foreach ($list_laporan as $laporan)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>
+                            <td class="text-left">
                                 <div class="btn-group">
                                     {{-- <x-template.button.info-button url="comdev/laporan" id="{{ $laporan->id }}" /> --}}
                                     <x-template.button.edit-button url="comdev/laporan" id="{{ $laporan->id }}" />
                                     <x-template.button.delete-button  id="{{$laporan->id}}" path="" />
                                 </div>
                             </td>
-                            <td>{{ $laporan->jenis_laporan }}</td>
-                            <td>{{ $laporan->tanggal_dibuat }}</td>
-                            <td>{{ $laporan->judul_laporan}}</td>
+                            <td class="text-left">{{ $laporan->jenis_laporan }}</td>
+                            <td class="text-left">{{ $laporan->formatted_tanggal_dibuat }}</td>
+                            <td class="text-left">{{ $laporan->judul_laporan}}</td>
                             <td>
                                 @if ($laporan->file_pdf)
-                                    <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-danger">
+                                    <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-primary">
                                         <i class="far fa-file-pdf"></i> Unduh PDF
                                     </a>
                                 @else

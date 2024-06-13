@@ -3,20 +3,22 @@
 // use App\Http\Controllers\Comdev\DokumenController;
 // use App\Http\Controllers\Comdev\DokumentasiController;
 
-use Illuminate\Support\Facades\Route;
+// use SiteSkController;
 // use App\Http\Controllers\Comdev\LaporanController;
+use Illuminate\Support\Facades\Route;
 use App\Models\comdev\Dokumentasi\Dokumentasi;
 use App\Http\Controllers\Comdev\Peta\PetaController;
 use App\Http\Controllers\Comdev\site_sk\TpomController;
 use App\Http\Controllers\Comdev\Dokumen\DokumenController;
+use App\Http\Controllers\comdev\laporan\LaporanController;
 use App\Http\Controllers\Comdev\site_sk\KarhutlaController;
 use App\Http\Controllers\Comdev\site_sk\MangroveController;
 use App\Http\Controllers\Comdev\site_sk\RangkongController;
-use App\Http\Controllers\comdev\laporan\LaporanController;
 use App\Http\Controllers\Comdev\site_sk\BangusmanController;
 use App\Http\Controllers\Comdev\site_sk\PerikananController;
 use App\Http\Controllers\Comdev\site_sk\PertanianController;
 use App\Http\Controllers\Comdev\site_pgsb\PgsbTpomController;
+use App\Http\Controllers\Comdev\dashboard\DashboardController;
 use App\Http\Controllers\Comdev\site_tnb\TnbPerikananController;
 use App\Http\Controllers\Comdev\site_tnb\TnbPertanianController;
 use App\Http\Controllers\Comdev\site_pgsb\PgsbMangroveController;
@@ -25,7 +27,7 @@ use App\Http\Controllers\Comdev\Dokumentasi\DokumentasiController;
 use App\Http\Controllers\Comdev\site_pgsb\PgsbPerikananController;
 use App\Http\Controllers\Comdev\site_pgsb\PgsbPertanianController;
 use App\Http\Controllers\Comdev\site_tnb\TnbProduksitebuController;
-use App\Http\Controllers\Comdev\laporan\LaporanController as LaporanLaporanController;
+// use App\Http\Controllers\Comdev\laporan\LaporanController as LaporanLaporanController;
 
 // Route::redirect('/', 'site-sk');
 // Route::get('site-sk', SiteSkController::class);
@@ -153,6 +155,7 @@ Route::controller(LaporanController::class)->group(function(){
 
 
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 

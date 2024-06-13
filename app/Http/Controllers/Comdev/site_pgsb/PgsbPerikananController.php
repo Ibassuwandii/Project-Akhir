@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Comdev\site_pgsb;
 
+use carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_pgsb\Perikanan;
 use Illuminate\Http\Request;
@@ -10,8 +11,11 @@ class PgsbPerikananController extends Controller
 {
     public function index()
     {
-        $data['list_perikanan'] = Perikanan::all();
-        return view('comdev.site_pgsb.perikanan.index',$data);
+        $list_perikanan = perikanan::all()->map(function($perikanan) {
+            $perikanan->formatted_tanggal = Carbon::parse($perikanan->tanggal)->translatedFormat('d F Y');
+            return $perikanan;
+        });
+        return view('comdev.site_pgsb.perikanan.index', compact('list_perikanan'));
     }
 
 

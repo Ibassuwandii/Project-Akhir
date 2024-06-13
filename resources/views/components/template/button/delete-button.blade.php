@@ -1,4 +1,4 @@
-<button class="btn btn-danger bs-tooltip" title="Delete" data-placement="right" type="button" onclick="deleteData('{{ $id }}','{{ $path }}')">
+<button class="btn btn-danger btn-sm" title="Delete" data-placement="right" type="button" onclick="deleteData('{{ $id }}','{{ $path }}')">
     <i class="fa fa-trash"></i>
 </button>
 

@@ -2,7 +2,7 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title">
+            <div class="card-title" style="font-weight: bold;">
                 Data Aksi Sampah
             </div>
             <a href="{{url('edukasi/aksisampah/create')}}" class="btn btn-success float-right">
@@ -37,11 +37,11 @@
                                     <x-template.button.delete-button id="{{ $aksisampah->id }}" path="" />
                                 </div>
                             </td>
-                            <td>{{ $aksisampah->lokasi }}</td>
-                            <td>{{ $aksisampah->jumlah_peserta }}</td>
-                            <td>{{ $aksisampah->tanggal }}</td>
-                            <td>{{ $aksisampah->jenis_sampah }}</td>
-                            <td>{{ $aksisampah->jumlah_sampah }}</td>
+                            <td class="text-left">{{ $aksisampah->lokasi }}</td>
+                            <td style="width: 50px;" class="text-left">{{ $aksisampah->jumlah_peserta }}</td>
+                            <td class="text-left">{{ $aksisampah->formatted_tanggal }}</td>
+                            <td class="text-left">{{ $aksisampah->jenis_sampah }}</td>
+                            <td class="text-left">{{ $aksisampah->jumlah_sampah }}</td>
                         </tr>
                         @endforeach
                     </tbody>

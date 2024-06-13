@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Peta Divisi comdev
                         </div>
                         <div class="float-right">
@@ -30,24 +30,24 @@
                                     @foreach ($list_peta as $peta)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
+                                        <td class="text-left">
                                             <div class="btn-group">
                                                 {{-- <x-template.button.info-button url="comdev/peta" id="{{ $peta->id }}" /> --}}
                                                 <x-template.button.edit-button url="comdev/peta" id="{{ $peta->id }}" />
                                                 <x-template.button.delete-button  id="{{$peta->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td>{{ $peta->judul_peta }}</td>
-                                        <td>{{ $peta->tanggal_upload }}</td>
+                                        <td class="text-left">{{ $peta->judul_peta }}</td>
+                                        <td class="text-left">{{ $peta->formatted_tanggal_upload }}</td>
                                         <td>
                                             @if ($peta->file_foto)
                                                 <a href="{{ url('public') }}/{{ $peta->file_foto }}" target="_blank">
-                                                    Lihat Gambar
+                                                    <i class="fas fa-image"></i> Lihat Gambar
                                                 </a>
                                             @else
                                                 <p>Tidak ada gambar</p>
                                             @endif
-                                        </td>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

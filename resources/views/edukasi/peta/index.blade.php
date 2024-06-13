@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Peta Divisi edukasi
                         </div>
                         <div class="float-right">
@@ -37,8 +37,8 @@
                                                 <x-template.button.delete-button  id="{{$peta->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td>{{ $peta->judul_peta }}</td>
-                                        <td>{{ $peta->tanggal_upload }}</td>
+                                        <td class="text-left">{{ $peta->judul_peta }}</td>
+                                        <td class="text-left">{{ $peta->tanggal_upload }}</td>
                                         <td>
                                             @if ($peta->file_foto)
                                                 <a href="{{ url('public') }}/{{ $peta->file_foto }}" target="_blank">

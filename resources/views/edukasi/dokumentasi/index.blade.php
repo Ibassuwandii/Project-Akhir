@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Dokumentasi Divisi edukasi
                         </div>
                         <div class="float-right">
@@ -19,7 +19,7 @@
                             <table id="example1" class="table table-bordered table-striped table-hover">
                                 <thead class="bg-secondary text-white">
                                     <tr>
-                                        <th>No</th>
+                                        <th  style="width: 30px;">No</th>
                                         <th>Aksi</th>
                                         <th>Judul Dokumentasi</th>
                                         <th>Tanggal Kegiatan</th>
@@ -37,8 +37,8 @@
                                                 <x-template.button.delete-button  id="{{$dokumentasi->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td>{{ $dokumentasi->judul_dokumentasi }}</td>
-                                        <td>{{ $dokumentasi->tanggal_kegiatan }}</td>
+                                        <td class="text-left">{{ $dokumentasi->judul_dokumentasi }}</td>
+                                        <td class="text-left">{{ $dokumentasi->formatted_tanggal_kegiatan }}</td>
                                         <td>
                                             <a href="{{ $dokumentasi->link_foto }}" target="_blank" class="text-primary">
                                                 <i class="fa fa-link"></i> Lihat Dokumentasi

@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card shadow-lg">
                     <div class="card-header bg-cyan text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Data Perikanan Lokasi PGSB
                         </div>
                         <a href="{{url('comdev/site_pgsb/perikanan/create')}}" class="btn btn-success float-right">
@@ -37,7 +37,7 @@
                                     @foreach ($list_perikanan as $perikanan)
                                     <tr>
                                         <td>{{ $loop->iteration}}</td>
-                                        <td>
+                                        <td class="text-left">
                                             <div class="btn-group">
                                                 <x-template.button.info-button url="comdev/site_pgsb/perikanan"
                                                     id="{{ $perikanan->id }}" />
@@ -46,14 +46,14 @@
                                                 <x-template.button.delete-button  id="{{$perikanan->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td>{{ $perikanan->nama_desa}}</td>
-                                        {{-- <td>{{ $perikanan->komuditas}}</td> --}}
-                                        <td>{{ $perikanan->hasil_sebelum}}</td>
-                                        <td>{{ $perikanan->hasil_target}}</td>
-                                        <td>{{ $perikanan->hasil_akhir}}</td>
-                                        <td>{{ $perikanan->keterangan}}</td>
-                                        <td>{{ $perikanan->jumlah_penerima_laki_laki}}</td>
-                                        <td>{{ $perikanan->jumlah_penerima_perempuan}}</td>
+                                        <td class="text-left">{{ $perikanan->nama_desa}}</td>
+                                        {{-- <td class="text-left">{{ $perikanan->komuditas}}</td> --}}
+                                        <td class="text-left">{{ $perikanan->hasil_sebelum}}</td>
+                                        <td class="text-left">{{ $perikanan->hasil_target}}</td>
+                                        <td class="text-left">{{ $perikanan->hasil_akhir}}</td>
+                                        <td class="text-left">{{ $perikanan->keterangan}}</td>
+                                        <td class="text-left">{{ $perikanan->jumlah_penerima_laki_laki}}</td>
+                                        <td class="text-left">{{ $perikanan->jumlah_penerima_perempuan}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

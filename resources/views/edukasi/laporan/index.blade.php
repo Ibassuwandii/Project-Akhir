@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Laporan Divisi edukasi
                         </div>
                         <div class="float-right">
@@ -38,9 +38,9 @@
                                                 <x-template.button.delete-button  id="{{$laporan->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td>{{ $laporan->jenis_laporan }}</td>
-                                        <td>{{ $laporan->tanggal_dibuat }}</td>
-                                        <td>{{ $laporan->judul_laporan }}</td>
+                                        <td class="text-left">{{ $laporan->jenis_laporan }}</td>
+                                        <td class="text-left">{{ $laporan->formatted_tanggal_dibuat }}</td>
+                                        <td class="text-left">{{ $laporan->judul_laporan }}</td>
                                         <td>
                                             @if ($laporan->file_pdf)
                                                 <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-primary">

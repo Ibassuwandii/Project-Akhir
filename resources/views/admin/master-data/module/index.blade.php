@@ -31,8 +31,8 @@
                             <x-template.button.delete-button  id="{{$module->id}}" path="" />
                             </div>
                         </td>
-                        <td>{{ $module->name}}</td>
-                        <td>{{ $module->tag}}</td>
+                        <td class="text-left">{{ $module->name}}</td>
+                        <td class="text-left">{{ $module->tag}}</td>
                     </tr>
                     @endforeach
                 </tbody>

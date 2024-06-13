@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Comdev\site_pgsb;
 
+use carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_pgsb\Tpom;
 use Illuminate\Http\Request;
@@ -10,8 +11,11 @@ class PgsbTpomController extends Controller
 {
     public function index()
     {
-        $data['list_tpom'] = Tpom::all();
-        return view('comdev.site_pgsb.tpom.index',$data);
+        $list_tpom = tpom::all()->map(function($tpom) {
+            $tpom->formatted_tanggal_patroli = Carbon::parse($tpom->tanggal_patroli)->translatedFormat('d F Y');
+            return $tpom;
+        });
+        return view('comdev.site_pgsb.tpom.index', compact('list_tpom'));
     }
 
 

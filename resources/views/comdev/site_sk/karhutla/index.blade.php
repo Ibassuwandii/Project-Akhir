@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Data Patroli Karhutla Site SK
                         </div>
                         <a href="{{ url('comdev/site_sk/karhutla/create') }}" class="btn btn-success float-right">

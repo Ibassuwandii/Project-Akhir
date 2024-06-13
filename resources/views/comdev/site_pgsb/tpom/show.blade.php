@@ -15,7 +15,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="font-weight-bold">Tanggal Patroli:</label>
-                        <p>{{ $tpom->tanggal_patroli }}</p>
+                        <p>{{ Carbon::parse($tpom->tanggal_patroli)->isoFormat('D MMMM YYYY') }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">

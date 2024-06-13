@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Comdev\peta;
 
+use carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\peta\Peta;
 use Illuminate\Http\Request;
@@ -10,8 +11,11 @@ class PetaController extends Controller
 {
     public function index()
     {
-        $data['list_peta'] = Peta::all();
-        return view('comdev.peta.index',$data);
+        $list_peta = Peta::all()->map(function($peta) {
+            $peta->formatted_tanggal_upload = Carbon::parse($peta->tanggal_upload)->translatedFormat('d F Y');
+            return $peta;
+        });
+        return view('comdev.peta.index', compact('list_peta'));
     }
 
 
@@ -66,7 +70,7 @@ class PetaController extends Controller
         $peta->handleDeleteFoto();
         $peta->delete();
 
-        return redirect('edukasi/peta')->with('delete', 'Data peta berhasil dihapus.');
+        return redirect('comdev/peta')->with('delete', 'Data peta berhasil dihapus.');
     }
 
 

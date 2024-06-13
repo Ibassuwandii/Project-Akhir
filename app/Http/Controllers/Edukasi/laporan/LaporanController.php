@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Edukasi\Laporan;
 
+use carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -11,8 +12,11 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        $data['list_laporan'] = Laporan::all();
-        return view('edukasi.laporan.index', $data);
+        $list_laporan = Laporan::all()->map(function($laporan) {
+            $laporan->formatted_tanggal_dibuat = Carbon::parse($laporan->tanggal_dibuat)->translatedFormat('d F Y');
+            return $laporan;
+        });
+        return view('edukasi.laporan.index', compact('list_laporan'));
     }
 
     public function create()

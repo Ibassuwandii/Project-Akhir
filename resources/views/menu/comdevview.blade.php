@@ -1,6 +1,6 @@
-<li>
+{{-- <li>
     <x-template.menu.menu-item title="Dashboard" url="comdevview/dashboard" icon="fas fa-home" />
-</li>
+</li> --}}
 
 <li class="nav-item">
     <a href="#" class="nav-link" style="display: flex; align-items: center;">

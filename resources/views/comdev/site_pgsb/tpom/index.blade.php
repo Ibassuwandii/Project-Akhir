@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Data Tpom Site PGSB
                         </div>
                         <a href="{{ url('comdev/site_pgsb/tpom/create') }}" class="btn btn-success float-right">
@@ -33,17 +33,17 @@
                                     @foreach ($list_tpom as $tpom)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
+                                        <td class="text-left">
                                             <div class="btn-group">
                                                 <x-template.button.info-button url="comdev/site_pgsb/tpom" id="{{ $tpom->id }}" />
                                                 <x-template.button.edit-button url="comdev/site_pgsb/tpom" id="{{ $tpom->id }}" />
                                                 <x-template.button.delete-button  id="{{$tpom->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td>{{ $tpom->jangkauan_patroli }}</td>
-                                        <td>{{ $tpom->titik_koordinat }}</td>
-                                        <td>{{ $tpom->luas_lahan }}</td>
-                                        <td>{{ $tpom->pemilik_lahan }}</td>
+                                        <td class="text-left">{{ $tpom->jangkauan_patroli }}</td>
+                                        <td class="text-left">{{ $tpom->titik_koordinat }}</td>
+                                        <td class="text-left">{{ $tpom->luas_lahan }}</td>
+                                        <td class="text-left">{{ $tpom->pemilik_lahan }}</td>
                                         {{-- <td>{{ $tpom->sosialisasi }}</td> --}}
                                     </tr>
                                     @endforeach

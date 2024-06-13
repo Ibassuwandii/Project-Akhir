@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\edukasi\Dokumentasi;
 
+use carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -11,8 +12,11 @@ class DokumentasiController extends Controller
 {
     public function index()
     {
-        $data['list_dokumentasi'] = Dokumentasi::all();
-        return view('edukasi.dokumentasi.index', $data);
+        $list_dokumentasi = Dokumentasi::all()->map(function($dokumentasi) {
+            $dokumentasi->formatted_tanggal_kegiatan = Carbon::parse($dokumentasi->tanggal_kegiatan)->translatedFormat('d F Y');
+            return $dokumentasi;
+        });
+        return view('edukasi.dokumentasi.index', compact('list_dokumentasi'));
     }
 
     public function create()

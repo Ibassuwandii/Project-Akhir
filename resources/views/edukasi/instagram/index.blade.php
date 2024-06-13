@@ -2,8 +2,8 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title">
-                Data Visit School
+            <div class="card-title" style="font-weight: bold;">
+                Data Zwageri IG
             </div>
             <a href="{{url('edukasi/instagram/create')}}" class="btn btn-success float-right">
                 <i class="fas fa-plus-circle"></i> Tambah Data
@@ -47,13 +47,13 @@
                                     <x-template.button.delete-button id="{{ $instagram->id }}" path="" />
                                 </div>
                             </td>
-                            <td>{{ $instagram->jenis_postingan }}</td>
-                            <td>{{ $instagram->jumlah_folower }}</td>
-                            <td>{{ $instagram->bulan }}</td>
-                            <td>{{ $instagram->penayangan }}</td>
-                            <td>{{ $instagram->like }}</td>
-                            <td>{{ $instagram->share }}</td>
-                            <td>{{ $instagram->coment }}</td>
+                            <td class="text-left">{{ $instagram->jenis_postingan }}</td>
+                            <td class="text-left">{{ $instagram->jumlah_folower }}</td>
+                            <td class="text-left">{{ $instagram->bulan }}</td>
+                            <td class="text-left">{{ $instagram->penayangan }}</td>
+                            <td class="text-left">{{ $instagram->like }}</td>
+                            <td class="text-left">{{ $instagram->share }}</td>
+                            <td class="text-left">{{ $instagram->coment }}</td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\edukasi\Visitschool;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\edukasi\visitschool\Visitschool;
@@ -10,7 +11,10 @@ class VisitschoolController extends Controller
 {
     public function index()
     {
-        $list_visitschool = Visitschool::all();
+        $list_visitschool = Visitschool::all()->map(function($visitschool) {
+            $visitschool->formatted_tanggal = Carbon::parse($visitschool->tanggal)->translatedFormat('d F Y');
+            return $visitschool;
+        });
         return view('edukasi.visitschool.index', compact('list_visitschool'));
     }
 

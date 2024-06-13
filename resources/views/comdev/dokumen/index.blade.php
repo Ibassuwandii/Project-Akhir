@@ -2,7 +2,7 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title">
+            <div class="card-title" style="font-weight: bold;">
                 Dokumen Divisi Comdev
             </div>
             <a href="{{ url('comdev/dokumen/create') }}" class="btn btn-success float-right">
@@ -25,15 +25,15 @@
                         @foreach ($list_dokumen as $dokumen)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>
+                            <td class="text-left">
                                 <div class="btn-group">
                                     {{-- <x-template.button.info-button url="comdev/dokumen" id="{{ $dokumen->id }}" /> --}}
                                     <x-template.button.edit-button url="comdev/dokumen" id="{{ $dokumen->id }}" />
                                     <x-template.button.delete-button  id="{{$dokumen->id}}" path="" />
                                 </div>
                             </td>
-                            <td>{{ $dokumen->judul_dokumen }}</td>
-                            <td>{{ $dokumen->tanggal}}</td>
+                            <td class="text-left">{{ $dokumen->judul_dokumen }}</td>
+                            <td class="text-left">{{ $dokumen->formatted_tanggal}}</td>
                             <td>
                                 @if ($dokumen->file_pdf)
                                     <a href="{{ url('public') }}/{{ $dokumen->file_pdf }}" target="_blank" class="text-primary">

@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Dokumentasi Divisi comdev
                         </div>
                         <div class="float-right">
@@ -30,7 +30,7 @@
                                     @foreach ($list_dokumentasi as $dokumentasi)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>
+                                            <td class="text-left">
                                                 <div class="btn-group">
                                                     {{-- <x-template.button.info-button url="comdev/dokumentasi" id="{{ $dokumentasi->id }}" /> --}}
                                                     <x-template.button.edit-button url="comdev/dokumentasi"
@@ -39,8 +39,8 @@
                                                         path="" />
                                                 </div>
                                             </td>
-                                            <td>{{ $dokumentasi->judul_dokumentasi }}</td>
-                                            <td>{{ $dokumentasi->tanggal_kegiatan }}</td>
+                                            <td class="text-left">{{ $dokumentasi->judul_dokumentasi }}</td>
+                                            <td class="text-left">{{ $dokumentasi->formatted_tanggal_kegiatan }}</td>
                                             <td>
                                                 <a href="{{ $dokumentasi->link_foto }}" target="_blank"
                                                     class="text-primary">

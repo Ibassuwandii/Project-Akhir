@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title">
+                        <div class="card-title" style="font-weight: bold;">
                             Data Konservasi Mangrove
                         </div>
                         <a href="{{ url('comdev/site_pgsb/mangrove/create') }}" class="btn btn-success float-right">
@@ -34,19 +34,19 @@
                                     @foreach ($list_mangrove as $mangrove)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
+                                        <td class="text-left">
                                             <div class="btn-group">
                                                 <x-template.button.info-button url="comdev/site_pgsb/mangrove" id="{{ $mangrove->id }}" />
                                                 <x-template.button.edit-button url="comdev/site_pgsb/mangrove" id="{{ $mangrove->id }}" />
                                                 <x-template.button.delete-button  id="{{$mangrove->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td>{{ $mangrove->semester }}</td>
-                                        <td>{{ $mangrove->bibit_hidup }}</td>
-                                        <td>{{ $mangrove->bibit_mati }}</td>
-                                        <td>{{ $mangrove->bibit_hidup }}</td>
-                                        <td>{{ $mangrove->tanggal }}</td>
-                                        <td>{{ $mangrove->keterangan }}</td>
+                                        <td class="text-left">{{ $mangrove->semester }}</td>
+                                        <td class="text-left">{{ $mangrove->bibit_hidup }}</td>
+                                        <td class="text-left">{{ $mangrove->bibit_mati }}</td>
+                                        <td class="text-left">{{ $mangrove->bibit_hidup }}</td>
+                                        <td class="text-left">{{ $mangrove->tanggal }}</td>
+                                        <td class="text-left">{{ $mangrove->keterangan }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

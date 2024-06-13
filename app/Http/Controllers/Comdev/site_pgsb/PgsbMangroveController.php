@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Comdev\site_pgsb;
 
+use carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_pgsb\Mangrove;
 use Illuminate\Http\Request;
@@ -10,8 +11,11 @@ class PgsbMangroveController extends Controller
 {
     public function index()
     {
-        $data['list_mangrove'] = Mangrove::all();
-        return view('comdev.site_pgsb.mangrove.index',$data);
+        $list_mangrove = mangrove::all()->map(function($mangrove) {
+            $mangrove->formatted_tanggal = Carbon::parse($mangrove->tanggal)->translatedFormat('d F Y');
+            return $mangrove;
+        });
+        return view('comdev.site_pgsb.mangrove.index', compact('list_mangrove'));
     }
 
 

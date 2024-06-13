@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\edukasi\Aksisampah;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\edukasi\aksisampah\Aksisampah;
@@ -10,7 +11,10 @@ class AksisampahController extends Controller
 {
     public function index()
     {
-        $list_aksisampah = AksiSampah::all();
+        $list_aksisampah = aksisampah::all()->map(function($aksisampah) {
+            $aksisampah->formatted_tanggal = Carbon::parse($aksisampah->tanggal)->translatedFormat('d F Y');
+            return $aksisampah;
+        });
         return view('edukasi.aksisampah.index', compact('list_aksisampah'));
     }
 
