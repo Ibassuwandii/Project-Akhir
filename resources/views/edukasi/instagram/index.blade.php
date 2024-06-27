@@ -18,24 +18,24 @@
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr class="bg-secondary text-white">
-                            <th rowspan="2" class="text-center align-middle">No</th>
-                            <th rowspan="2" class="text-center align-middle">Aksi</th>
-                            <th rowspan="2" class="text-center align-middle">Jenis Postingan</th>
-                            <th rowspan="2" class="text-center align-middle">Jumlah Follower</th>
-                            <th rowspan="2" class="text-center align-middle">Bulan dan Tahun</th>
-                            <th colspan="4" class="text-center">Engagement Rate</th>
+                            <th style="padding: 6px" rowspan="2" class="text-center align-middle">No</th>
+                            <th style="padding: 6px" rowspan="2" class="text-center align-middle">Aksi</th>
+                            <th style="padding: 6px" rowspan="2" class="text-center align-middle">Jenis Postingan</th>
+                            <th style="padding: 6px" rowspan="2" class="text-center align-middle">Jumlah Follower</th>
+                            <th style="padding: 6px" rowspan="2" class="text-center align-middle">Bulan dan Tahun</th>
+                            <th style="padding: 6px" colspan="4" class="text-center">Engagement Rate</th>
                         </tr>
                         <tr class="bg-secondary text-white">
-                            <th class="text-center">
+                            <th class="text-center" style="padding: 6px">
                                 <i class="fas fa-eye"></i> Penayangan
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" style="padding: 6px">
                                 <i class="fas fa-thumbs-up"></i> Like
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" style="padding: 6px">
                                 <i class="fas fa-comment"></i> Coment
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" style="padding: 6px">
                                 <i class="fas fa-share"></i> Share
                             </th>
                         </tr>
@@ -43,21 +43,21 @@
                     <tbody>
                         @foreach ($list_instagram as $instagram)
                         <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center">
+                            <td class="text-center" style="padding: 2px">{{ $loop->iteration }}</td>
+                            <td class="text-center" style="padding: 2px">
                                 <div class="btn-group">
                                     <x-template.button.info-button url="edukasi/instagram" id="{{ $instagram->id }}" />
                                     <x-template.button.edit-button url="edukasi/instagram" id="{{ $instagram->id }}" />
                                     <x-template.button.delete-button id="{{ $instagram->id }}" path="" />
                                 </div>
                             </td>
-                            <td class="text-left">{{ $instagram->jenis_postingan }}</td>
-                            <td class="text-left">{{ $instagram->jumlah_folower }}</td>
-                            <td class="text-left">{{ $instagram->bulan }}</td>
-                            <td class="text-left">{{ $instagram->penayangan }}</td>
-                            <td class="text-left">{{ $instagram->like }}</td>
-                            <td class="text-left">{{ $instagram->share }}</td>
-                            <td class="text-left">{{ $instagram->coment }}</td>
+                            <td class="text-left" style="padding: 2px">{{ $instagram->jenis_postingan }}</td>
+                            <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $instagram->jumlah_folower }}</td>
+                            <td class="text-left" style="padding: 2px">{{ $instagram->bulan }}</td>
+                            <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $instagram->penayangan }}</td>
+                            <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $instagram->like }}</td>
+                            <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $instagram->share }}</td>
+                            <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $instagram->coment }}</td>
                         </tr>
                         @endforeach
                     </tbody>

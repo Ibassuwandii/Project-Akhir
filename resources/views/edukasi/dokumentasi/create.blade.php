@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card mt-2">
                     <div class="card-header bg-cyan text-white">
-                        <h5 class="card-title">Edit Data Dokumentasi</h5>
+                        <h5 class="card-title">Tambah Data Dokumentasi</h5>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ url('edukasi/dokumentasi') }}" enctype="multipart/form-data">
