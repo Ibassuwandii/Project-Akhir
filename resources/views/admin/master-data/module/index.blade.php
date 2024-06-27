@@ -1,13 +1,17 @@
 <x-module.admin>
     <x-utils.notif />
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                Data Module
+        <div class="card-header bg-primary text-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div style="padding-left: 20px;">
+                    <h4 class="card-title m-0"><b>Daftar Module</b></h4>
+                </div>
+                <div>
+                    <a href="{{ url('admin/master-data/module/create') }}" class="btn btn-success">
+                        <i class="fas fa-plus-circle"></i> Tambah Data
+                    </a>
+                </div>
             </div>
-            <a href="{{ url('admin/master-data/module/create') }}" class="float-right btn btn-success">
-                <i class="fas fa-plus"></i> Tambah Data
-            </a>
         </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped table-hover">

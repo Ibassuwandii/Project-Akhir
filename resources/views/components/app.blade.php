@@ -13,6 +13,53 @@
   <link rel="stylesheet" href="{{ url('public') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ url('public') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Your Custom CSS -->
+  <style>
+       .sidebar {
+          position: fixed;
+          overflow-y: auto;
+          background-color: #343a40;
+          color: white;
+          width: 250px; /* Sesuaikan lebar sidebar */
+          height: 100%; /* Pastikan tinggi sidebar memenuhi tinggi layar */
+      }
+
+      .brand-link {
+        display: block; /* Agar tautan meregang ke lebar sidebar */
+        padding: 15px; /* Beri sedikit ruang di sekitar logo */
+     }
+
+    .brand-link img {
+        margin-right: 20px; /* Menambahkan jarak antara logo dan nama */
+        vertical-align: middle; /* Agar logo dan teks sejajar secara vertikal */
+    }
+
+      .nav-item {
+          font-size: 12px; /* Sesuaikan ukuran font */
+      }
+      .content {
+          font-size: 12px; /* Sesuaikan ukuran font konten */
+          overflow: hidden;
+      }
+      .pagination {
+      display: none;
+      }
+      .card-header {
+          padding: 1px; /* Sesuaikan jarak header card */
+          justify-content: space-between;
+          align-items: center;
+      }
+      .card-title {
+          font-size: 14px; /* Sesuaikan ukuran font header card */
+          align-items: center;
+          justify-content: space-between;
+      }
+       .table-margin {
+          margin-top: 20px; /* Sesuaikan jarak yang diinginkan */
+      }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -20,7 +67,7 @@
     <x-template.sidebar :menu="$menu" header="{{ $header }}" />
   <div class="content-wrapper">
     <div class="content">
-      <div class="container-fluid pt-3">
+      <div class="container-fluid pt-2">
         {{ $slot }}
       </div>
     </div>
@@ -46,6 +93,8 @@
 <script src="{{ url('public') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{ url('public') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
+<!-- Bootstrap JS (Optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(function () {
       $("#example1").DataTable({

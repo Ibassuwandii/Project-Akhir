@@ -3,8 +3,8 @@
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h4 class="card-title m-0">Daftar Pegawai</h4>
+                <div style="padding-left: 20px;">
+                    <h4 class="card-title m-0"><b>Daftar Pegawai</b></h4>
                 </div>
                 <div>
                     <a href="{{ url('admin/master-data/pegawai/create') }}" class="btn btn-success">
@@ -38,7 +38,7 @@
                             <td class="text-left">{{ $pegawai->email }}</td>
                             <td class="text-left">{{ $pegawai->jabatan }}</td>
                             {{-- <td>{{ $pegawai->departemen }}</td> --}}
-                            <td class="text-right">
+                            <td class="text-center">
                                 <div class="btn-group">
                                     {{-- <x-template.button.info-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" /> --}}
                                     <x-template.button.edit-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />

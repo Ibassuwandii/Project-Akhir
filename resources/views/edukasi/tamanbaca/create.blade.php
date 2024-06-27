@@ -3,7 +3,7 @@
     <div class="card shadow-lg">
         <div class="card-header bg-cyan text-white">
             <div class="card-title">
-                Tambah Data Aksi Sampah
+                Tambah Data Taman Baca
             </div>
         </div>
         <div class="card-body">
@@ -33,29 +33,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="bulan_pengunjung" class="control-label">Bulan Pengunjung</label>
-                                <input type="date" name="bulan_pengunjung" id="bulan_pengunjung" class="form-control @error('bulan_pengunjung') is-invalid @enderror" value="{{ old('bulan_pengunjung') }}">
-                                @error('bulan_pengunjung')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="total_pengunjung" class="control-label">Total Pengunjung</label>
-                                <input type="text" name="total_pengunjung" id="total_pengunjung" class="form-control @error('total_pengunjung') is-invalid @enderror" value="{{ old('total_pengunjung') }}">
-                                @error('total_pengunjung')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="bulan_pinjam" class="control-label">Bulan Dipinjam</label>
-                                <input type="date" name="bulan_pinjam" id="bulan_pinjam" class="form-control @error('bulan_pinjam') is-invalid @enderror" value="{{ old('bulan_pinjam') }}">
+                                <label for="bulan_pinjam" class="control-label">Bulan Pinjam</label>
+                                <input type="text" name="bulan_pinjam" id="bulan_pinjam" class="form-control @error('bulan_pinjam') is-invalid @enderror" value="{{ old('bulan_pinjam') }}">
                                 @error('bulan_pinjam')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
@@ -63,7 +42,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="total_pinjam" class="control-label">Total Dipinjam</label>
+                                <label for="total_pinjam" class="control-label">Buku Dipinjam</label>
                                 <input type="text" name="total_pinjam" id="total_pinjam" class="form-control @error('total_pinjam') is-invalid @enderror" value="{{ old('total_pinjam') }}">
                                 @error('total_pinjam')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>

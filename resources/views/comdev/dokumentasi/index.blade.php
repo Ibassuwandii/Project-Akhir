@@ -5,13 +5,15 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <div class="card-title" style="font-weight: bold;">
-                            Dokumentasi Divisi comdev
-                        </div>
-                        <div class="float-right">
-                            <a href="{{ url('comdev/dokumentasi/create') }}" class="btn btn-success">
-                                <i class="fas fa-plus-circle"></i> Tambah Data
-                            </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div style="padding-left: 15px;">
+                                <h4 class="card-title m-0"><b>Data Dokumentasi Comdev</b></h4>
+                            </div>
+                            <div>
+                                <a href="{{ url('comdev/dokumentasi/create') }}" class="btn btn-success">
+                                    <i class="fas fa-plus-circle"></i> Tambah Data
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">

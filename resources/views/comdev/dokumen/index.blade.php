@@ -2,20 +2,24 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title" style="font-weight: bold;">
-                Dokumen Divisi Comdev
+            <div class="d-flex justify-content-between align-items-center">
+                <div style="padding-left: 15px;">
+                    <h4 class="card-title m-0"><b>Data Dokumen Comdev</b></h4>
+                </div>
+                <div>
+                    <a href="{{ url('comdev/dokumen/create') }}" class="btn btn-success">
+                        <i class="fas fa-plus-circle"></i> Tambah Data
+                    </a>
+                </div>
             </div>
-            <a href="{{ url('comdev/dokumen/create') }}" class="btn btn-success float-right">
-                <i class="fas fa-plus-circle"></i> Tambah Data
-            </a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="bg-secondary text-white">
                         <tr>
-                            <th>No</th>
-                            <th>Aksi</th>
+                            <th style="width: 50px;">No</th>
+                            <th style="width: 100px;">Aksi</th>
                             <th>Judul Dokumen</th>
                             <th>Tanggal</th>
                             <th>Dokumen</th>
@@ -25,7 +29,7 @@
                         @foreach ($list_dokumen as $dokumen)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td class="text-left">
+                            <td>
                                 <div class="btn-group">
                                     {{-- <x-template.button.info-button url="comdev/dokumen" id="{{ $dokumen->id }}" /> --}}
                                     <x-template.button.edit-button url="comdev/dokumen" id="{{ $dokumen->id }}" />
@@ -37,7 +41,7 @@
                             <td>
                                 @if ($dokumen->file_pdf)
                                     <a href="{{ url('public') }}/{{ $dokumen->file_pdf }}" target="_blank" class="text-primary">
-                                        <i class="far fa-file-pdf"></i> Lihat Dokumen
+                                        <i class=""></i> Lihat Dokumen
                                     </a>
                                 @else
                                     <span class="text-muted">Tidak ada file</span>

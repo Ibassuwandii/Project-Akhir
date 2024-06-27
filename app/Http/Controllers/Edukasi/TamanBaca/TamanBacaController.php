@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\edukasi\Tamanbaca;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\edukasi\tamanbaca\Tamanbaca;
@@ -11,11 +10,7 @@ class TamanbacaController extends Controller
 {
     public function index()
     {
-        $list_tamanbaca = Tamanbaca::all()->map(function($tamanbaca) {
-            $tamanbaca->formatted_bulan_pengunjung = Carbon::parse($tamanbaca->bulan_pengunjung)->translatedFormat('d F Y');
-            $tamanbaca->formatted_bulan_pinjam = Carbon::parse($tamanbaca->bulan_pinjam)->translatedFormat('d F Y');
-            return $tamanbaca;
-        });
+        $list_tamanbaca = Tamanbaca::all();
         return view('edukasi.tamanbaca.index', compact('list_tamanbaca'));
     }
 
@@ -29,19 +24,15 @@ class TamanbacaController extends Controller
         $request->validate([
             'jenis_buku' => 'required',
             'total_buku' => 'required',
-            'bulan_pengunjung' => 'required',
-            'total_pengunjung' => 'required',
-            'bulan_pinjam' => 'required',
             'total_pinjam' => 'required',
+            'bulan_pinjam' => 'required',
         ]);
 
         $tamanbaca = new Tamanbaca;
         $tamanbaca->jenis_buku = $request->jenis_buku;
         $tamanbaca->total_buku = $request->total_buku;
-        $tamanbaca->bulan_pengunjung = $request->bulan_pengunjung;
-        $tamanbaca->total_pengunjung = $request->total_pengunjung;
-        $tamanbaca->bulan_pinjam = $request->bulan_pinjam;
         $tamanbaca->total_pinjam = $request->total_pinjam;
+        $tamanbaca->bulan_pinjam = $request->bulan_pinjam;
         $tamanbaca->save();
 
         return redirect('edukasi/tamanbaca')->with('success', 'Data tamanbaca berhasil disimpan.');
@@ -58,19 +49,15 @@ class TamanbacaController extends Controller
         $request->validate([
             'jenis_buku' => 'required',
             'total_buku' => 'required',
-            'bulan_pengunjung' => 'required',
-            'total_pengunjung' => 'required',
-            'bulan_pinjam' => 'required',
             'total_pinjam' => 'required',
+            'bulan_pinjam' => 'required',
         ]);
 
         $tamanbaca = Tamanbaca::findOrFail($id);
         $tamanbaca->jenis_buku = $request->jenis_buku;
         $tamanbaca->total_buku = $request->total_buku;
-        $tamanbaca->bulan_pengunjung = $request->bulan_pengunjung;
-        $tamanbaca->total_pengunjung = $request->total_pengunjung;
-        $tamanbaca->bulan_pinjam = $request->bulan_pinjam;
         $tamanbaca->total_pinjam = $request->total_pinjam;
+        $tamanbaca->bulan_pinjam = $request->bulan_pinjam;
         $tamanbaca->save();
 
         return redirect('edukasi/tamanbaca')->with('update', 'Data tamanbaca berhasil diperbarui.');

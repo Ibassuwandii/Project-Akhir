@@ -2,12 +2,16 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title" style="font-weight: bold;">
-                Dokumen Divisi Edukasi
+            <div class="d-flex justify-content-between align-items-center">
+                <div style="padding-left: 20px;">
+                    <h4 class="card-title m-0"><b>Data Dokumen Edukasi</b></h4>
+                </div>
+                <div>
+                    <a href="{{ url('edukasi/dokumen/create') }}" class="btn btn-success">
+                        <i class="fas fa-plus-circle"></i> Tambah Data
+                    </a>
+                </div>
             </div>
-            <a href="{{ url('edukasi/dokumen/create') }}" class="btn btn-success float-right">
-                <i class="fas fa-plus-circle"></i> Tambah Data
-            </a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

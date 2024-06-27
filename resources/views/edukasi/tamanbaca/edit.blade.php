@@ -7,51 +7,25 @@
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('edukasi/aksisampah/'.$aksisampah->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('edukasi/tamanbaca/' . $tamanbaca->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="lokasi" class="control-label">Lokasi Kegiatan</label>
-                                <input type="text" name="lokasi" id="lokasi" class="form-control @error('lokasi') is-invalid @enderror" value="{{ old('lokasi', $aksisampah->lokasi) }}">
-                                @error('lokasi')
+                                <label for="jenis_buku" class="control-label">Jenis Buku</label>
+                                <input type="text" name="jenis_buku" id="jenis_buku" class="form-control @error('jenis_buku') is-invalid @enderror" value="{{ old('jenis_buku', $tamanbaca->jenis_buku) }}">
+                                @error('jenis_buku')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="jumlah_peserta" class="control-label">Jumlah Peserta</label>
-                                <input type="text" name="jumlah_peserta" id="jumlah_peserta" class="form-control @error('jumlah_peserta') is-invalid @enderror" value="{{ old('jumlah_peserta', $aksisampah->jumlah_peserta) }}">
-                                @error('jumlah_peserta')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="tanggal" class="control-label">Tanggal Kegiatan</label>
-                                <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $aksisampah->tanggal) }}">
-                                @error('tanggal')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="jenis_sampah" class="control-label">Jenis Sampah</label>
-                                <select name="jenis_sampah" id="jenis_sampah" class="form-control @error('jenis_sampah') is-invalid @enderror">
-                                    <option value="" disabled>Pilih Jenis Sampah</option>
-                                    <option value="Organik" {{ $aksisampah->jenis_sampah == 'Organik' ? 'selected' : '' }}>Organik</option>
-                                    <option value="Anorganik" {{ $aksisampah->jenis_sampah == 'Anorganik' ? 'selected' : '' }}>Anorganik</option>
-                                    <option value="B3" {{ $aksisampah->jenis_sampah == 'B3' ? 'selected' : '' }}>Bahan Berbahaya dan Beracun (B3)</option>
-                                    <option value="Lainnya" {{ $aksisampah->jenis_sampah == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
-                                </select>
-                                @error('jenis_sampah')
+                                <label for="total_buku" class="control-label">Total Buku</label>
+                                <input type="text" name="total_buku" id="total_buku" class="form-control @error('total_buku') is-invalid @enderror" value="{{ old('total_buku', $tamanbaca->total_buku) }}">
+                                @error('total_buku')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -60,18 +34,38 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="jumlah_sampah" class="control-label">Jumlah Sampah</label>
-                                <input type="text" name="jumlah_sampah" id="jumlah_sampah" class="form-control @error('jumlah_sampah') is-invalid @enderror" value="{{ old('jumlah_sampah', $aksisampah->jumlah_sampah) }}">
-                                @error('jumlah_sampah')
+                                <label for="bulan_pengunjung" class="control-label">Bulan Pengunjung</label>
+                                <input type="date" name="bulan_pengunjung" id="bulan_pengunjung" class="form-control @error('bulan_pengunjung') is-invalid @enderror" value="{{ old('bulan_pengunjung', $tamanbaca->bulan_pengunjung) }}">
+                                @error('bulan_pengunjung')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="instansi" class="control-label">Instansi Terlibat</label>
-                                <textarea name="instansi" id="instansi" class="form-control @error('instansi') is-invalid @enderror" rows="4">{{ old('instansi', $aksisampah->instansi) }}</textarea>
-                                @error('instansi')
+                                <label for="total_pengunjung" class="control-label">Total Pengunjung</label>
+                                <input type="text" name="total_pengunjung" id="total_pengunjung" class="form-control @error('total_pengunjung') is-invalid @enderror" value="{{ old('total_pengunjung', $tamanbaca->total_pengunjung) }}">
+                                @error('total_pengunjung')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bulan_pinjam" class="control-label">Bulan Dipinjam</label>
+                                <input type="text" name="bulan_pinjam" id="bulan_pinjam" class="form-control @error('bulan_pinjam') is-invalid @enderror" value="{{ old('bulan_pinjam', $tamanbaca->bulan_pinjam) }}">
+                                @error('bulan_pinjam')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="total_pinjam" class="control-label">Total Dipinjam</label>
+                                <input type="text" name="total_pinjam" id="total_pinjam" class="form-control @error('total_pinjam') is-invalid @enderror" value="{{ old('total_pinjam', $tamanbaca->total_pinjam) }}">
+                                @error('total_pinjam')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -79,7 +73,7 @@
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-12 d-flex justify-content-end">
-                            <a href="{{ url('edukasi/aksisampah') }}" class="btn btn-secondary mr-2">
+                            <a href="{{ url('edukasi/tamanbaca') }}" class="btn btn-secondary mr-2">
                                 <i class="fas fa-times-circle"></i> Batal
                             </a>
                             <button type="submit" class="btn btn-primary">

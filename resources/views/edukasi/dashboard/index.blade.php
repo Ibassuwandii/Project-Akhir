@@ -2,8 +2,8 @@
     <x-utils.notif />
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <div class="card-title" style="font-weight: bold;">
-                Selamat Datang di Halaman Dashboard Divisi Edukasi
+            <div style="padding-left: 15px;">
+                <h4 class="card-title m-0"><b>Selamat Datang Di Halaman Dashboard Divisi Edukasi</b></h4>
             </div>
         </div>
         <div class="card-body" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
@@ -151,7 +151,7 @@
             const tamanBacaTotalPinjam = tamanBacaData.map(item => item.total_pinjam);
 
             const tamanBacaChart = new Chart(tamanBacaCtx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: tamanBacaLabels,
                     datasets: [{

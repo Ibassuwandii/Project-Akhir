@@ -3,7 +3,7 @@
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
             <div class="card-title">
-                Tambah Data Visit School
+                Tambah Data Zwageri IG
             </div>
         </div>
         <div class="card-body">
