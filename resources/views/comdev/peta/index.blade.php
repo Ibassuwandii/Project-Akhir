@@ -21,27 +21,27 @@
                             <table id="example1" class="table table-bordered table-striped table-hover">
                                 <thead class="bg-secondary text-white">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Aksi</th>
-                                        <th>Judul Peta</th>
-                                        <th>Tanggal Upload</th>
-                                        <th>Gambar Peta</th
+                                        <th style="padding: 6px">No</th>
+                                        <th style="padding: 6px">Aksi</th>
+                                        <th style="padding: 6px">Judul Peta</th>
+                                        <th style="padding: 6px">Tanggal Upload</th>
+                                        <th style="padding: 6px">Gambar Peta</th
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($list_peta as $peta)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td class="text-left">
+                                        <td style="padding: 2px">{{ $loop->iteration }}</td>
+                                        <td style="padding: 2px">
                                             <div class="btn-group">
                                                 {{-- <x-template.button.info-button url="comdev/peta" id="{{ $peta->id }}" /> --}}
                                                 <x-template.button.edit-button url="comdev/peta" id="{{ $peta->id }}" />
                                                 <x-template.button.delete-button  id="{{$peta->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td class="text-left">{{ $peta->judul_peta }}</td>
-                                        <td class="text-left">{{ $peta->formatted_tanggal_upload }}</td>
-                                        <td>
+                                        <td class="text-left" style="padding: 2px">{{ $peta->judul_peta }}</td>
+                                        <td class="text-left" style="padding: 2px">{{ $peta->formatted_tanggal_upload }}</td>
+                                        <td style="padding: 2px">
                                             @if ($peta->file_foto)
                                                 <a href="{{ url('public') }}/{{ $peta->file_foto }}" target="_blank">
                                                     <i class="fas fa-image"></i> Lihat Gambar

@@ -20,29 +20,29 @@
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="bg-secondary text-white">
                         <tr>
-                            <th>No</th>
-                            <th>Aksi</th>
-                            <th>Jenis Laporan</th>
-                            <th>Tanggal Dibuat</th>
-                            <th>Judul Laporan</th>
-                            <th>Unduh Laporan</th>
+                            <th style="padding: 6px">No</th>
+                            <th style="padding: 6px">Aksi</th>
+                            <th style="padding: 6px">Jenis Laporan</th>
+                            <th style="padding: 6px">Tanggal Dibuat</th>
+                            <th style="padding: 6px">Judul Laporan</th>
+                            <th style="padding: 6px">Unduh Laporan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($list_laporan as $laporan)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td class="text-left">
+                            <td style="padding: 2px">{{ $loop->iteration }}</td>
+                            <td style="padding: 2px" class="text-center">
                                 <div class="btn-group">
                                     {{-- <x-template.button.info-button url="comdev/laporan" id="{{ $laporan->id }}" /> --}}
                                     <x-template.button.edit-button url="comdev/laporan" id="{{ $laporan->id }}" />
                                     <x-template.button.delete-button  id="{{$laporan->id}}" path="" />
                                 </div>
                             </td>
-                            <td class="text-left">{{ $laporan->jenis_laporan }}</td>
-                            <td class="text-left">{{ $laporan->formatted_tanggal_dibuat }}</td>
-                            <td class="text-left">{{ $laporan->judul_laporan}}</td>
-                            <td>
+                            <td class="text-left" style="padding: 2px">{{ $laporan->jenis_laporan }}</td>
+                            <td class="text-left" style="padding: 2px">{{ $laporan->formatted_tanggal_dibuat }}</td>
+                            <td class="text-left" style="padding: 2px">{{ $laporan->judul_laporan}}</td>
+                            <td style="padding: 2px">
                                 @if ($laporan->file_pdf)
                                     <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-primary">
                                         <i class="far fa-file-pdf"></i> Unduh PDF
