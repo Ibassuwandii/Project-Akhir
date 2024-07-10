@@ -1,9 +1,9 @@
-<x-module.edukasi>
+{{-- <x-module.edukasi>
     <x-utils.notif />
     <div class="card shadow-lg">
-        <div class="card-header bg-info text-white">
+        <div class="card-header bg-cyan text-white">
             <div class="card-title">
-                Detail Data Aksi Sampah
+                Detail Data Taman Baca
             </div>
         </div>
         <div class="card-body">
@@ -11,54 +11,49 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="lokasi" class="control-label">Lokasi Kegiatan</label>
-                            <input type="text" id="lokasi" class="form-control" value="{{ $aksisampah->lokasi }}" disabled>
+                            <label for="jenis_buku" class="control-label">Jenis Buku</label>
+                            <input type="text" id="jenis_buku" class="form-control" value="{{ $tamanbaca->jenis_buku }}" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="jumlah_peserta" class="control-label">Jumlah Peserta</label>
-                            <input type="text" id="jumlah_peserta" class="form-control" value="{{ $aksisampah->jumlah_peserta }}" disabled>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="tanggal" class="control-label">Tanggal Kegiatan</label>
-                            <input type="date" id="tanggal" class="form-control" value="{{ $aksisampah->tanggal }}" disabled>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="jenis_sampah" class="control-label">Jenis Sampah</label>
-                            <input type="text" id="jenis_sampah" class="form-control" value="{{ $aksisampah->jenis_sampah }}" disabled>
+                            <label for="total_buku" class="control-label">Total Buku</label>
+                            <input type="text" id="total_buku" class="form-control" value="{{ $tamanbaca->total_buku }}" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="jumlah_sampah" class="control-label">Jumlah Sampah</label>
-                            <input type="text" id="jumlah_sampah" class="form-control" value="{{ $aksisampah->jumlah_sampah }}" disabled>
+                            <label for="bulan_pinjam" class="control-label">Bulan Pinjam</label>
+                            <input type="text" id="bulan_pinjam" class="form-control" value="{{ $tamanbaca->bulan_pinjam }}" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="instansi" class="control-label">Instansi Terlibat</label>
-                            <textarea name="instansi" id="instansi" class="form-control @error('instansi') is-invalid @enderror" rows="4">{{ old('instansi', $aksisampah->instansi) }}</textarea>
-                            <input type="text" id="instansi" class="form-control" value="{{ $aksisampah->instansi }}" disabled>
+                            <label for="total_pinjam" class="control-label">Buku Dipinjam</label>
+                            <input type="text" id="total_pinjam" class="form-control" value="{{ $tamanbaca->total_pinjam }}" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row mb-0">
                     <div class="col-md-12 d-flex justify-content-end">
-                        <a href="{{ url('edukasi/aksisampah') }}" class="btn btn-secondary mr-2">
-                            <i class="fas fa-arrow-circle-left"></i> Kembali
+                        <a href="{{ url('edukasi/tamanbaca') }}" class="btn btn-secondary mr-2">
+                            <i class="fas fa-arrow-left"></i> Kembali
                         </a>
+                        <a href="{{ url('edukasi/tamanbaca/' . $tamanbaca->id . '/edit') }}" class="btn btn-primary mr-2">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <form method="POST" action="{{ url('edukasi/tamanbaca/' . $tamanbaca->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                <i class="fas fa-trash"></i> Hapus
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</x-module.edukasi>
+</x-module.edukasi> --}}

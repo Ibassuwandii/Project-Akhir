@@ -26,8 +26,8 @@
                             <th style="padding: 6px" colspan="2" class="text-center">Sampah</th>
                         </tr>
                         <tr class="bg-secondary text-white">
-                            <th style="padding: 6px; width: 150px;" class="text-center">Jenis</th>
                             <th style="padding: 6px; width: 90px;" class="text-center">Total</th>
+                            <th style="padding: 6px; width: 150px;" class="text-center">Jenis</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,8 +44,8 @@
                             <td class="text-left" style="padding: 2px">{{ $aksisampah->lokasi }}</td>
                             <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $aksisampah->jumlah_peserta }}</td>
                             <td class="text-left" style="padding: 2px">{{ $aksisampah->formatted_tanggal }}</td>
-                            <td class="text-left" style="padding: 2px">{{ $aksisampah->jenis_sampah }}</td>
                             <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $aksisampah->jumlah_sampah }}</td>
+                            <td class="text-left" style="padding: 2px">{{ $aksisampah->jenis_sampah }}</td>
                         </tr>
                         @endforeach
                     </tbody>

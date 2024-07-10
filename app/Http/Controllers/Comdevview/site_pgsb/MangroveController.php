@@ -18,7 +18,6 @@ class MangroveController extends Controller
     {
         // Ambil data peta dari service
         $listMangrove = $this->mangroveservice->getAllMangrove();
-
         // Tampilkan view dengan data peta
         return view('comdevview.site_pgsb.mangrove.index', ['listMangrove' => $listMangrove]);
     }

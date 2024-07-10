@@ -1,44 +1,74 @@
 <x-module.edukasi>
     <x-utils.notif />
-    <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-            <div style="padding-left: 15px;">
-                <h4 class="card-title m-0"><b>Selamat Datang Di Halaman Dashboard Divisi Edukasi</b></h4>
-            </div>
+    <style>
+        .nav-link.anok.active {
+            background-color: #ffffff !important;
+            color: rgb(1, 1, 1) !important;
+        }
+        .nav-link {
+            color: #b81f1f;
+        }
+    </style>
+    <div class="card card-primary card-tabs">
+        <div class="card-header p-0 pt-1">
+            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link anok" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home"
+                        role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Diagram Instagram</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link anok" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                        href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile"
+                        aria-selected="false">Diagram Aksi Sampah</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link anok active" id="custom-tabs-one-messages-tab" data-toggle="pill"
+                        href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages"
+                        aria-selected="true">Diagram Taman Baca</a>
+                </li>
+            </ul>
         </div>
-        <div class="card-body" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
-
-            <!-- Diagram Instagram -->
-            <div style="width: 100%; margin-bottom: 100px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Instagram</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="instagramChart"></canvas>
+        <div class="card-body">
+            <div class="tab-content" id="custom-tabs-one-tabContent">
+                <div class="tab-pane fade" id="custom-tabs-one-home" role="tabpanel"
+                    aria-labelledby="custom-tabs-one-home-tab">
+                    <!-- Diagram Instagram -->
+                    <div style="width: 100%; margin-bottom: 100px;">
+                        <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Instagram</p>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="instagramChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                    aria-labelledby="custom-tabs-one-profile-tab">
+                    <!-- Diagram Aksi Sampah -->
+                    <div style="width: 100%; margin-bottom: 100px;">
+                        <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Aksi Sampah</p>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="aksiSampahChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade active show" id="custom-tabs-one-messages" role="tabpanel"
+                    aria-labelledby="custom-tabs-one-messages-tab">
+                    <!-- Diagram Taman Baca -->
+                    <div style="width: 100%; margin-bottom: 50px;">
+                        <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Taman Baca</p>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="tamanBacaChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Diagram Aksi Sampah -->
-            <div style="width: 100%; margin-bottom: 100px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Aksi Sampah</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="aksiSampahChart"></canvas>
-                </div>
-            </div>
         </div>
-        <div>
-            <!-- Diagram Taman Baca -->
-            <div style="width: 100%; margin-bottom: 50px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Taman Baca</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="tamanBacaChart"></canvas>
-                </div>
-            </div>
-        </div>
+        <!-- /.card -->
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Chart Instagram
             const instagramCtx = document.getElementById('instagramChart').getContext('2d');
             const instagramData = @json($list_instagram);
@@ -159,13 +189,6 @@
                             data: tamanBacaTotalBuku,
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Total Pengunjung',
-                            data: tamanBacaTotalPengunjung,
-                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                            borderColor: 'rgba(153, 102, 255, 1)',
                             borderWidth: 1
                         },
                         {

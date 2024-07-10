@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Comdev\site_sk;
 
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_sk\Pertanian;
 use Illuminate\Http\Request;
@@ -10,8 +11,11 @@ class PertanianController extends Controller
 {
     public function index()
     {
-        $data['list_pertanian'] = Pertanian::all();
-        return view('comdev.site_sk.pertanian.index',$data);
+        $list_pertanian = pertanian::all()->map(function($pertanian) {
+            $pertanian->formatted_tanggal = Carbon::parse($pertanian->tanggal)->translatedFormat('d F Y');
+            return $pertanian;
+        });
+        return view('comdev.site_sk.pertanian.index', compact('list_pertanian'));
     }
 
 
@@ -32,7 +36,8 @@ class PertanianController extends Controller
             'keterangan' => 'required',
             'jumlah_penerima_laki_laki' => 'required',
             'jumlah_penerima_perempuan' => 'required',
-            'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'tanggal' => 'required',
+            // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $pertanian = new pertanian;
@@ -45,8 +50,9 @@ class PertanianController extends Controller
         $pertanian->keterangan = $request->keterangan;
         $pertanian->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
         $pertanian->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
+        $pertanian->tanggal = $request->tanggal;
 
-        $pertanian->handleUploadFoto();
+        // $pertanian->handleUploadFoto();
         $pertanian->save();
 
         return redirect('comdev/site_sk/pertanian')->with('create', 'Data pertanian berhasil dihapus.');
@@ -78,12 +84,10 @@ class PertanianController extends Controller
          $pertanian->keterangan = $request->keterangan;
          $pertanian->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
          $pertanian->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
-
-
-
+         $pertanian->tanggal = $request->tanggal;
 
         $pertanian->save();
-        if(request('file_foto')) $pertanian->handleUploadFoto();
+        // if(request('file_foto')) $pertanian->handleUploadFoto();
 
         return redirect('comdev/site_sk/pertanian')->with('update', 'Data pertanian berhasil dihapus.');
     }
@@ -91,7 +95,7 @@ class PertanianController extends Controller
     public function destroy(Pertanian $pertanian)
     {
         $pertanian->delete();
-        $pertanian->handleDeleteFoto();
+        // $pertanian->handleDeleteFoto();
         return redirect()->back()->with('delete', 'Data pertanian berhasil dihapus.');
     }
 

@@ -69,16 +69,17 @@
                                 <input type="text" name="jumlah_penerima_laki_laki" id="jumlah_penerima_laki_laki" class="form-control">
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="tanggal" class="control-label">Tanggal Kegiatan</label>
+                                <input type="date" name="tanggal" id="tanggal" class="form-control">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
+                    {{-- <div class="form-group col-md-6">
                         <label for="file_foto" class="col-form-label">{{ __('Dokumen') }}</label>
-                        <input id="file_foto" type="file" class="form-control-file @error('file_foto') is-invalid @enderror" name="file_foto" required>
-                        @error('file_foto')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                        <input id="file_foto" type="file" class="form-control-file" name="file_foto" required>
+                    </div> --}}
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4 d-flex justify-content-end">

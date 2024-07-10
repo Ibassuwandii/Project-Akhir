@@ -34,26 +34,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="bulan_pengunjung" class="control-label">Bulan Pengunjung</label>
-                                <input type="date" name="bulan_pengunjung" id="bulan_pengunjung" class="form-control @error('bulan_pengunjung') is-invalid @enderror" value="{{ old('bulan_pengunjung', $tamanbaca->bulan_pengunjung) }}">
-                                @error('bulan_pengunjung')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="total_pengunjung" class="control-label">Total Pengunjung</label>
-                                <input type="text" name="total_pengunjung" id="total_pengunjung" class="form-control @error('total_pengunjung') is-invalid @enderror" value="{{ old('total_pengunjung', $tamanbaca->total_pengunjung) }}">
-                                @error('total_pengunjung')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label for="bulan_pinjam" class="control-label">Bulan Dipinjam</label>
                                 <input type="text" name="bulan_pinjam" id="bulan_pinjam" class="form-control @error('bulan_pinjam') is-invalid @enderror" value="{{ old('bulan_pinjam', $tamanbaca->bulan_pinjam) }}">
                                 @error('bulan_pinjam')

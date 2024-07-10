@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Comdev\site_sk;
 
+
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_sk\Mangrove;
 use Illuminate\Http\Request;
@@ -10,8 +12,11 @@ class MangroveController extends Controller
 {
     public function index()
     {
-        $data['list_mangrove'] = Mangrove::all();
-        return view('comdev.site_sk.mangrove.index',$data);
+        $list_mangrove = mangrove::all()->map(function($mangrove) {
+            $mangrove->formatted_tanggal = Carbon::parse($mangrove->tanggal)->translatedFormat('d F Y');
+            return $mangrove;
+        });
+        return view('comdev.site_sk.mangrove.index', compact('list_mangrove'));
     }
 
 

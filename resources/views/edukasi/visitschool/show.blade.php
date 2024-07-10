@@ -1,9 +1,9 @@
 <x-module.edukasi>
     <x-utils.notif />
     <div class="card shadow-lg">
-        <div class="card-header bg-info text-white">
+        <div class="card-header bg-cyan text-white">
             <div class="card-title">
-                Detail Data Aksi Sampah
+                Detail Data Visit School
             </div>
         </div>
         <div class="card-body">
@@ -11,50 +11,47 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="nama_sekolah" class="control-label">Nama Sekolah</label>
+                            <input type="text" id="nama_sekolah" class="form-control" value="{{ $visitschool->nama_sekolah }}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="lokasi" class="control-label">Lokasi Kegiatan</label>
-                            <input type="text" id="lokasi" class="form-control" value="{{ $aksisampah->lokasi }}" disabled>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="jumlah_peserta" class="control-label">Jumlah Peserta</label>
-                            <input type="text" id="jumlah_peserta" class="form-control" value="{{ $aksisampah->jumlah_peserta }}" disabled>
+                            <input type="text" id="lokasi" class="form-control" value="{{ $visitschool->lokasi }}" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="tanggal" class="control-label">Tanggal Kegiatan</label>
-                            <input type="date" id="tanggal" class="form-control" value="{{ $aksisampah->tanggal }}" disabled>
+                            <label for="laki_laki" class="control-label">Laki-Laki</label>
+                            <input type="text" id="laki_laki" class="form-control" value="{{ $visitschool->laki_laki }}" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="jenis_sampah" class="control-label">Jenis Sampah</label>
-                            <input type="text" id="jenis_sampah" class="form-control" value="{{ $aksisampah->jenis_sampah }}" disabled>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="jumlah_sampah" class="control-label">Jumlah Sampah</label>
-                            <input type="text" id="jumlah_sampah" class="form-control" value="{{ $aksisampah->jumlah_sampah }}" disabled>
+                            <label for="perempuan" class="control-label">Perempuan</label>
+                            <input type="text" id="perempuan" class="form-control" value="{{ $visitschool->perempuan }}" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="instansi" class="control-label">Instansi Terlibat</label>
-                            <textarea name="instansi" id="instansi" class="form-control @error('instansi') is-invalid @enderror" rows="4">{{ old('instansi', $aksisampah->instansi) }}</textarea>
-                            <input type="text" id="instansi" class="form-control" value="{{ $aksisampah->instansi }}" disabled>
+                            <label for="tanggal" class="control-label">Tanggal Kunjungan</label>
+                            <input type="date" id="tanggal" class="form-control" value="{{ $visitschool->tanggal }}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="materi" class="control-label">Materi Kegiatan</label>
+                            <textarea id="materi" class="form-control" rows="4" disabled>{{ $visitschool->materi }}</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row mb-0">
                     <div class="col-md-12 d-flex justify-content-end">
-                        <a href="{{ url('edukasi/aksisampah') }}" class="btn btn-secondary mr-2">
-                            <i class="fas fa-arrow-circle-left"></i> Kembali
+                        <a href="{{ url('edukasi/visitschool') }}" class="btn btn-secondary mr-2">
+                            <i class="fas fa-arrow-left"></i> Kembali
                         </a>
                     </div>
                 </div>

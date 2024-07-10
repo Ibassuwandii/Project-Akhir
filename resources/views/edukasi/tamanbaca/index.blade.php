@@ -21,16 +21,12 @@
                             <th style="padding: 6px; width: 50px;" rowspan="2" class="text-center align-middle">No</th>
                             <th style="padding: 6px; width: 100px;" rowspan="2" class="text-center align-middle">Aksi</th>
                             <th style="padding: 6px" colspan="4" class="text-center">Kategori Buku</th>
-                            {{-- <th style="padding: 6px" colspan="2" class="text-center">Jumlah Pengunjung</th> --}}
-                            {{-- <th style="padding: 6px" colspan="2" class="text-center">Buku Dipinjam</th> --}}
                         </tr>
                         <tr class="bg-secondary text-white">
                             <th style="padding: 6px; width: 150px;" class="text-center">Jenis</th>
                             <th style="padding: 6px; width: 90px;" class="text-center">Total</th>
                             <th style="padding: 6px; width: 90px;" class="text-center">Dipinjam</th>
                             <th style="padding: 6px; width: 150px;" class="text-center">Bulan</th>
-                            {{-- <th style="padding: 6px" class="text-center">Bulan</th>
-                            <th style="padding: 6px" class="text-center">Total</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -39,15 +35,13 @@
                             <td class="text-center" style="padding: 2px">{{ $loop->iteration }}</td>
                             <td class="text-center" style="padding: 2px">
                                 <div class="btn-group">
-                                    <x-template.button.info-button url="edukasi/tamanbaca" id="{{ $tamanbaca->id }}" />
+                                    {{-- <x-template.button.info-button url="edukasi/tamanbaca" id="{{ $tamanbaca->id }}" /> --}}
                                     <x-template.button.edit-button url="edukasi/tamanbaca" id="{{ $tamanbaca->id }}" />
                                     <x-template.button.delete-button id="{{ $tamanbaca->id }}" path="" />
                                 </div>
                             </td>
                             <td class="text-left" style="padding: 2px">{{ $tamanbaca->jenis_buku }}</td>
                             <td class="text-right" style="padding: 1px 20px 1px 1px;">{{ $tamanbaca->total_buku }}</td>
-                            {{-- <td class="text-left" style="padding: 2px">{{ $tamanbaca->formatted_bulan_pengunjung }}</td> --}}
-                            {{-- <td class="text-left" style="padding: 2px">{{ $tamanbaca->total_pengunjung }}</td> --}}
                             <td class="text-right" style="padding: 1px 20px 1px 1px;">{{ $tamanbaca->total_pinjam }}</td>
                             <td class="text-left" style="padding: 2px">{{ $tamanbaca->bulan_pinjam }}</td>
                         </tr>
