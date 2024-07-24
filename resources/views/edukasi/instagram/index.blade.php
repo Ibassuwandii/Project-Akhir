@@ -1,6 +1,6 @@
 <x-module.edukasi>
     <x-utils.notif />
-    <div class="card shadow-lg">
+    <div class="card">
         <div class="card-header bg-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
                 <div style="padding-left: 20px;">
@@ -46,7 +46,7 @@
                             <td class="text-center" style="padding: 2px">{{ $loop->iteration }}</td>
                             <td class="text-center" style="padding: 2px">
                                 <div class="btn-group">
-                                    <x-template.button.info-button url="edukasi/instagram" id="{{ $instagram->id }}" />
+                                    {{-- <x-template.button.info-button url="edukasi/instagram" id="{{ $instagram->id }}" /> --}}
                                     <x-template.button.edit-button url="edukasi/instagram" id="{{ $instagram->id }}" />
                                     <x-template.button.delete-button id="{{ $instagram->id }}" path="" />
                                 </div>

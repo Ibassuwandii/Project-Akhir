@@ -1,6 +1,6 @@
 <x-module.edukasi>
     <x-utils.notif />
-    <div class="card shadow-lg">
+    <div class="card">
         <div class="card-header bg-info text-white">
             <div class="card-title">
                 Detail Data Aksi Sampah

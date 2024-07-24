@@ -55,7 +55,7 @@ class PertanianController extends Controller
         // $pertanian->handleUploadFoto();
         $pertanian->save();
 
-        return redirect('comdev/site_sk/pertanian')->with('create', 'Data pertanian berhasil dihapus.');
+        return redirect('comdev/site_sk/pertanian')->with('create', 'Data pertanian berhasil ditambahkan.');
     }
 
 

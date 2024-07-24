@@ -1,6 +1,6 @@
 <x-module.comdev>
     <x-utils.notif />
-    <div class="card shadow-lg">
+    <div class="card">
         <div class="card-header bg-primary text-white">
             <div class="card-header bg-primary text-white">
                 <div class="d-flex justify-content-between align-items-center">
@@ -44,7 +44,7 @@
                             <td class="text-left" style="padding: 2px">{{ $laporan->judul_laporan}}</td>
                             <td style="padding: 2px">
                                 @if ($laporan->file_pdf)
-                                    <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-primary">
+                                    <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-primary" download="{{ $laporan->file_pdf }}">
                                         <i class="far fa-file-pdf"></i> Unduh PDF
                                     </a>
                                 @else

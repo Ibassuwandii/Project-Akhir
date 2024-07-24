@@ -3,11 +3,11 @@
         <!-- Brand Logo -->
         <div class="sidebar">
             <a href="" class="brand-link">
-                <img src="{{ url('public') }}/dist/img/logoyiari.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ url('public') }}/dist/img/logoyiari.png" alt="AdminLTE Logo" class="brand-image img-circle">
                 <span class="brand-text font-weight-bold"> YIARI</span>
             </a>
              <!-- User Panel -->
-             <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+             <div class="user-panel mt-2 pb-2 mb-2 d-flex align-items-center">
                 <div class="image">
                     @if (auth()->user()->file_foto)
                         <img src="{{ url('public') }}/{{ auth()->user()->file_foto }}" class="img-circle elevation-2" alt="User Image" style="width: 42px; height: 42px;">

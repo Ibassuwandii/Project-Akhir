@@ -45,7 +45,7 @@ class PegawaiController extends Controller
             'nama' => 'required',
             'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
             'email' => 'required',
-            'username' => 'required',
+            'username' => 'required|unique:admin__pegawai',
             'password' => 'required',
             'jabatan' => 'required',
             // 'departemen' => 'required', // Tambahkan validasi departemen

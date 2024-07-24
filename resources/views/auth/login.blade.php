@@ -95,7 +95,7 @@
       <form action="{{url('/login')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" name="userid" class="form-control" placeholder="User ID" autofocus>
+          <input type="text" name="userid" class="form-control" placeholder="Email" autofocus>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -117,7 +117,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
           </div>
         </div>
       </form>

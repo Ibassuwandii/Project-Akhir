@@ -1,6 +1,6 @@
 <x-module.edukasi>
     <x-utils.notif />
-    <div class="card shadow-lg">
+    <div class="card">
         <div class="card-header bg-cyan text-white">
             <div class="card-title">
                 Detail Data Visit School

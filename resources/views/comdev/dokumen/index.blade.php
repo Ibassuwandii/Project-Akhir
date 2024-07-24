@@ -1,6 +1,6 @@
 <x-module.comdev>
     <x-utils.notif />
-    <div class="card shadow-lg">
+    <div class="card">
         <div class="card-header bg-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
                 <div style="padding-left: 15px;">

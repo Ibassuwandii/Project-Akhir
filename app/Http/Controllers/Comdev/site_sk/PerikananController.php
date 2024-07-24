@@ -49,7 +49,7 @@ class PerikananController extends Controller
         $perikanan->handleUploadFoto();
         $perikanan->save();
 
-        return redirect('comdev/site_sk/perikanan')->with('create', 'Data perikanan berhasil dihapus.');
+        return redirect('comdev/site_sk/perikanan')->with('create', 'Data perikanan berhasil ditambahkan.');
     }
 
 
@@ -85,7 +85,7 @@ class PerikananController extends Controller
         $perikanan->save();
         if(request('file_foto')) $perikanan->handleUploadFoto();
 
-        return redirect('comdev/site_sk/perikanan')->with('update', 'Data perikanan berhasil dihapus.');
+        return redirect('comdev/site_sk/perikanan')->with('update', 'Data perikanan berhasil update.');
     }
 
     public function destroy(perikanan $perikanan)

@@ -1,9 +1,9 @@
 <x-module.comdev>
     <x-utils.notif />
-    <div class="container-fluid">
+    <div class="card">
         <div class="row">
             <div class="col-md-12">
-                <div class="card shadow-lg">
+                <div class="">
                     <div class="card-header bg-cyan text-white">
                         <div class="card-title" style="font-weight: bold;">
                             Data Rangkong Lokasi SK
