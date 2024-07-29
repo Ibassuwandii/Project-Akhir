@@ -103,11 +103,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="form-group col-md-6">
-                        <label for="file_foto" class="col-form-label">{{ __('Dokumen') }}</label>
-                        <input id="file_foto" type="file" class="form-control-file" name="file_foto" required>
-                    </div> --}}
-                    </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4 d-flex justify-content-end">
                             <a href="{{ url('comdev/site_sk/pertanian') }}" class="btn btn-secondary mr-2">

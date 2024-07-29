@@ -11,7 +11,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="semester" class="control-label">Semester</label>
-                                <input type="text" name="semester" id="semester" class="form-control @error('semester') is-invalid @enderror">
+                                <input type="text" name="semester" id="semester" class="form-control @error('semester') is-invalid @enderror" value="{{ old('semester') }}">
                                 @error('semester')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -22,7 +22,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="bibit_disemai" class="control-label">Disemai</label>
-                                <input type="text" name="bibit_disemai" id="bibit_disemai" class="form-control @error('bibit_disemai') is-invalid @enderror">
+                                <input type="text" name="bibit_disemai" id="bibit_disemai" class="form-control @error('bibit_disemai') is-invalid @enderror" value="{{ old('bibit_disemai') }}">
                                 @error('bibit_disemai')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="bibit_hidup" class="control-label">Hidup</label>
-                                <input type="text" name="bibit_hidup" id="bibit_hidup" class="form-control @error('bibit_hidup') is-invalid @enderror">
+                                <input type="text" name="bibit_hidup" id="bibit_hidup" class="form-control @error('bibit_hidup') is-invalid @enderror" value="{{ old('bibit_hidup') }}">
                                 @error('bibit_hidup')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,7 +46,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="bibit_mati" class="control-label">Mati</label>
-                                <input type="text" name="bibit_mati" id="bibit_mati" class="form-control @error('bibit_mati') is-invalid @enderror">
+                                <input type="text" name="bibit_mati" id="bibit_mati" class="form-control @error('bibit_mati') is-invalid @enderror" value="{{ old('bibit_mati') }}">
                                 @error('bibit_mati')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="keterangan" class="control-label">Keterangan</label>
-                                <input type="text" name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">
+                                <input type="text" name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror" value="{{ old('keterangan') }}">
                                 @error('keterangan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="tanggal" class="control-label">Tanggal Penanaman</label>
-                                <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror">
+                                <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal') }}">
                                 @error('tanggal')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

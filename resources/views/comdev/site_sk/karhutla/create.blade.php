@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="col-md-8 offset-md-4 d-flex justify-content-end">
-                        <a href="{{ url('divisi/comdev/site_sk/karhutla') }}" class="btn btn-secondary mr-2">
+                        <a href="{{ url('comdev/site_sk/karhutla') }}" class="btn btn-secondary mr-2">
                             <i class="fas fa-times-circle"></i> Batal
                         </a>
                         <button type="submit" class="btn btn-primary">

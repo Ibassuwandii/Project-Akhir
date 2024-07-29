@@ -1,11 +1,11 @@
 <x-module.comdev>
     <x-template.button.back-button url="comdev/site_sk/karhutla" />
     <div class="card mt-2">
-        <div class="card-header bg-cyan text-white">
+         <div class="card-header bg-cyan text-white">
             <h5 class="card-title">Edit Data Patroli Karhutla Lokasi SK</h5>
-        </div>
-        <div class="card-body">
-            <form action="{{url('comdev/site_sk/karhutla', $karhutla->id)}}" method="post" enctype="multipart/form-data">
+         </div>
+         <div class="card-body">
+            <form action="{{ url('comdev/site_sk/karhutla', $karhutla->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="row">
@@ -100,6 +100,6 @@
                     </div>
                 </div>
             </form>
-        </div>
+         </div>
     </div>
 </x-module.comdev>

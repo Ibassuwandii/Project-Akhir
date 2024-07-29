@@ -27,7 +27,7 @@ class PertanianController extends Controller
     {
         $request->validate([
             'nama_desa' => 'required',
-            'komoditas' => 'required',
+            'komuditas' => 'required',
             'luas_lahan' => 'required',
             'hasil_sebelum' => 'required',
             'hasil_target' => 'required',
@@ -39,7 +39,7 @@ class PertanianController extends Controller
             // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nama_desa.required' => 'Field Nama Desa wajib diisi.',
-            'komoditas.required' => 'Field Komoditas wajib diisi.',
+            'komuditas.required' => 'Field Komoditas wajib diisi.',
             'luas_lahan.required' => 'Field Luas Lahan wajib diisi.',
             'hasil_sebelum.required' => 'Field Hasil Sebelum wajib diisi.',
             'hasil_target.required' => 'Field Hasil Target wajib diisi.',
@@ -82,7 +82,7 @@ class PertanianController extends Controller
     {
         $request->validate([
             'nama_desa' => 'required',
-            'komoditas' => 'required',
+            'komuditas' => 'required',
             'luas_lahan' => 'required',
             'hasil_sebelum' => 'required',
             'hasil_target' => 'required',
@@ -94,7 +94,7 @@ class PertanianController extends Controller
             // 'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nama_desa.required' => 'Field Nama Desa wajib diisi.',
-            'komoditas.required' => 'Field Komoditas wajib diisi.',
+            'komuditas.required' => 'Field Komoditas wajib diisi.',
             'luas_lahan.required' => 'Field Luas Lahan wajib diisi.',
             'hasil_sebelum.required' => 'Field Hasil Sebelum wajib diisi.',
             'hasil_target.required' => 'Field Hasil Target wajib diisi.',
