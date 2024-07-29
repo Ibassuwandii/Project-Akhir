@@ -15,7 +15,16 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $data['list_module'] = Module::all();
+        // Ambil semua modul
+        $modules = Module::all();
+
+        // Filter modul yang tidak ingin ditampilkan (contoh: ID '9b564944-6972-4e83-adaa-644ca2e56c27')
+        $filteredModules = $modules->filter(function($module) {
+            return $module->id != '9b564944-6972-4e83-adaa-644ca2e56c27'; // ID harus dalam format string
+        });
+
+        // Kirim data ke view
+        $data['list_module'] = $filteredModules;
         return view('admin.master-data.module.index', $data);
     }
 
@@ -32,15 +41,28 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
+        // Validasi data
+        $request->validate([
+            'app' => 'required',
+            'tag' => 'required',
+            'name' => 'required',
+            'title' => 'required',
+            'subtitle' => 'required',
+            'color' => 'required',
+            'menu' => 'required',
+            'url' => 'required',
+        ]);
+
+        // Jika validasi lolos, simpan data
         $module = new Module;
-        $module->app = request('app');
-        $module->tag = request('tag');
-        $module->name = request('name');
-        $module->title = request('title');
-        $module->subtitle = request('subtitle');
-        $module->color = request('color');
-        $module->menu = request('menu');
-        $module->url = request('url');
+        $module->app = $request->app;
+        $module->tag = $request->tag;
+        $module->name = $request->name;
+        $module->title = $request->title;
+        $module->subtitle = $request->subtitle;
+        $module->color = $request->color;
+        $module->menu = $request->menu;
+        $module->url = $request->url;
         $module->save();
 
         return redirect('admin/master-data/module')->with('create', 'Data Module berhasil disimpan.');
@@ -68,21 +90,32 @@ class ModuleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Module $module)
+    public function update(Request $request, Module $module)
     {
+        // Validasi data
+        $request->validate([
+            'app' => 'required',
+            'tag' => 'required',
+            'name' => 'required',
+            'title' => 'required',
+            'subtitle' => 'required',
+            'color' => 'required',
+            'url' => 'required',
+        ]);
 
-        $module->app = request('app');
-        $module->tag = request('tag');
-        $module->name = request('name');
-        $module->color = request('color');
-        $module->title = request('title');
-        $module->subtitle = request('subtitle');
-        $module->url = request('url');
-        // if (request('password')) $pegawai->password = request('password');
+        // Jika validasi lolos, update data
+        $module->app = $request->app;
+        $module->tag = $request->tag;
+        $module->name = $request->name;
+        $module->color = $request->color;
+        $module->title = $request->title;
+        $module->subtitle = $request->subtitle;
+        $module->url = $request->url;
         $module->save();
 
-        return redirect('admin/master-data/module')->with('update', 'Data Module berhasil disimpan.');
+        return redirect('admin/master-data/module')->with('update', 'Data Module berhasil diedit.');
     }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -100,7 +133,6 @@ class ModuleController extends Controller
         $role->save();
 
         return back();
-
     }
 
     public function deleteRole(Role $role)
@@ -109,7 +141,8 @@ class ModuleController extends Controller
         return back();
     }
 
-    function batal(){
+    function batal()
+    {
         return redirect('admin/master-data/module');
     }
 }

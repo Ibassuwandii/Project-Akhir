@@ -82,20 +82,38 @@
       <a href="#" class="h1"><b>Yiari</b>KTG</a>
     </div>
     <div class="card-body">
-        <p class="login-box-msg" style="color: black; font-weight: bold;">Sign in to start your session</p>
+      <p class="login-box-msg" style="color: black; font-weight: bold;">Sign in to start your session</p>
 
       <!-- Notifikasi Gagal Login -->
       @if (isset($message))
       <div id="errorAlert" class="alert alert-danger">
-        {{$message}}
+        {{ $message }}
+      </div>
+      @endif
+
+      <!-- Display Validation Errors -->
+      @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
+
+      <!-- Notifikasi Login Berhasil -->
+      @if (session('success'))
+      <div id="successAlert" class="alert alert-success">
+        {{ session('success') }}
       </div>
       @endif
 
       <!-- Form login Anda -->
-      <form action="{{url('/login')}}" method="post">
+      <form action="{{ url('/login') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" name="userid" class="form-control" placeholder="Email" autofocus>
+          <input type="text" name="userid" class="form-control" placeholder="Email" autofocus value="{{ old('userid') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -146,6 +164,10 @@
   // Menghilangkan notifikasi setelah beberapa detik
   setTimeout(function() {
     $('#errorAlert').fadeOut('slow');
+  }, 2000); // Waktu dalam milidetik (2 detik)
+
+  setTimeout(function() {
+    $('#successAlert').fadeOut('slow');
   }, 2000); // Waktu dalam milidetik (2 detik)
 </script>
 </body>

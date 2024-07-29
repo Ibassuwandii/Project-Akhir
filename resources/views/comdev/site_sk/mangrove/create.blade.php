@@ -10,20 +10,35 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="semester" class="control-label">Semester </label>
-                                <input type="text" name="semester" id="semester" class="form-control">
+                                <label for="semester" class="control-label">Semester</label>
+                                <input type="text" name="semester" id="semester" class="form-control @error('semester') is-invalid @enderror">
+                                @error('semester')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="bibit_disemai" class="control-label">Disemai</label>
-                                <input type="text" name="bibit_disemai" id="bibit_disemai" class="form-control">
+                                <input type="text" name="bibit_disemai" id="bibit_disemai" class="form-control @error('bibit_disemai') is-invalid @enderror">
+                                @error('bibit_disemai')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="bibit_hidup" class="control-label">Hidup</label>
-                                <input type="text" name="bibit_hidup" id="bibit_hidup" class="form-control">
+                                <input type="text" name="bibit_hidup" id="bibit_hidup" class="form-control @error('bibit_hidup') is-invalid @enderror">
+                                @error('bibit_hidup')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -31,31 +46,45 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="bibit_mati" class="control-label">Mati</label>
-                                <input type="text" name="bibit_mati" id="bibit_mati" class="form-control">
+                                <input type="text" name="bibit_mati" id="bibit_mati" class="form-control @error('bibit_mati') is-invalid @enderror">
+                                @error('bibit_mati')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="keterangan" class="control-label">Keterangan</label>
-                                <input type="text" name="keterangan" id="keterangan" class="form-control">
+                                <input type="text" name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">
+                                @error('keterangan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="tanggal" class="control-label">Tanggal Penanaman</label>
-                                <input type="date" name="tanggal" id="tanggal" class="form-control">
+                                <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror">
+                                @error('tanggal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="file_foto" class="col-form-label">{{ __('Dokumen') }}</label>
-                        <input id="file_foto" type="file" class="form-control-file @error('file_foto') is-invalid @enderror" name="file_foto" required>
+                        <input id="file_foto" type="file" class="form-control-file @error('file_foto') is-invalid @enderror" name="file_foto">
                         @error('file_foto')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    </div>
                     </div>
                     <div class="col-md-8 offset-md-4 d-flex justify-content-end">
                         <a href="{{ url('comdev/site_sk/mangrove') }}" class="btn btn-secondary mr-2">

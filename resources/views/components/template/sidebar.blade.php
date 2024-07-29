@@ -15,7 +15,6 @@
                         <img src="{{ url('public/dist/img/default.png') }}" class="img-circle elevation-2" alt="Default User Image">
                     @endif
                 </div>
-
                 <div class="info">
                     <a href="#" class="brand-text font-weight-bold">{{ auth()->user()->nama }}</a>
                 </div>

@@ -1,4 +1,4 @@
-<aside class="control-sidebar control-sidebar-dark">
+{{-- <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3" style="
         display:flex;
@@ -102,7 +102,7 @@
         @endif
     @endforeach
     </div>
-</aside>
+</aside> --}}
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3" style="

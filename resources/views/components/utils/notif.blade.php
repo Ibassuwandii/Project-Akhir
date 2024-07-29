@@ -11,7 +11,7 @@
               message = 'Data Berhasil DiSimpan!';
               break;
             case 'update':
-              message = 'Data Berhasil Diupdate!';
+              message = 'Data Berhasil Diedit!';
               break;
             case 'delete':
               message = 'Data Berhasil Dihapus!';
