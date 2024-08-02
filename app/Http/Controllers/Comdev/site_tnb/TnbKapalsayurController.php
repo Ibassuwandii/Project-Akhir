@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Comdev\site_tnb;
 
 use App\Http\Controllers\Controller;
-use App\Models\comdev\site_tnb\kapalsayur;
+use App\Models\comdev\site_tnb\KapalSayur;
 use Illuminate\Http\Request;
 
 class TnbKapalsayurController extends Controller
@@ -26,9 +26,13 @@ class TnbKapalsayurController extends Controller
             'tanggal_trip' => 'required',
             'jumlah_trip' => 'required',
             'hasil_penjualan' => 'required',
-            'keterangan' => 'required',
-            // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan persyaratan Anda
-        ]);
+            'keterangan' => 'required'
+    ], [
+        'tanggal_trip.required' => 'Field Tanggal Trip wajib diisi.',
+        'jumlah_trip.required' => 'Field Jumlah Trip wajib diisi.',
+        'hasil_penjualan.required' => 'Field Hasil Penjualan wajib diisi.',
+        'keterangan.required' => 'Field Keterangan Wwajib diisi.',
+    ]);
 
         $kapalsayur = new KapalSayur;
         $kapalsayur->tanggal_trip = $request->tanggal_trip;
@@ -40,44 +44,52 @@ class TnbKapalsayurController extends Controller
         $kapalsayur->handleUploadFoto();
         $kapalsayur->save();
 
-        return redirect('comdev/site_tnb/kapalsayur');
+        return redirect('comdev/site_tnb/kapalsayur')->with('create', 'Data Laporan berhasil disimpan.');
     }
 
 
-    public function edit( KapalSayur $kapalsayur)
+    public function edit(KapalSayur $kapalsayur)
     {
-        $data['kapalsayur'] = $kapalsayur;
-        return view('comdev.site_tnb.kapalsayur.edit', $data);
+        return view('comdev.site_tnb.kapalsayur.edit', compact('kapalsayur'));
     }
-
-
-
-
 
     public function update(Request $request, $id)
     {
-         // Mengambil laporan dari basis data berdasarkan ID
-         $kapalsayur = KapalSayur::findOrFail($id);
+        $request->validate([
+            'tanggal_trip' => 'required',
+            'jumlah_trip' => 'required',
+            'hasil_penjualan' => 'required',
+            'keterangan' => 'required'
+        ], [
+            'tanggal_trip.required' => 'Field Tanggal Trip wajib diisi.',
+            'jumlah_trip.required' => 'Field Jumlah Trip wajib diisi.',
+            'hasil_penjualan.required' => 'Field Hasil Penjualan wajib diisi.',
+            'keterangan.required' => 'Field Keterangan wajib diisi.',
+        ]);
 
-         // Menetapkan nilai properti dari permintaan
-         $kapalsayur->tanggal_trip = $request->tanggal_trip;
-         $kapalsayur->jumlah_trip = $request->jumlah_trip;
-         $kapalsayur->hasil_penjualan = $request->hasil_penjualan;
-         $kapalsayur->keterangan = $request->keterangan;
+        $kapalsayur = KapalSayur::findOrFail($id);
+        $kapalsayur->tanggal_trip = $request->tanggal_trip;
+        $kapalsayur->jumlah_trip = $request->jumlah_trip;
+        $kapalsayur->hasil_penjualan = $request->hasil_penjualan;
+        $kapalsayur->keterangan = $request->keterangan;
 
-
-
+        // Periksa apakah ada file foto yang diupload
+        if ($request->hasFile('file_foto')) {
+            $kapalsayur->handleUploadFoto();
+        }
 
         $kapalsayur->save();
-        if(request('file_foto')) $kapalsayur->handleUploadFoto();
-        return redirect('comdev/site_tnb/kapalsayur');
+
+        return redirect('comdev/site_tnb/kapalsayur')->with('update', 'Data berhasil diperbarui.');
     }
+
+
 
     public function destroy(KapalSayur $kapalsayur)
     {
             $kapalsayur->delete();
 
-            return redirect()->back()->with('success', 'Data kapalsayur berhasil dihapus.');
+            return redirect()->back()->with('delete', 'Data kapalsayur berhasil dihapus.');
     }
 
 

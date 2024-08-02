@@ -14,14 +14,24 @@
                             <div class="form-group row">
                                 <label for="judul_peta" class="col-md-4 col-form-label text-md-right">Judul Peta</label>
                                 <div class="col-md-6">
-                                    <input type="text" name="judul_peta" id="judul_peta" class="form-control" value="{{ $peta->judul_peta }}" required>
+                                    <input type="text" name="judul_peta" id="judul_peta" class="form-control @error('judul_peta') is-invalid @enderror" value="{{ old('judul_peta', $peta->judul_peta) }}" required>
+                                    @error('judul_peta')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="tanggal_upload" class="col-md-4 col-form-label text-md-right">Tanggal Upload</label>
                                 <div class="col-md-6">
-                                    <input type="date" name="tanggal_upload" id="tanggal_upload" class="form-control" value="{{ $peta->tanggal_upload }}" required>
+                                    <input type="date" name="tanggal_upload" id="tanggal_upload" class="form-control @error('tanggal_upload') is-invalid @enderror" value="{{ old('tanggal_upload', $peta->tanggal_upload) }}" required>
+                                    @error('tanggal_upload')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -30,7 +40,7 @@
                                 <div class="col-md-6">
                                     <input id="file_foto" type="file" class="form-control-file @error('file_foto') is-invalid @enderror" name="file_foto">
                                     @if ($peta->file_foto)
-                                        <small class="form-text text-muted">Current file: {{ $peta->file_foto }}</small>
+                                        <small class="form-text text-muted">File saat ini: {{ $peta->file_foto }}</small>
                                     @endif
                                     @error('file_foto')
                                         <span class="invalid-feedback" role="alert">
@@ -50,7 +60,6 @@
                                     </button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

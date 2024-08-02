@@ -87,7 +87,7 @@ class RangkongController extends Controller
         $request->validate([
             'nama_desa' => 'required|string',
             'komuditas' => 'required|string',
-            'luas_lahan' => 'required|numeric',
+            'luas_lahan' => 'required',
             'hasil_sebelum' => 'required|numeric',
             'hasil_target' => 'required|numeric',
             'hasil_akhir' => 'required|numeric',
@@ -101,7 +101,6 @@ class RangkongController extends Controller
             'komuditas.required' => 'Field Komuditas wajib diisi.',
             'komuditas.string' => 'Field Komuditas harus berupa teks.',
             'luas_lahan.required' => 'Field Luas Lahan wajib diisi.',
-            'luas_lahan.' => 'Field Luas Lahan harus berupa angka.',
             'hasil_sebelum.required' => 'Field Hasil Sebelum wajib diisi.',
             'hasil_sebelum.numeric' => 'Field Hasil Sebelum harus berupa angka.',
             'hasil_target.required' => 'Field Hasil Target wajib diisi.',

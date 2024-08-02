@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Comdev\Dokumen;
 
-use carbon\Carbon;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Comdev\dokumen\Dokumen;
 use App\Services\Comdev\DokumenService; // Tambahkan ini jika belum ditambahkan
 
@@ -20,7 +19,7 @@ class DokumenController extends Controller
 
     public function index()
     {
-        $list_dokumen = dokumen::all()->map(function($dokumen) {
+        $list_dokumen = Dokumen::all()->map(function($dokumen) {
             $dokumen->formatted_tanggal = Carbon::parse($dokumen->tanggal)->translatedFormat('d F Y');
             return $dokumen;
         });
@@ -36,8 +35,16 @@ class DokumenController extends Controller
     {
         $request->validate([
             'judul_dokumen' => 'required',
-            'file_pdf' => 'required|file|mimes:pdf,jpg|max:2048',
+            'file_pdf' => 'required|file|mimes:pdf,jpg|max:5048',
             'tanggal' => 'required|date',
+        ], [
+            'judul_dokumen.required' => 'Field Judul Dokumen wajib diisi.',
+            'file_pdf.required' => 'Field File PDF wajib diisi.',
+            'file_pdf.file' => 'File harus berupa file.',
+            'file_pdf.mimes' => 'File harus berupa file dengan format pdf atau jpg.',
+            'file_pdf.max' => 'Ukuran file tidak boleh lebih dari 2048 KB.',
+            'tanggal.required' => 'Field Tanggal wajib diisi.',
+            'tanggal.date' => 'Field Tanggal harus berupa tanggal yang valid.',
         ]);
 
         $dokumen = new Dokumen;
@@ -46,7 +53,7 @@ class DokumenController extends Controller
         $dokumen->handleUploadPdf();
         $dokumen->save();
 
-        return redirect('comdev/dokumen')->with('success', 'Data dokumen berhasil disimpan.');
+        return redirect('comdev/dokumen')->with('create', 'Data dokumen berhasil disimpan.');
     }
 
     public function edit($id)
@@ -57,8 +64,22 @@ class DokumenController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'judul_dokumen' => 'required',
+            'file_pdf' => 'nullable|file|mimes:pdf,jpg|max:5048',
+            'tanggal' => 'required|date',
+        ], [
+            'judul_dokumen.required' => 'Field Judul Dokumen wajib diisi.',
+            'file_pdf.file' => 'File harus berupa file.',
+            'file_pdf.mimes' => 'File harus berupa file dengan format pdf atau jpg.',
+            'file_pdf.max' => 'Ukuran file tidak boleh lebih dari 2048 KB.',
+            'tanggal.required' => 'Field Tanggal wajib diisi.',
+            'tanggal.date' => 'Field Tanggal harus berupa tanggal yang valid.',
+        ]);
+
         $dokumen = Dokumen::findOrFail($id);
         $dokumen->judul_dokumen = $request->judul_dokumen;
+        $dokumen->tanggal = $request->tanggal;
 
         if ($request->hasFile('file_pdf')) {
             $dokumen->handleUploadPdf();

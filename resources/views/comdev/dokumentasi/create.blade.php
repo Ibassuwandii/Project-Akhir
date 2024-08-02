@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card mt-2">
                     <div class="card-header bg-cyan text-white">
-                        <h5 class="card-title">Edit Data Dokumentasi</h5>
+                        <h5 class="card-title">Tambah Data Dokumentasi</h5>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ url('comdev/dokumentasi') }}" enctype="multipart/form-data">
@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="link_foto" class="col-md-4 col-form-label text-md-right">Judul Dokumentasi</label>
+                                <label for="link_foto" class="col-md-4 col-form-label text-md-right">Link Dokumentasi</label>
                                 <div class="col-md-6">
                                     <input id="link_foto" type="text" class="form-control" name="link_foto" required>
                                 </div>

@@ -28,8 +28,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <x-template.button.info-button url="comdev/site_tnb" id="{{ $kapalsayur->id }}" />
-                                    <x-template.button.edit-button url="comdev/site_tnb" id="{{ $kapalsayur->id }}" />
+                                    {{-- <x-template.button.info-button url="comdev/site_tnb/kapalsayur" id="{{ $kapalsayur->id }}" /> --}}
+                                    <x-template.button.edit-button url="comdev/site_tnb/kapalsayur" id="{{ $kapalsayur->id }}" />
                                     <x-template.button.delete-button  id="{{$kapalsayur->id}}" path="" />
                                 </div>
                             </td>
