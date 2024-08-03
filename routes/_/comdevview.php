@@ -7,11 +7,11 @@ use App\Http\Controllers\Comdevview\LaporanController;
 use App\Http\Controllers\Comdevview\DokumentasiController;
 use App\Http\Controllers\Comdevview\site_sk\TpomController;
 use App\Http\Controllers\Comdevview\site_sk\KarhutlaController;
+use App\Http\Controllers\Comdevview\site_sk\MangroveController;
 use App\Http\Controllers\Comdevview\site_sk\RangkongController;
 use App\Http\Controllers\Comdevview\site_sk\BangusmanController;
-use App\Http\Controllers\Comdevview\site_pgsb\MangroveController;
-use App\Http\Controllers\Comdevview\site_pgsb\PerikananController;
-use App\Http\Controllers\Comdevview\site_pgsb\PertanianController;
+use App\Http\Controllers\Comdevview\site_sk\PerikananController;
+use App\Http\Controllers\Comdevview\site_sk\PertanianController;
 
 Route::redirect('/', 'comdevview/dokumen');
 Route::get('dokumen', [DokumenController::class, 'index']);

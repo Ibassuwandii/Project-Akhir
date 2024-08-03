@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Edukasi\dashboard;
+namespace App\Http\Controllers\Edukasiview;
 
 use App\Http\Controllers\Controller;
 use App\Models\Edukasi\aksisampah\Aksisampah;
@@ -19,6 +19,6 @@ class DashboardController extends Controller
         $data['list_visitschool']= Visitschool::all();
 
 
-        return view('edukasi.dashboard.index',$data );
+        return view('edukasiview.dashboard.index',$data );
     }
 }

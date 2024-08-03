@@ -1,63 +1,59 @@
 <x-module.comdev>
     <x-utils.notif />
-    <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-            <div style="padding-left: 15px;">
-                <h4 class="card-title m-0"><b>Selamat Datang Di Halaman Dashboard Divisi Edukasi</b></h4>
-            </div>
+    <div class="card card-primary card-tabs">
+        <div class="card-header p-0 pt-1">
+            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link anok" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home"
+                        role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Pertanian</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link anok" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                        href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile"
+                        aria-selected="false">Perikanan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link anok active" id="custom-tabs-one-messages-tab" data-toggle="pill"
+                        href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages"
+                        aria-selected="true">Mangrove</a>
+                </li>
+            </ul>
         </div>
-        <div class="card-body" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
-
-            <!-- Diagram Site SK Pertanian -->
-            <div style="width: 30%; margin-bottom: 20px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Site SK Pertanian</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="pertanianChart"></canvas>
+        <div class="card-body">
+            <div class="tab-content" id="custom-tabs-one-tabContent">
+                <div class="tab-pane fade" id="custom-tabs-one-home" role="tabpanel"
+                    aria-labelledby="custom-tabs-one-home-tab">
+                    <!-- Diagram Instagram -->
+                    <div style="width: 100%; margin-bottom: 100px;">
+                        <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Pertanian</p>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="pertanianChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Diagram Site SK Perikanan -->
-            <div style="width: 30%; margin-bottom: 20px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Site SK Perikanan</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="perikananChart"></canvas>
+                <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                    aria-labelledby="custom-tabs-one-profile-tab">
+                    <!-- Diagram Aksi Sampah -->
+                    <div style="width: 100%; margin-bottom: 100px;">
+                        <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Perikanan</p>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="perikananChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Diagram Mangrove -->
-            <div style="width: 30%; margin-bottom: 20px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Site SK Mangrove</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="mangroveChart"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="card-body" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
-
-            <!-- Diagram Site SK Pertanian -->
-            <div style="width: 30%; margin-bottom: 20px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Site SK Pertanian</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="pertanianChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Diagram Site SK Perikanan -->
-            <div style="width: 30%; margin-bottom: 20px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Site SK Perikanan</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="perikananChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Diagram Mangrove -->
-            <div style="width: 30%; margin-bottom: 20px;">
-                <p style="text-align: center; margin-top: 10px; font-weight: bold;">Site SK Mangrove</p>
-                <div class="chart-container" style="position: relative; height: 300px;">
-                    <canvas id="mangroveChart"></canvas>
+                <div class="tab-pane fade active show" id="custom-tabs-one-messages" role="tabpanel"
+                    aria-labelledby="custom-tabs-one-messages-tab">
+                    <!-- Diagram Taman Baca -->
+                    <div style="width: 100%; margin-bottom: 50px;">
+                        <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Mangrove</p>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="mangroveChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- /.card -->
     </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

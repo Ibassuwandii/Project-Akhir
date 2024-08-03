@@ -13,19 +13,19 @@
                     <table id="example1" class="table table-bordered table-striped table-hover">
                         <thead class="bg-secondary text-white">
                             <tr>
-                                <th>No</th>
-                                <th>Judul Dokumentasi</th>
-                                <th>Tanggal Kegiatan</th>
-                                <th>Link Foto Dokumentasi</th>
+                                <th style="padding: 6px; width: 50px;">No</th>
+                                <th style="padding: 6px;">Judul Dokumentasi</th>
+                                <th style="padding: 6px;">Tanggal Kegiatan</th>
+                                <th style="padding: 6px;">Link Foto Dokumentasi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($listDokumentasi as $dokumentasi)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $dokumentasi->judul_dokumentasi }}</td>
-                                    <td>{{ $dokumentasi->tanggal_kegiatan }}</td>
-                                    <td>
+                                    <td style="padding: 6px">{{ $loop->iteration }}</td>
+                                    <td class="text-left" style="padding: 2px">{{ $dokumentasi->judul_dokumentasi }}</td>
+                                    <td class="text-left" style="padding: 2px">{{ \Carbon\Carbon::parse($dokumentasi->tanggal)->translatedFormat('d F Y') }}</td>
+                                    <td class="text-center" style="padding: 2px">
                                         <a href="{{ $dokumentasi->link_foto }}" target="_blank" class="text-primary">
                                             <i class="fa fa-link"></i> Lihat Dokumentasi
                                         </a>

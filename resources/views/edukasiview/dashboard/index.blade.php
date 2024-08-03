@@ -1,4 +1,4 @@
-<x-module.edukasi>
+<x-module.edukasiview>
     <x-utils.notif />
     <style>
         .nav-link.anok.active {
@@ -271,4 +271,4 @@
             });
         });
     </script>
-</x-module.edukasi>
+</x-module.edukasiview>

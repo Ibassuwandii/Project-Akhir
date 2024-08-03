@@ -13,19 +13,19 @@
                     <table id="example1" class="table table-bordered table-striped table-hover">
                         <thead class="bg-secondary text-white">
                             <tr>
-                                <th>No</th>
-                                <th>Judul Dokumen</th>
-                                <th>Tanggal</th>
-                                <th>Dokumen</th>
+                                <th style="padding: 6px; width: 50px;"">No</th>
+                                <th style="padding: 6px">Judul Dokumen</th>
+                                <th style="padding: 6px">Tanggal</th>
+                                <th style="padding: 6px">Dokumen</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($listDokumen as $dokumen)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $dokumen->judul_dokumen }}</td>
-                                <td>{{ $dokumen->tanggal}}</td>
-                                <td>
+                                <td style="padding: 6px">{{ $loop->iteration }}</td>
+                                <td class="text-left" style="padding: 2px">{{ $dokumen->judul_dokumen }}</td>
+                                <td class="text-left" style="padding: 2px">{{ \Carbon\Carbon::parse($dokumen->tanggal)->translatedFormat('d F Y') }}</td>
+                                <td class="text-center" style="padding: 2px">
                                     @if ($dokumen->file_pdf)
                                         <a href="{{ url('public') }}/{{ $dokumen->file_pdf }}" target="_blank" class="text-primary">
                                             <i class=""></i> Lihat Dokumen

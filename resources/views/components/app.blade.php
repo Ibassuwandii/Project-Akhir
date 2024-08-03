@@ -138,6 +138,26 @@
             })
     })()
 </script>
+<script>
+    function filterLaporan() {
+        var filter = document.getElementById('filter').value;
+        var rows = document.querySelectorAll('.laporan-row');
+
+        rows.forEach(function(row) {
+            var jenis = row.getAttribute('data-jenis').toLowerCase();
+
+            if (filter === 'all') {
+                row.style.display = '';
+            } else if (filter === 'bulanan' && jenis.includes('bulanan')) {
+                row.style.display = '';
+            } else if (filter === 'tahunan' && jenis.includes('tahunan')) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{-- <script src="sweetalert2.all.min.js"></scrip> --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
