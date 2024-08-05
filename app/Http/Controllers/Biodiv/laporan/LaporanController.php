@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Edukasi\Laporan;
+namespace App\Http\Controllers\Biodiv\Laporan;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Edukasi\Laporan\Laporan;
+use App\Models\Biodiv\Laporan\Laporan;
 
 class LaporanController extends Controller
 {
@@ -15,12 +15,12 @@ class LaporanController extends Controller
             $laporan->formatted_tanggal_dibuat = Carbon::parse($laporan->tanggal_dibuat)->translatedFormat('d F Y');
             return $laporan;
         });
-        return view('edukasi.laporan.index', compact('list_laporan'));
+        return view('biodiv.laporan.index', compact('list_laporan'));
     }
 
     public function create()
     {
-        return view('edukasi.laporan.create');
+        return view('biodiv.laporan.create');
     }
 
     public function store(Request $request)
@@ -46,13 +46,13 @@ class LaporanController extends Controller
         $laporan->handleUploadPdf();
         $laporan->save();
 
-        return redirect('edukasi/laporan')->with('create', 'Data Laporan berhasil disimpan.');
+        return redirect('biodiv/laporan')->with('create', 'Data Laporan berhasil disimpan.');
     }
 
     public function edit($id)
     {
         $report = Laporan::findOrFail($id);
-        return view('edukasi.laporan.edit', compact('report'));
+        return view('biodiv.laporan.edit', compact('report'));
     }
 
     public function update(Request $request, $id)
@@ -80,24 +80,24 @@ class LaporanController extends Controller
             $laporan->handleUploadPdf();
         }
 
-        return redirect('edukasi/laporan')->with('update', 'Data Laporan berhasil diperbarui.');
+        return redirect('biodiv/laporan')->with('update', 'Data Laporan berhasil diperbarui.');
     }
 
     public function destroy(Laporan $laporan)
     {
         $laporan->handleDeletePdf();
         $laporan->delete();
-        return redirect('edukasi/laporan')->with('delete', 'Data Laporan berhasil dihapus.');
+        return redirect('biodiv/laporan')->with('delete', 'Data Laporan berhasil dihapus.');
     }
 
     public function show($id)
     {
         $laporan = Laporan::findOrFail($id);
-        return view('edukasi.laporan.show', compact('laporan'));
+        return view('biodiv.laporan.show', compact('laporan'));
     }
 
     public function batal()
     {
-        return redirect('edukasi/laporan');
+        return redirect('biodiv/laporan');
     }
 }

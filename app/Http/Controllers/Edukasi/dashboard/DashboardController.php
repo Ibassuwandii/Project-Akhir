@@ -13,12 +13,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data['list_instagram']= Instagram::all();
-        $data['list_aksisampah']= Aksisampah::all();
-        $data['list_tamanbaca']= Tamanbaca::all();
-        $data['list_visitschool']= Visitschool::all();
+        // $data['list_instagram']= Instagram::all();
+        // $data['list_aksisampah']= Aksisampah::all();
+        // $data['list_tamanbaca']= Tamanbaca::all();
+        // $data['list_visitschool']= Visitschool::all();
 
+        $list_visitschool = Visitschool::all();
+        $list_instagram = Instagram::all();
+        $list_aksisampah = Aksisampah::all();
+        $list_tamanbaca = Tamanbaca::all();
 
-        return view('edukasi.dashboard.index',$data );
+        return view('edukasi.dashboard.index', compact('list_visitschool', 'list_tamanbaca', 'list_aksisampah','list_instagram'));
     }
 }

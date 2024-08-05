@@ -83,7 +83,22 @@ Route::prefix('peta')->group(function () {
     include "edukasi.php";
 });
 
+// Route Divisi Biodiv//
+Route::prefix('laporan')->group(function () {
+    include "biodiv.php";
+});
 
+Route::prefix('antropogenik')->group(function () {
+    include "biodiv.php";
+});
+
+Route::prefix('orangutan')->group(function () {
+    include "biodiv.php";
+});
+
+
+
+// Akhir Route Divisi Biodiv//
 
 // comdevview//
 Route::prefix('pertanian')->group(function () {
@@ -97,13 +112,3 @@ Route::prefix('perikanan')->group(function () {
 Route::prefix('mangrove')->group(function () {
     include "comdevview.php";
 });
-
-
-
-
-
-
-
-
-
-

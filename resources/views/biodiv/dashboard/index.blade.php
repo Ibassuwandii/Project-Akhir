@@ -61,7 +61,7 @@
                     <div style="width: 100%; margin-bottom: 100px;">
                         <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Visit School</p>
                         <div class="chart-container" style="position: relative; height: 300px;">
-                            <canvas id="visitSchoolChart"></canvas>
+                            <canvas id="schoolParticipantsChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -88,6 +88,55 @@
                 const options = { day: 'numeric', month: 'long', year: 'numeric' };
                 return new Date(dateString).toLocaleDateString('id-ID', options);
             }
+
+            // Chart Visit School
+            // const schoolParticipantsCtx = document.getElementById('schoolParticipantsChart').getContext('2d');
+            // const schoolParticipantsData = @json($list_visitschool);
+
+            // const schoolParticipantsLabels = schoolParticipantsData.map(item => item.nama_sekolah);
+            // const schoolParticipantsLakiLaki = schoolParticipantsData.map(item => item.laki_laki);
+            // const schoolParticipantsPerempuan = schoolParticipantsData.map(item => item.perempuan);
+
+            // const schoolParticipantsChart = new Chart(schoolParticipantsCtx, {
+            //     type: 'bar',
+            //     data: {
+            //         labels: schoolParticipantsLabels,
+            //         datasets: [{
+            //                 label: 'Jumlah Peserta Laki-laki',
+            //                 data: schoolParticipantsLakiLaki,
+            //                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            //                 borderColor: 'rgba(54, 162, 235, 1)',
+            //                 borderWidth: 1
+            //             },
+            //             {
+            //                 label: 'Jumlah Peserta Perempuan',
+            //                 data: schoolParticipantsPerempuan,
+            //                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            //                 borderColor: 'rgba(255, 99, 132, 1)',
+            //                 borderWidth: 1
+            //             }
+            //         ]
+            //     },
+            //     options: {
+            //         responsive: true,
+            //         maintainAspectRatio: false,
+            //         scales: {
+            //             x: {
+            //                 title: {
+            //                     display: true,
+            //                     text: 'Nama Sekolah'
+            //                 }
+            //             },
+            //             y: {
+            //                 beginAtZero: true,
+            //                 title: {
+            //                     display: true,
+            //                     text: 'Jumlah Peserta'
+            //                 }
+            //             }
+            //         }
+            //     }
+            // });
 
             // Chart Instagram
             const instagramCtx = document.getElementById('instagramChart').getContext('2d');
@@ -156,7 +205,7 @@
             const aksiSampahCtx = document.getElementById('aksiSampahChart').getContext('2d');
             const aksiSampahData = @json($list_aksisampah);
 
-            const aksiSampahLabels = aksiSampahData.map(item => item.lokasi);
+            const aksiSampahLabels = aksiSampahData.map(item => item.tanggal);
             const aksiSampahJumlahPeserta = aksiSampahData.map(item => item.jumlah_peserta);
             const aksiSampahJumlahSampah = aksiSampahData.map(item => item.jumlah_sampah);
 
@@ -230,44 +279,57 @@
                 }
             });
 
-            // Chart Visit School
-            const visitSchoolCtx = document.getElementById('visitSchoolChart').getContext('2d');
-            const visitSchoolData = @json($list_visitschool);
 
-            const visitSchoolLabels = visitSchoolData.map(item => item.nama_sekolah);
-            const visitSchoolLakiLaki = visitSchoolData.map(item => item.laki_laki);
-            const visitSchoolPerempuan = visitSchoolData.map(item => item.perempuan);
+        });
+    </script>
 
-            const visitSchoolChart = new Chart(visitSchoolCtx, {
-                type: 'bar',
-                data: {
-                    labels: visitSchoolLabels,
-                    datasets: [
-                        {
-                            label: 'Laki-laki',
-                            data: visitSchoolLakiLaki,
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Perempuan',
-                            data: visitSchoolPerempuan,
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Chart Visit School
+        const schoolParticipantsCtx = document.getElementById('schoolParticipantsChart').getContext('2d');
+        const schoolParticipantsData = @json($list_visitschool);
+
+        // Check the data in the console to ensure it contains the expected fields
+        console.log(schoolParticipantsData);
+
+        const schoolParticipantsLabels = schoolParticipantsData.map(item => item.nama_sekolah);
+        const schoolParticipantsLakiLaki = schoolParticipantsData.map(item => item.laki_laki);
+        const schoolParticipantsPerempuan = schoolParticipantsData.map(item => item.perempuan);
+
+        const schoolParticipantsChart = new Chart(schoolParticipantsCtx, {
+            type: 'bar',
+            data: {
+                labels: schoolParticipantsLabels,
+                datasets: [{
+                        label: 'Jumlah Peserta Laki-laki',
+                        data: schoolParticipantsLakiLaki,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Jumlah Peserta Perempuan',
+                        data: schoolParticipantsPerempuan,
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
                     x: {
                         title: {
-                            display: false,
+                            display: true,
                             text: 'Nama Sekolah'
                         },
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 90,
+                            minRotation: 45
+                        }
                     },
                     y: {
                         beginAtZero: true,
@@ -278,7 +340,8 @@
                     }
                 }
             }
-            });
         });
-    </script>
+    });
+</script>
+
 </x-module.edukasi>

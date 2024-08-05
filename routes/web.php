@@ -59,6 +59,16 @@ Route::middleware('auth')->group(function(){
 });
 //akhir route divisi edukasi//
 
+// route divisi biodif//
+Route::middleware('auth')->group(function(){
+    Route::prefix('biodiv')
+        ->middleware('can:divisi-biodiv')
+        ->group(function(){
+            include "_/biodiv.php";
+    });
+});
+//akhir route divisi biodif//
+
 
 // rote comdevview//
 Route::middleware('auth')->group(function(){

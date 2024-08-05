@@ -13,31 +13,51 @@
                             <div class="form-group row">
                                 <label for="jenis_laporan" class="col-md-4 col-form-label text-md-right">Jenis Laporan</label>
                                 <div class="col-md-6">
-                                    <input id="jenis_laporan" type="text" class="form-control" name="jenis_laporan" required autofocus>
+                                    <input id="jenis_laporan" type="text" class="form-control @error('jenis_laporan') is-invalid @enderror" name="jenis_laporan" value="{{ old('jenis_laporan') }}" required autofocus>
+                                    @error('jenis_laporan')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="judul_laporan" class="col-md-4 col-form-label text-md-right">Judul Laporan</label>
                                 <div class="col-md-6">
-                                    <input id="judul_laporan" type="text" class="form-control" name="judul_laporan" required>
+                                    <input id="judul_laporan" type="text" class="form-control @error('judul_laporan') is-invalid @enderror" name="judul_laporan" value="{{ old('judul_laporan') }}" required>
+                                    @error('judul_laporan')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="pdf_file" class="col-md-4 col-form-label text-md-right">File PDF</label>
+                                <label for="file_pdf" class="col-md-4 col-form-label text-md-right">File PDF</label>
                                 <div class="col-md-6">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="pdf_file" name="file_pdf" required>
-                                        <label class="custom-file-label" for="pdf_file">Pilih file</label>
+                                        <input type="file" class="custom-file-input @error('file_pdf') is-invalid @enderror" id="file_pdf" name="file_pdf" required>
+                                        <label class="custom-file-label" for="file_pdf">Pilih file</label>
                                     </div>
+                                    @error('file_pdf')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="tanggal_dibuat" class="col-md-4 col-form-label text-md-right">Tanggal Dibuat</label>
                                 <div class="col-md-6">
-                                    <input id="tanggal_dibuat" type="date" class="form-control" name="tanggal_dibuat" required>
+                                    <input id="tanggal_dibuat" type="date" class="form-control @error('tanggal_dibuat') is-invalid @enderror" name="tanggal_dibuat" value="{{ old('tanggal_dibuat') }}" required>
+                                    @error('tanggal_dibuat')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 

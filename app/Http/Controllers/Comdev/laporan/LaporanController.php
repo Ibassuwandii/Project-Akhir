@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Comdev\Laporan;
 
-use carbon\Carbon;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Comdev\Laporan\Laporan;
 
 class LaporanController extends Controller
@@ -28,16 +27,22 @@ class LaporanController extends Controller
     {
         $request->validate([
             'jenis_laporan' => 'required',
-            'tanggal_dibuat' => 'required',
             'judul_laporan' => 'required',
-            'file_pdf' => 'required|file|mimes:pdf,jpg|max:2048',
             'tanggal_dibuat' => 'required|date',
+            'file_pdf' => 'required|mimes:pdf|max:2048',
+        ], [
+            'jenis_laporan.required' => 'Field Jenis Laporan wajib diisi.',
+            'judul_laporan.required' => 'Field Judul Laporan wajib diisi.',
+            'tanggal_dibuat.required' => 'Field Tanggal Dibuat wajib diisi.',
+            'tanggal_dibuat.date' => 'Field Tanggal Dibuat harus berupa tanggal yang valid.',
+            'file_pdf.required' => 'File PDF wajib diunggah.',
+            'file_pdf.mimes' => 'File harus berupa PDF.',
+            'file_pdf.max' => 'Ukuran file tidak boleh lebih dari 2048 KB.',
         ]);
 
         $laporan = new Laporan;
         $laporan->jenis_laporan = $request->jenis_laporan;
         $laporan->judul_laporan = $request->judul_laporan;
-        $laporan->tanggal_dibuat = $request->judul_laporan;
         $laporan->tanggal_dibuat = $request->tanggal_dibuat;
         $laporan->handleUploadPdf();
         $laporan->save();
@@ -47,23 +52,35 @@ class LaporanController extends Controller
 
     public function edit($id)
     {
-    $report = Laporan::findOrFail($id);
-    return view('comdev.laporan.edit', compact('report'));
+        $report = Laporan::findOrFail($id);
+        return view('comdev.laporan.edit', compact('report'));
     }
-
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'jenis_laporan' => 'required',
+            'judul_laporan' => 'required',
+            'tanggal_dibuat' => 'required|date',
+            'file_pdf' => 'nullable|mimes:pdf|max:2048',
+        ], [
+            'jenis_laporan.required' => 'Field Jenis Laporan wajib diisi.',
+            'judul_laporan.required' => 'Field Judul Laporan wajib diisi.',
+            'tanggal_dibuat.required' => 'Field Tanggal Dibuat wajib diisi.',
+            'tanggal_dibuat.date' => 'Field Tanggal Dibuat harus berupa tanggal yang valid.',
+            'file_pdf.mimes' => 'File harus berupa PDF.',
+            'file_pdf.max' => 'Ukuran file tidak boleh lebih dari 2048 KB.',
+        ]);
+
         $laporan = Laporan::findOrFail($id);
         $laporan->jenis_laporan = $request->jenis_laporan;
-        $laporan->tanggal_dibuat = $request->tanggal_dibuat;
         $laporan->judul_laporan = $request->judul_laporan;
-
-
-
+        $laporan->tanggal_dibuat = $request->tanggal_dibuat;
         $laporan->save();
 
-        if(request('file_pdf')) $laporan->handleUploadPdf();
+        if ($request->hasFile('file_pdf')) {
+            $laporan->handleUploadPdf();
+        }
 
         return redirect('comdev/laporan')->with('update', 'Data Laporan berhasil diperbarui.');
     }
@@ -81,7 +98,8 @@ class LaporanController extends Controller
         return view('comdev.laporan.show', compact('laporan'));
     }
 
-    function batal(){
+    public function batal()
+    {
         return redirect('comdev/laporan');
     }
 }
