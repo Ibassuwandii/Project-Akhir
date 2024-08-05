@@ -9,9 +9,10 @@
             </div>
         </div>
         <div class="card-body">
-            <!-- Chart Container -->
-            <div id="orangutanChart" style="height: 300px;" class="mb-4"></div>
-
+            <!-- Chart -->
+            <div class="mb-4">
+                <canvas id="orangutanChart"></canvas>
+            </div>
             <!-- Button to Add Data -->
             <div class="d-flex justify-content-end mb-3">
                 <a href="{{ url('biodiv/orangutan/create') }}" class="btn btn-success">
@@ -29,9 +30,9 @@
                             <th style="padding: 6px" class="text-center">Location</th>
                             <th style="padding: 6px" class="text-center">Habitat Type</th>
                             <th style="padding: 6px" class="text-center">Number of Transects</th>
-                            <th style="padding: 6px" class="text-center">Total Transect Lenght (m)</th>
+                            <th style="padding: 6px" class="text-center">Total Transect Length (m)</th>
                             <th style="padding: 6px" class="text-center">Number of Nest(m)</th>
-                            <th style="padding: 6px" class="text-center">Estimaded Density per km</th>
+                            <th style="padding: 6px" class="text-center">Estimated Density per km</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +41,7 @@
                                 <td class="text-center" style="padding: 2px">{{ $loop->iteration }}</td>
                                 <td class="text-center" style="padding: 2px">
                                     <div class="btn-group">
+                                        {{-- <x-template.button.info-button url="biodiv/orangutan" id="{{ $orangutan->id }}" /> --}}
                                         <x-template.button.edit-button url="biodiv/orangutan"
                                             id="{{ $orangutan->id }}" />
                                         <x-template.button.delete-button id="{{ $orangutan->id }}" path="" />
@@ -59,64 +61,81 @@
             </div>
         </div>
     </div>
-
-    @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var chartData = @json($chartData);
-        console.log("Chart data:", chartData);
-
-        var options = {
-            series: [{
-                name: 'Jumlah Transek',
-                data: chartData.map(item => item.jumlah_transek)
-            }, {
-                name: 'Jumlah Sarang',
-                data: chartData.map(item => item.jumlah_sarang)
-            }],
-            chart: {
-                type: 'bar',
-                height: 300
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '55%',
-                    endingShape: 'rounded'
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('orangutanChart').getContext('2d');
+            const orangutanChart = new Chart(ctx, {
+                type: 'bar', // Choose chart type (bar, line, etc.)
+                data: {
+                    labels: @json($list_orangutan->pluck('tanggal')), // X-axis labels
+                    datasets: [
+                        {
+                            label: 'Number of Nests',
+                            data: @json($list_orangutan->pluck('jumlah_sarang')), // Data for number of nests
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                            borderRadius: 5 // Rounded bars
+                        },
+                        {
+                            label: 'Total Transect Length (m)',
+                            data: @json($list_orangutan->pluck('total_panjang')), // Data for total transect length
+                            backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1,
+                            borderRadius: 5 // Rounded bars
+                        },
+                        {
+                            label: 'Number of Transects',
+                            data: @json($list_orangutan->pluck('jumlah_transek')), // Data for number of transects
+                            backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            borderWidth: 1,
+                            borderRadius: 5 // Rounded bars
+                        }
+                    ]
                 },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: chartData.map(item => item.year),
-            },
-            yaxis: {
-                title: {
-                    text: 'Jumlah'
-                }
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return val
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                boxWidth: 20,
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 10
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)' // Lighter grid lines
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false // Hide x-axis grid lines
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: 20 // Add padding around the chart
                     }
                 }
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#orangutanChart"), options);
-        chart.render();
-    });
+            });
+        });
     </script>
-    @endpush
+
 </x-module.biodiv>

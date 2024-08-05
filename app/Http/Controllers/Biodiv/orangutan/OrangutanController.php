@@ -5,26 +5,16 @@ namespace App\Http\Controllers\biodiv\orangutan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\biodiv\orangutan\Orangutan;
-use Illuminate\Support\Facades\DB;
 
 class OrangutanController extends Controller
 {
     public function index()
     {
-        $list_orangutan = Orangutan::orderBy('tanggal')->get();
-
-        $chartData = Orangutan::select(
-            DB::raw('YEAR(tanggal) as year'),
-            DB::raw('SUM(jumlah_transek) as jumlah_transek'),
-            DB::raw('SUM(jumlah_sarang) as jumlah_sarang')
-        )
-        ->groupBy(DB::raw('YEAR(tanggal)'))
-        ->orderBy('year')
-        ->get();
-
-        return view('biodiv.orangutan.index', compact('list_orangutan', 'chartData'));
+        $list_orangutan = Orangutan::all()->map(function ($orangutan) {
+            return $orangutan;
+        });
+        return view('biodiv.orangutan.index', compact('list_orangutan'));
     }
-
 
     public function create()
     {
