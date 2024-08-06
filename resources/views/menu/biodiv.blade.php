@@ -9,7 +9,7 @@
             <i class="right fas fa-angle-left" style="margin-left: 10px;"></i>
         </a>
         <ul class="nav nav-treeview">
-            <x-template.menu.menu-item title="Wildlife Monitoring-Direct Survey" url="comdev/site_sk/pertanian" icon="" />
+            <x-template.menu.menu-item title="Wildlife Monitoring-Direct Survey" url="biodiv/survei" icon="" />
         </ul>
     </li>
     <li class="nav-item">

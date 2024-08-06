@@ -88,6 +88,9 @@ Route::prefix('laporan')->group(function () {
     include "biodiv.php";
 });
 
+Route::prefix('survei')->group(function () {
+    include "biodiv.php";
+});
 Route::prefix('antropogenik')->group(function () {
     include "biodiv.php";
 });

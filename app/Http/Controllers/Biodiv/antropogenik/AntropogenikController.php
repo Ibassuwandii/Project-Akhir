@@ -5,31 +5,21 @@ namespace App\Http\Controllers\biodiv\antropogenik;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\biodiv\antropogenik\Antropogenik;
-use Carbon\Carbon;
+// use Carbon\Carbon;
 
 class AntropogenikController extends Controller
 {
     public function index()
     {
-        // Ambil data dari model, sesuaikan dengan nama model dan query jika perlu
         $list_antropogenik = Antropogenik::all();
+        $methods = Antropogenik::pluck('metode')->unique();
+        $observasis = Antropogenik::pluck('observasi')->unique();
+        $pengamatans = Antropogenik::pluck('pengamatan')->unique();
+        $totalQuantity = $list_antropogenik->groupBy('bulan')->map->sum('kuantitas');
 
-        // Mengelompokkan data berdasarkan tahun
-        $groupedData = $list_antropogenik->groupBy(function ($item) {
-            return explode('-', $item->bulan)[0]; // Mengambil tahun dari bulan
-        });
-
-        // Menghitung total quantity per tahun
-        $totalQuantity = $groupedData->map(function ($items) {
-            return $items->sum('kuantitas');
-        });
-
-        // Kirim data ke view
-        return view('biodiv.antropogenik.index', [
-            'list_antropogenik' => $list_antropogenik,
-            'totalQuantity' => $totalQuantity
-        ]);
+        return view('biodiv.antropogenik.index', compact('list_antropogenik', 'methods', 'observasis', 'pengamatans', 'totalQuantity'));
     }
+
 
     public function create()
     {
