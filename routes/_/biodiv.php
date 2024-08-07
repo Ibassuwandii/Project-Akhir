@@ -8,7 +8,7 @@ use App\Http\Controllers\biodiv\survei\SurveiController;
 use App\Http\Controllers\biodiv\laporan\LaporanController;
 use App\Http\Controllers\Comdev\Dokumen\DokumenController;
 use App\Http\Controllers\biodiv\orangutan\OrangutanController;
-use App\Http\Controllers\Comdev\dashboard\DashboardController;
+use App\Http\Controllers\biodiv\dashboard\DashboardController;
 use App\Http\Controllers\Comdev\Dokumentasi\DokumentasiController;
 use App\Http\Controllers\biodiv\antropogenik\AntropogenikController;
 // use App\Http\Controllers\Comdev\laporan\LaporanController as LaporanLaporanController;

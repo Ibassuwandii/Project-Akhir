@@ -5,14 +5,17 @@ namespace App\Http\Controllers\biodiv\survei;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\biodiv\survei\Survei;
+use Carbon\Carbon;
 
 class SurveiController extends Controller
 {
     public function index()
     {
-        $list_survei = Survei::all()->map(function ($survei) {
+        $list_survei = survei::all()->map(function ($survei) {
+            $survei->formatted_bulan = Carbon::parse($survei->bulan)->Format('F Y');
             return $survei;
         });
+
         return view('biodiv.survei.index', compact('list_survei'));
     }
 
@@ -24,24 +27,30 @@ class SurveiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'bulan' => 'required',
             'taxa' => 'required',
             'species' => 'required',
             'english_name' => 'required',
-            'daftar_merah' => 'required',
+            // 'daftar_merah' => 'required',
+            // 'law' => 'required',
             'observation' => 'required',
         ], [
+            'bulan.required' => 'bulan tidak boleh kosong.',
             'taxa.required' => 'taxa tidak boleh kosong.',
             'species.required' => 'species tidak boleh kosong.',
-            'english_name.required' => 'Tipe habitat tidak boleh kosong.',
-            'daftar_merah.required' => 'Jumlah transek tidak boleh kosong.',
-            'observation.required' => 'Total panjang tidak boleh kosong.',
+            'english_name.required' => 'English Name tidak boleh kosong.',
+            'daftar_merah.required' => 'IUCN Red List Status tidak boleh kosong.',
+            'law.required' => 'Protected by Indonesia Law tidak boleh kosong.',
+            'observation.required' => 'Observations tidak boleh kosong.',
         ]);
 
         $survei = new survei;
+        $survei->bulan = $request->bulan;
         $survei->taxa = $request->taxa;
         $survei->species = $request->species;
         $survei->english_name = $request->english_name;
         $survei->daftar_merah = $request->daftar_merah;
+        $survei->law = $request->law;
         $survei->observation = $request->observation;
         $survei->save();
 
@@ -57,24 +66,30 @@ class SurveiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'bulan' => 'required',
             'taxa' => 'required',
             'species' => 'required',
             'english_name' => 'required',
             'daftar_merah' => 'required',
+            // 'law' => 'required',
             'observation' => 'required',
         ], [
+            'bulan.required' => 'bulan tidak boleh kosong.',
             'taxa.required' => 'taxa tidak boleh kosong.',
             'species.required' => 'species tidak boleh kosong.',
-            'english_name.required' => 'Tipe habitat tidak boleh kosong.',
-            'daftar_merah.required' => 'Jumlah transek tidak boleh kosong.',
-            'observation.required' => 'Total panjang tidak boleh kosong.',
+            'english_name.required' => 'English Name  tidak boleh kosong.',
+            'daftar_merah.required' => 'IUCN Red List Status tidak boleh kosong.',
+            'law.required' => 'Protected by Indonesia Law tidak boleh kosong.',
+            'observation.required' => 'Observations tidak boleh kosong.',
         ]);
 
         $survei = Survei::findOrFail($id);
+        $survei->bulan = $request->bulan;
         $survei->taxa = $request->taxa;
         $survei->species = $request->species;
         $survei->english_name = $request->english_name;
         $survei->daftar_merah = $request->daftar_merah;
+        $survei->law = $request->law;
         $survei->observation = $request->observation;
         $survei->save();
 
