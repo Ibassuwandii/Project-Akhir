@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Comdev\site_sk;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_sk\Karhutla;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class KarhutlaController extends Controller
 {
     public function index()
     {
-        $data['list_karhutla'] = Karhutla::all();
-        return view('comdev.site_sk.karhutla.index', $data);
+        $list_karhutla = Karhutla::all()->map(function ($karhutla) {
+            $karhutla->formatted_tanggal_patroli = Carbon::parse($karhutla->tanggal_patroli)->format('d-m-Y');
+            return $karhutla;
+        });
+        return view('comdev.site_sk.karhutla.index', ['list_karhutla' => $list_karhutla]);
     }
 
     public function create()
@@ -112,7 +116,10 @@ class KarhutlaController extends Controller
 
     public function show($id)
     {
+
         $karhutla = Karhutla::findOrFail($id);
+        $karhutla->formatted_tanggal_patroli = Carbon::parse($karhutla->tanggal_patroli)->translatedFormat('j F Y');
+
         return view('comdev.site_sk.karhutla.show', compact('karhutla'));
     }
 

@@ -11,11 +11,11 @@ class PertanianController extends Controller
 {
     public function index()
     {
-        $list_pertanian = Pertanian::all()->map(function($pertanian) {
-            $pertanian->formatted_tanggal = Carbon::parse($pertanian->tanggal)->translatedFormat('d F Y');
+        $list_pertanian = Pertanian::all()->map(function ($pertanian) {
+            $pertanian->formatted_tanggal = Carbon::parse($pertanian->tanggal)->format('d-m-Y');
             return $pertanian;
         });
-        return view('comdev.site_sk.pertanian.index', compact('list_pertanian'));
+        return view('comdev.site_sk.pertanian.index', ['list_pertanian' => $list_pertanian]);
     }
 
     public function create()
@@ -39,7 +39,7 @@ class PertanianController extends Controller
             // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nama_desa.required' => 'Field Nama Desa wajib diisi.',
-            'komuditas.required' => 'Field Komoditas wajib diisi.',
+            'komuditas.required' => 'Field Komuditas wajib diisi.',
             'luas_lahan.required' => 'Field Luas Lahan wajib diisi.',
             'hasil_sebelum.required' => 'Field Hasil Sebelum wajib diisi.',
             'hasil_target.required' => 'Field Hasil Target wajib diisi.',
@@ -56,7 +56,7 @@ class PertanianController extends Controller
 
         $pertanian = new Pertanian;
         $pertanian->nama_desa = $request->nama_desa;
-        $pertanian->komoditas = $request->komoditas;
+        $pertanian->komuditas = $request->komuditas;
         $pertanian->luas_lahan = $request->luas_lahan;
         $pertanian->hasil_sebelum = $request->hasil_sebelum;
         $pertanian->hasil_target = $request->hasil_target;
@@ -72,11 +72,16 @@ class PertanianController extends Controller
         return redirect('comdev/site_sk/pertanian')->with('create', 'Data pertanian berhasil ditambahkan.');
     }
 
-    public function edit(Pertanian $pertanian)
+    public function edit($id)
     {
-        $data['pertanian'] = $pertanian;
-        return view('comdev.site_sk.pertanian.edit', $data);
+        $pertanian = Pertanian::findOrFail($id);
+        // Pastikan tanggal adalah objek Carbon
+        $pertanian->tanggal = \Carbon\Carbon::parse($pertanian->tanggal);
+        return view('comdev.site_sk.pertanian.edit', ['pertanian' => $pertanian]);
     }
+
+
+
 
     public function update(Request $request, $id)
     {
@@ -94,7 +99,7 @@ class PertanianController extends Controller
             // 'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nama_desa.required' => 'Field Nama Desa wajib diisi.',
-            'komuditas.required' => 'Field Komoditas wajib diisi.',
+            'komuditas.required' => 'Field Komuditas wajib diisi.',
             'luas_lahan.required' => 'Field Luas Lahan wajib diisi.',
             'hasil_sebelum.required' => 'Field Hasil Sebelum wajib diisi.',
             'hasil_target.required' => 'Field Hasil Target wajib diisi.',
@@ -110,7 +115,7 @@ class PertanianController extends Controller
 
         $pertanian = Pertanian::findOrFail($id);
         $pertanian->nama_desa = $request->nama_desa;
-        $pertanian->komoditas = $request->komoditas;
+        $pertanian->komuditas = $request->komuditas;
         $pertanian->luas_lahan = $request->luas_lahan;
         $pertanian->hasil_sebelum = $request->hasil_sebelum;
         $pertanian->hasil_target = $request->hasil_target;
@@ -135,13 +140,14 @@ class PertanianController extends Controller
 
     public function show($id)
     {
-        $pertanian = Pertanian::findOrFail($id); // Ambil data pertanian berdasarkan ID
-
-        // Render view 'show' dan kirimkan data $pertanian
-        return view('comdev.site_sk.pertanian.show', compact('pertanian'));
+        $pertanian = Pertanian::findOrFail($id);
+        $pertanian->tanggal = \Carbon\Carbon::parse($pertanian->tanggal); // Pastikan tanggal adalah objek Carbon
+        return view('comdev.site_sk.pertanian.show', ['pertanian' => $pertanian]);
     }
 
-    function batal(){
+
+    function batal()
+    {
         return redirect('comdev/site_sk/pertanian');
     }
 }

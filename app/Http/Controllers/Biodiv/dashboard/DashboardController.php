@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Biodiv\orangutan\Orangutan;
 use App\Models\Biodiv\antropogenik\Antropogenik;
 use App\Models\Biodiv\Survei\Survei; // Tambahkan import model Survey
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -26,7 +27,10 @@ class DashboardController extends Controller
         $list_orangutan = Orangutan::all();
 
         // Mengambil data Survei
-        $list_survei = Survei::all(); // Atau query yang sesuai dengan kebutuhan Anda
+        $list_survei = survei::all()->map(function ($survei) {
+            $survei->formatted_bulan = Carbon::parse($survei->bulan)->Format('F Y');
+            return $survei;
+        }); // Atau query yang sesuai dengan kebutuhan Anda
 
         // Mengubah data ke format yang sesuai untuk JSON
         $formattedListAntropogenik = $list_antropogenik->map(function ($item) {
@@ -64,7 +68,7 @@ class DashboardController extends Controller
             'list_antropogenik' => $formattedListAntropogenik,
             'totalQuantity' => $totalQuantity,
             'list_orangutan' => $formattedListOrangutan,
-            'list_survei' => $formattedListSurvei, // Menambahkan data survei
+            'list_survei' => $list_survei, // Menambahkan data survei
         ]);
     }
 }

@@ -1,53 +1,80 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_pgsb/mangrove" />
-    <div class="card mt-3">
-         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Edit Data Mangrove Lokasi SK</h5>
-         </div>
-         <div class="card-body">
-            <form action="{{url('comdev/site_pgsb/mangrove', $mangrove->id)}}" method="post" enctype="multipart/form-data">
+    <x-utils.notif />
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="card-title m-0"><b>Edit Data Konservasi Mangrove Site PGSB</b></h4>
+        </div>
+        <div class="card-body">
+            <form action="{{ url('comdev/site_pgsb/mangrove/' . $mangrove->id) }}" method="POST">
                 @csrf
-                @method('put')
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="semester">Semester:</label>
-                            <input type="text" name="semester" value="{{ $mangrove->semester }}" class="form-control" id="semester">
+                            <label for="semester" class="font-weight-bold">Semester</label>
+                            <input type="text" class="form-control @error('semester') is-invalid @enderror"
+                                name="semester" id="semester" placeholder="Masukkan Semester"
+                                value="{{ old('semester', $mangrove->semester) }}" required>
+                            @error('semester')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="bibit_disemai">Disemai:</label>
-                            <input type="text" name="bibit_disemai" value="{{ $mangrove->bibit_disemai }}" class="form-control" id="bibit_disemai">
+                            <label for="bibit_disemai" class="font-weight-bold">Bibit Disemai</label>
+                            <input type="number" class="form-control @error('bibit_disemai') is-invalid @enderror"
+                                name="bibit_disemai" id="bibit_disemai" placeholder="Masukkan Bibit Disemai"
+                                value="{{ old('bibit_disemai', $mangrove->bibit_disemai) }}" required>
+                            @error('bibit_disemai')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="bibit_hidup">Hidup:</label>
-                            <input type="text" name="bibit_hidup" value="{{ $mangrove->bibit_hidup }}" class="form-control" id="bibit_hidup">
+                            <label for="bibit_mati" class="font-weight-bold">Bibit Mati</label>
+                            <input type="number" class="form-control @error('bibit_mati') is-invalid @enderror"
+                                name="bibit_mati" id="bibit_mati" placeholder="Masukkan Bibit Mati"
+                                value="{{ old('bibit_mati', $mangrove->bibit_mati) }}" required>
+                            @error('bibit_mati')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="bibit_mati">Mati:</label>
-                            <input type="text" name="bibit_mati" value="{{ $mangrove->bibit_mati }}" class="form-control" id="bibit_mati">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal:</label>
-                            <input type="date" name="tanggal" value="{{ $mangrove->tanggal }}" class="form-control" id="tanggal">
-                        </div>
-                        <div class="form-group">
-                            <label for="keterangan">Keterangan:</label>
-                            <input type="text" name="keterangan" value="{{ $mangrove->keterangan }}" class="form-control" id="keterangan">
+                            <label for="bibit_hidup" class="font-weight-bold">Bibit Hidup</label>
+                            <input type="number" class="form-control @error('bibit_hidup') is-invalid @enderror"
+                                name="bibit_hidup" id="bibit_hidup" placeholder="Masukkan Bibit Hidup"
+                                value="{{ old('bibit_hidup', $mangrove->bibit_hidup) }}" required>
+                            @error('bibit_hidup')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="file_foto">Foto:</label>
-                            <input type="file" name="file_foto" class="form-control-file" id="file_foto">
+                            <label for="tanggal" class="font-weight-bold">Tanggal Penanaman</label>
+                            <input type="date" class="form-control @error('tanggal') is-invalid @enderror"
+                                name="tanggal" id="tanggal" placeholder="Masukkan Tanggal"
+                                value="{{ old('tanggal', $mangrove->tanggal ? $mangrove->tanggal->format('Y-m-d') : '') }}"
+                                required>
+                            @error('tanggal')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="lokasi" class="font-weight-bold">Lokasi Penanaman</label>
+                            <textarea class="form-control @error('lokasi') is-invalid @enderror" name="lokasi" id="lokasi"
+                                placeholder="Masukkan lokasi">{{ old('lokasi', $mangrove->lokasi) }}</textarea>
+                            @error('lokasi')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>
-                <div class="form-group text-right">
+                <div class="d-flex justify-content-end">
+                    <a href="{{ url('comdev/site_pgsb/mangrove') }}" class="btn btn-secondary mr-2">
+                        <i class="fas fa-times-circle"></i> Kembali
+                    </a>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Simpan
                     </button>
                 </div>
             </form>
-         </div>
+        </div>
     </div>
 </x-module.comdev>

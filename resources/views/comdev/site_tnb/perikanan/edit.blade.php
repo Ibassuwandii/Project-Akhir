@@ -1,65 +1,108 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_tnb/perikanan" />
-    <div class="card mt-3">
-         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Edit Data Perikanan Lokasi TNB</h5>
-         </div>
-         <div class="card-body">
-            <form action="{{url('comdev/site_tnb/perikanan', $perikanan->id)}}" method="post" enctype="multipart/form-data">
+    <x-utils.notif />
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="card-title m-0"><b>Edit Data Perikanan Site TNB</b></h4>
+        </div>
+        <div class="card-body">
+            <form action="{{ url('comdev/site_tnb/perikanan/' . $perikanan->id) }}" method="POST">
                 @csrf
-                @method('put')
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="nama_desa">Nama Desa:</label>
-                            <input type="text" name="nama_desa" value="{{ $perikanan->nama_desa }}" class="form-control" id="nama_desa">
+                            <label for="nama_desa" class="font-weight-bold">Nama Desa</label>
+                            <input type="text" class="form-control @error('nama_desa') is-invalid @enderror" name="nama_desa" id="nama_desa"
+                                placeholder="Masukkan Nama Desa" value="{{ old('nama_desa', $perikanan->nama_desa) }}" required>
+                            @error('nama_desa')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="komuditas">Komuditas:</label>
-                            <input type="text" name="komuditas" value="{{ $perikanan->komuditas }}" class="form-control" id="komuditas">
+                            <label for="komuditas" class="font-weight-bold">Komuditas</label>
+                            <input type="text" class="form-control @error('komuditas') is-invalid @enderror" name="komuditas" id="komuditas"
+                                placeholder="Masukkan Komuditas" value="{{ old('komuditas', $perikanan->komuditas) }}" required>
+                            @error('komuditas')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="luas_kolam">Luas Kolam:</label>
-                            <input type="text" name="luas_kolam" value="{{ $perikanan->luas_kolam }}" class="form-control" id="luas_kolam">
+                            <label for="luas_kolam" class="font-weight-bold">Luas Kolam</label>
+                            <input type="text" class="form-control @error('luas_kolam') is-invalid @enderror" name="luas_kolam" id="luas_kolam"
+                                placeholder="Masukkan Luas Kolam" value="{{ old('luas_kolam', $perikanan->luas_kolam) }}" required>
+                            @error('luas_kolam')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="jumlah_penerima_laki_laki">Jumlah Penerima Laki-laki:</label>
-                            <input type="text" name="jumlah_penerima_laki_laki" value="{{ $perikanan->jumlah_penerima_laki_laki }}" class="form-control" id="jumlah_penerima_laki_laki">
+                            <label for="tanggal" class="font-weight-bold">Tanggal Kegiatan</label>
+                            <input type="date" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" id="tanggal"
+                                value="{{ old('tanggal', $perikanan->tanggal) }}" required>
+                            @error('tanggal')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="jumlah_penerima_perempuan">Jumlah Penerima Perempuan:</label>
-                            <input type="text" name="jumlah_penerima_perempuan" value="{{ $perikanan->jumlah_penerima_perempuan }}" class="form-control" id="jumlah_penerima_perempuan">
+                            <label for="hasil_sebelum" class="font-weight-bold">Produksi Sebelum</label>
+                            <input type="number" class="form-control @error('hasil_sebelum') is-invalid @enderror" name="hasil_sebelum" id="hasil_sebelum"
+                                placeholder="Masukkan Hasil Sebelum" value="{{ old('hasil_sebelum', $perikanan->hasil_sebelum) }}" required>
+                            @error('hasil_sebelum')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="hasil_sebelum">Hasil Sebelum:</label>
-                            <input type="text" name="hasil_sebelum" value="{{ $perikanan->hasil_sebelum }}" class="form-control" id="hasil_sebelum">
+                            <label for="jumlah_penerima_laki_laki" class="font-weight-bold">Jumlah Penerima Manfaat Laki-laki</label>
+                            <input type="number" class="form-control @error('jumlah_penerima_laki_laki') is-invalid @enderror" name="jumlah_penerima_laki_laki" id="jumlah_penerima_laki_laki"
+                                placeholder="Masukkan Jumlah Penerima Laki-laki" value="{{ old('jumlah_penerima_laki_laki', $perikanan->jumlah_penerima_laki_laki) }}" required>
+                            @error('jumlah_penerima_laki_laki')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="hasil_target">Hasil Target:</label>
-                            <input type="text" name="hasil_target" value="{{ $perikanan->hasil_target }}" class="form-control" id="hasil_target">
+                            <label for="jumlah_penerima_perempuan" class="font-weight-bold">Jumlah Penerima Manfaat Perempuan</label>
+                            <input type="number" class="form-control @error('jumlah_penerima_perempuan') is-invalid @enderror" name="jumlah_penerima_perempuan" id="jumlah_penerima_perempuan"
+                                placeholder="Masukkan Jumlah Penerima Perempuan" value="{{ old('jumlah_penerima_perempuan', $perikanan->jumlah_penerima_perempuan) }}" required>
+                            @error('jumlah_penerima_perempuan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="hasil_akhir">Hasil Akhir:</label>
-                            <input type="text" name="hasil_akhir" value="{{ $perikanan->hasil_akhir }}" class="form-control" id="hasil_akhir">
+                            <label for="hasil_target" class="font-weight-bold">Produksi Target</label>
+                            <input type="number" class="form-control @error('hasil_target') is-invalid @enderror" name="hasil_target" id="hasil_target"
+                                placeholder="Masukkan Hasil Target" value="{{ old('hasil_target', $perikanan->hasil_target) }}" required>
+                            @error('hasil_target')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="keterangan">Keterangan:</label>
-                            <input type="text" name="keterangan" value="{{ $perikanan->keterangan }}" class="form-control" id="keterangan">
+                            <label for="hasil_akhir" class="font-weight-bold">Produksi Hasil</label>
+                            <input type="number" class="form-control @error('hasil_akhir') is-invalid @enderror" name="hasil_akhir" id="hasil_akhir"
+                                placeholder="Masukkan Hasil Akhir" value="{{ old('hasil_akhir', $perikanan->hasil_akhir) }}" required>
+                            @error('hasil_akhir')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="file_foto">Foto:</label>
-                            <input type="file" name="file_foto" class="form-control-file" id="file_foto">
+                            <label for="keterangan" class="font-weight-bold">Keterangan</label>
+                            <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan"
+                                placeholder="Masukkan Keterangan">{{ old('keterangan', $perikanan->keterangan) }}</textarea>
+                            @error('keterangan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>
-                <div class="form-group text-right">
+                <div class="col-md-8 offset-md-4 d-flex justify-content-end">
+                    <a href="{{ url('comdev/site_tnb/perikanan') }}" class="btn btn-secondary mr-2">
+                        <i class="fas fa-times-circle"></i> Kembali
+                    </a>
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Simpan
+                        <i class="fas fa-save"></i> Simpan Perubahan
                     </button>
                 </div>
             </form>
-         </div>
+        </div>
     </div>
 </x-module.comdev>

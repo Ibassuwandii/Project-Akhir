@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Comdev\site_tnb;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_tnb\Perikanan;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TnbPerikananController extends Controller
 {
     public function index()
     {
-        $data['list_perikanan'] = Perikanan::all();
-        return view('comdev.site_tnb.perikanan.index',$data);
+        $list_perikanan = Perikanan::all()->map(function ($perikanan) {
+            $perikanan->formatted_tanggal = Carbon::parse($perikanan->tanggal)->format('d-m-Y');
+            return $perikanan;
+        });
+        return view('comdev.site_tnb.perikanan.index', ['list_perikanan' => $list_perikanan]);
     }
 
 
@@ -32,6 +36,7 @@ class TnbPerikananController extends Controller
             'keterangan' => 'required',
             'jumlah_penerima_laki_laki' => 'required',
             'jumlah_penerima_perempuan' => 'required',
+            'tanggal' => 'required',
             // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan persyaratan Anda
         ]);
 
@@ -45,6 +50,7 @@ class TnbPerikananController extends Controller
         $perikanan->keterangan = $request->keterangan;
         $perikanan->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
         $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
+        $perikanan->tanggal = $request->tanggal;
 
 
         $perikanan->handleUploadFoto();
@@ -79,6 +85,7 @@ class TnbPerikananController extends Controller
          $perikanan->keterangan = $request->keterangan;
          $perikanan->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
          $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
+         $perikanan->tanggal = $request->tanggal;
 
 
 
@@ -98,10 +105,10 @@ class TnbPerikananController extends Controller
 
     public function show($id)
     {
-        $perikanan = Perikanan::findOrFail($id); // Ambil data pertanian berdasarkan ID
+        $perikanan = Perikanan::findOrFail($id);
+        $perikanan->formatted_tanggal = Carbon::parse($perikanan->tanggal)->translatedFormat('d F Y');
 
-        // Render view 'show' dan kirimkan data $pertanian
-        return view('comdev.site_tnb.perikanan.show', compact('perikanan'));
+        return view('comdev.site_tnb.perikanan.show', ['perikanan' => $perikanan]);
     }
 
     function batal(){

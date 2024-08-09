@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Comdev\site_tnb;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_tnb\ProduksiTebu;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TnbProduksitebuController extends Controller
 {
     public function index()
     {
-        $data['list_produksitebu'] = ProduksiTebu::all();
-        return view('comdev.site_tnb.produksitebu.index', $data);
+        $list_produksitebu = Produksitebu::all()->map(function($produksitebu) {
+            $produksitebu->formatted_tanggal_produksi = Carbon::parse($produksitebu->tanggal_produksi)->translatedFormat('d F Y');
+            return $produksitebu;
+        });
+        return view('comdev.site_tnb.produksitebu.index', compact('list_produksitebu'));
     }
 
     public function create()

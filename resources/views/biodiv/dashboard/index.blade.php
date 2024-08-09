@@ -34,7 +34,7 @@
                     <div style="width: 100%; margin-bottom: 100px;">
                         <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Biodiversity
                             Report-PGL</p>
-                        <div class="chart-container" style="position: relative; height: 300px;">
+                        <div class="chart-container" style="position: relative; height: 100%; width: 100%;">
                             <canvas id="pglChart"></canvas>
                         </div>
                     </div>
@@ -45,9 +45,9 @@
                     <div style="width: 100%; margin-bottom: 100px;">
                         <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Biodiversity
                             Report-BBBR NP</p>
-                            <div class="chart-container" style="position: relative; height: 300px;">
-                                <canvas id="observationChart"></canvas>
-                            </div>
+                        <div class="chart-container" style="position: relative; height: 100%; width: 100%;">
+                            <canvas id="observationChart"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="custom-tabs-one-contact" role="tabpanel"
@@ -56,7 +56,7 @@
                     <div style="width: 100%; margin-bottom: 100px;">
                         <p style="text-align: center; margin-top: 10px; font-weight: bold;">Diagram Orangutan Population
                         </p>
-                        <div class="chart-container" style="position: relative; height: 300px;">
+                        <div class="chart-container" style="position: relative; height: 100%; width: 100%;">
                             <canvas id="orangutanChart"></canvas>
                         </div>
                         <!-- Additional content or chart for this tab -->
@@ -350,6 +350,92 @@
             }
 
             document.getElementById('filterButton').addEventListener('click', filterData);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data from the server
+            const data = @json($list_survei);
+
+            // Extract unique months
+            const months = [...new Set(data.map(survei => survei.formatted_bulan))].sort();
+
+            // Initialize data structure
+            const taxa = [...new Set(data.map(survei => survei.taxa))];
+            const dataset = taxa.map(taxaType => {
+                return {
+                    label: taxaType,
+                    data: months.map(month => {
+                        // Filter data for each month and taxa
+                        const filteredData = data
+                            .filter(survei => survei.taxa === taxaType && survei.formatted_bulan ===
+                                month);
+
+                        // If no data is found, return 0
+                        if (filteredData.length === 0) {
+                            return 0;
+                        }
+
+                        // Sum up the observations for this taxa and month
+                        return filteredData.reduce((sum, survei) => sum + parseFloat(survei
+                            .observation), 0);
+                    }),
+                    backgroundColor: getRandomColor(),
+                    borderColor: getRandomColor(),
+                    borderWidth: 1
+                };
+            });
+
+            // Function to generate random colors for each taxa
+            function getRandomColor() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            // Create chart
+            const ctx = document.getElementById('observationChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: dataset
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true, // Stack the bars for better comparison
+                            beginAtZero: true
+                        },
+                        y: {
+                            stacked: true, // Stack the bars for better comparison
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return Number(value).toFixed(
+                                        0); // Format number without decimal places
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         });
     </script>
 </x-module.biodiv>

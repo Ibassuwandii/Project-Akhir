@@ -1,7 +1,7 @@
 <x-module.comdev>
     <div class="">
         <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Edit Data Konservasi Mangrove Lokasi SK</h5>
+            <h5 class="card-title">Edit Data Konservasi Mangrove Site PGSB</h5>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ url('comdev/site_pgsb/mangrove/' . $mangrove->id) }}" enctype="multipart/form-data">

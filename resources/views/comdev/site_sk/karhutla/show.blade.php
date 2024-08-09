@@ -1,73 +1,42 @@
 <x-module.comdev>
-    <x-template.button.back-button url="comdev/site_sk/karhutla" />
-
-    <div class="card mt-2">
-        <div class="card-header bg-cyan text-white">
-            <h5 class="card-title"><b>Detail Data Karhutla Lokasi SK</b></h5>
+    <x-utils.notif />
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="card-title m-0"><b>Detail Data Patroli Karhutla</b></h4>
         </div>
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Jangkauan Patroli:</label>
-                        <p>{{ $karhutla->jangkauan_patroli }}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Tanggal Patroli:</label>
-                        <p>{{ $karhutla->tanggal_patroli }}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Titik Koordinat:</label>
-                        <p>{{ $karhutla->titik_koordinat }}</p>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="jangkauan_patroli" class="font-weight-bold">Jangkauan Patroli</label>
+                <p id="jangkauan_patroli">{{ $karhutla->jangkauan_patroli }}</p>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Luas Lahan:</label>
-                        <p>{{ $karhutla->luas_lahan }}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Pemilik Lahan:</label>
-                        <p>{{ $karhutla->pemilik_lahan }}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Jumlah Patroli:</label>
-                        <p>{{ $karhutla->jumlah_patroli }}</p>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="jumlah_patroli" class="font-weight-bold">Jumlah Patroli</label>
+                <p id="jumlah_patroli">{{ $karhutla->jumlah_patroli }}</p>
             </div>
-            <div class="row mb-4">
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Sosialisasi:</label>
-                        <p>{{ $karhutla->sosialisasi }}</p>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="tanggal" class="font-weight-bold">Tanggal Kegiatan</label>
+                <p class="form-control-plaintext">{{ $karhutla->formatted_tanggal_patroli }}</p>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Dokumentasi:</label><br>
-                        @if ($karhutla->file_foto)
-                            <a href="{{ url('public') }}/{{ $karhutla->file_foto }}" target="_blank">
-                                <img src="{{ url('public') }}/{{ $karhutla->file_foto }}" alt="Gambar karhutla"
-                                     style="max-width: 400px; max-height: 400px;" class="img-fluid">
-                            </a>
-                        @else
-                            <p>Tidak ada gambar</p>
-                        @endif
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="titik_koordinat" class="font-weight-bold">Titik Koordinat</label>
+                <p id="titik_koordinat">{{ $karhutla->titik_koordinat }}</p>
+            </div>
+            <div class="form-group">
+                <label for="luas_lahan" class="font-weight-bold">Luas Lahan</label>
+                <p id="luas_lahan">{{ $karhutla->luas_lahan }}</p>
+            </div>
+            <div class="form-group">
+                <label for="pemilik_lahan" class="font-weight-bold">Pemilik Lahan</label>
+                <p id="pemilik_lahan">{{ $karhutla->pemilik_lahan }}</p>
+            </div>
+            <div class="form-group">
+                <label for="sosialisasi" class="font-weight-bold">Sosialisasi</label>
+                <p id="sosialisasi">{{ $karhutla->sosialisasi }}</p>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="{{ url('comdev/site_sk/karhutla') }}" class="btn btn-secondary mr-2">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ class PgsbPerikananController extends Controller
 {
     public function index()
     {
-        $list_perikanan = perikanan::all()->map(function($perikanan) {
+        $list_perikanan = Perikanan::all()->map(function($perikanan) {
             $perikanan->formatted_tanggal = Carbon::parse($perikanan->tanggal)->translatedFormat('d F Y');
             return $perikanan;
         });
@@ -52,7 +52,7 @@ class PgsbPerikananController extends Controller
 
         $perikanan->save();
         $perikanan->handleUploadFoto();
-        return redirect('divisi/comdev/site_pgsb/perikanan');
+        return redirect('comdev/site_pgsb/perikanan');
     }
 
 

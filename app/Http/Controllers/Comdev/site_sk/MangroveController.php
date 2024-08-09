@@ -11,8 +11,8 @@ class MangroveController extends Controller
 {
     public function index()
     {
-        $list_mangrove = Mangrove::all()->map(function($mangrove) {
-            $mangrove->formatted_tanggal = Carbon::parse($mangrove->tanggal)->translatedFormat('d F Y');
+        $list_mangrove = Mangrove::all()->map(function ($mangrove) {
+            $mangrove->formatted_tanggal_patroli = Carbon::parse($mangrove->tanggal_patroli)->translatedFormat('d F Y');
             return $mangrove;
         });
         return view('comdev.site_sk.mangrove.index', compact('list_mangrove'));
@@ -31,7 +31,7 @@ class MangroveController extends Controller
             'bibit_hidup' => 'required|numeric',
             'bibit_mati' => 'required|numeric',
             'tanggal' => 'required|date',
-            'keterangan' => 'required',
+            'lokasi' => 'required',
             'file_foto.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'semester.required' => 'Field Semester wajib diisi.',
@@ -43,7 +43,7 @@ class MangroveController extends Controller
             'bibit_mati.numeric' => 'Field Bibit Mati harus berupa angka.',
             'tanggal.required' => 'Field Tanggal wajib diisi.',
             'tanggal.date' => 'Field Tanggal harus berupa tanggal yang valid.',
-            'keterangan.required' => 'Field Keterangan wajib diisi.',
+            'lokasi.required' => 'Field lokasi wajib diisi.',
             'file_foto.*.image' => 'File harus berupa gambar.',
             'file_foto.*.mimes' => 'File harus berupa gambar dengan format jpeg, png, jpg, atau gif.',
             'file_foto.*.max' => 'Ukuran file tidak boleh lebih dari 2048 KB.',
@@ -55,7 +55,7 @@ class MangroveController extends Controller
         $mangrove->bibit_hidup = $request->bibit_hidup;
         $mangrove->bibit_mati = $request->bibit_mati;
         $mangrove->tanggal = $request->tanggal;
-        $mangrove->keterangan = $request->keterangan;
+        $mangrove->lokasi = $request->lokasi;
 
         $mangrove->handleUploadFoto();
         $mangrove->save();
@@ -63,10 +63,16 @@ class MangroveController extends Controller
         return redirect('comdev/site_sk/mangrove')->with('create', 'Data mangrove berhasil ditambahkan.');
     }
 
-    public function edit(Mangrove $mangrove)
+    public function edit($id)
     {
-        $data['mangrove'] = $mangrove;
-        return view('comdev.site_sk.mangrove.edit', $data);
+
+        $mangrove = Mangrove::findOrFail($id);
+
+        if (is_string($mangrove->tanggal)) {
+            $mangrove->tanggal = Carbon::parse($mangrove->tanggal);
+        }
+
+        return view('comdev.site_sk.mangrove.edit', compact('mangrove'));
     }
 
     public function update(Request $request, $id)
@@ -77,7 +83,7 @@ class MangroveController extends Controller
             'bibit_hidup' => 'required|numeric',
             'bibit_mati' => 'required|numeric',
             'tanggal' => 'required|date',
-            'keterangan' => 'required',
+            'lokasi' => 'required',
             'file_foto.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'semester.required' => 'Field Semester wajib diisi.',
@@ -89,7 +95,7 @@ class MangroveController extends Controller
             'bibit_mati.numeric' => 'Field Bibit Mati harus berupa angka.',
             'tanggal.required' => 'Field Tanggal wajib diisi.',
             'tanggal.date' => 'Field Tanggal harus berupa tanggal yang valid.',
-            'keterangan.required' => 'Field Keterangan wajib diisi.',
+            'lokasi.required' => 'Field lokasi wajib diisi.',
             'file_foto.*.image' => 'File harus berupa gambar.',
             'file_foto.*.mimes' => 'File harus berupa gambar dengan format jpeg, png, jpg, atau gif.',
             'file_foto.*.max' => 'Ukuran file tidak boleh lebih dari 2048 KB.',
@@ -101,7 +107,7 @@ class MangroveController extends Controller
         $mangrove->bibit_hidup = $request->bibit_hidup;
         $mangrove->bibit_mati = $request->bibit_mati;
         $mangrove->tanggal = $request->tanggal;
-        $mangrove->keterangan = $request->keterangan;
+        $mangrove->lokasi = $request->lokasi;
 
         $mangrove->save();
         if ($request->hasFile('file_foto')) {

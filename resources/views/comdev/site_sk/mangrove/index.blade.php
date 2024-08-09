@@ -21,12 +21,12 @@
                             <table id="example1" class="table table-bordered table-striped container-fluid" style="width: 100%;">
                                 <thead class="bg-secondary text-white">
                                     <tr>
-                                        <th style="padding: 2px 20px 1px 1px;" rowspan="2">No</th>
-                                        <th style="padding: 2px 20px 1px 1px;" rowspan="2">Aksi</th>
+                                        <th style="padding: 6px" width="50" rowspan="2">No</th>
+                                        <th style="padding: 6px" width="50" rowspan="2">Aksi</th>
                                         <th style="padding: 2px 20px 1px 1px;" rowspan="2">Semester</th>
                                         <th style="padding: 2px 20px 1px 1px;" colspan="3" style="text-align: center">Data Bibit</th>
                                         <th style="padding: 2px 20px 1px 1px;" rowspan="2">Tanggal Penanaman</th>
-                                        <th style="padding: 2px 20px 1px 1px;" rowspan="2">Keterangan</th>
+                                        <th style="padding: 2px 20px 1px 1px;" rowspan="2">Lokasi</th>
                                     </tr>
                                     <tr style="text-align: center">
                                         <th style="padding: 2px 20px 1px 1px;">Disemai</th>
@@ -38,21 +38,21 @@
                                     @foreach ($list_mangrove as $mangrove)
                                     <tr>
                                         <td class="text-center" style="padding: 2px" >{{ $loop->iteration}}</td>
-                                        <td class="text-center" style="padding: 2px" >
+                                        <td style="padding: 2px" >
                                             <div class="btn-group">
-                                                <x-template.button.info-button url="comdev/site_sk/mangrove"
-                                                    id="{{ $mangrove->id }}" />
+                                                {{-- <x-template.button.info-button url="comdev/site_sk/mangrove"
+                                                    id="{{ $mangrove->id }}" /> --}}
                                                 <x-template.button.edit-button url="comdev/site_sk/mangrove"
                                                     id="{{ $mangrove->id }}" />
                                                 <x-template.button.delete-button  id="{{$mangrove->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td class="text-left">{{ $mangrove->semester }}</td>
-                                        <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_hidup }}</td>
+                                        <td style="padding: 2px" class="text-left">{{ $mangrove->semester }}</td>
+                                        <td style="padding: 2px" class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_hidup }}</td>
                                         <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_mati }}</td>
                                         <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_hidup }}</td>
-                                        <td class="text-left">{{ $mangrove->formatted_tanggal }}</td>
-                                        <td class="text-left">{{ $mangrove->keterangan }}</td>
+                                        <td style="padding: 2px" class="text-left">{{ $mangrove->formatted_tanggal }}</td>
+                                        <td style="padding: 2px" class="text-left">{{ $mangrove->lokasi }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

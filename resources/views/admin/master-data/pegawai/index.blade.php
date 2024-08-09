@@ -18,18 +18,25 @@
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="bg-secondary text-white">
                         <tr>
-                            <th style="padding: 6px">No</th>
+                            <th style="padding: 6px" width="50">No</th>
+                            <th style="padding: 6px" width="100px">Aksi</th>
                             <th style="padding: 6px">Nama Pegawai</th>
                             <th style="padding: 6px">Email</th>
                             <th style="padding: 6px">Jabatan</th>
                             {{-- <th style="padding: 6px">Departemen</th> --}}
-                            <th style="padding: 6px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($list_pegawai as $pegawai)
                         <tr>
                             <td style="padding: 2px">{{ $loop->iteration }}</td>
+                            <td class="text-center" style="padding: 2px">
+                                <div class="btn-group">
+                                    {{-- <x-template.button.info-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" /> --}}
+                                    <x-template.button.edit-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
+                                    <x-template.button.delete-button id="{{ $pegawai->id }}" path="" />
+                                </div>
+                            </td>
                             <td style="padding: 2px">
                                 <div class="d-flex align-items-center">
                                     <span>{{ $pegawai->nama }}</span>
@@ -38,13 +45,6 @@
                             <td class="text-left" style="padding: 2px">{{ $pegawai->email }}</td>
                             <td class="text-left" style="padding: 2px">{{ $pegawai->jabatan }}</td>
                             {{-- <td>{{ $pegawai->departemen }}</td> --}}
-                            <td class="text-center" style="padding: 2px">
-                                <div class="btn-group">
-                                    {{-- <x-template.button.info-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" /> --}}
-                                    <x-template.button.edit-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
-                                    <x-template.button.delete-button  id="{{$pegawai->id}}" path="" />
-                                </div>
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>

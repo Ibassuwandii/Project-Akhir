@@ -11,7 +11,7 @@ class PgsbPertanianController extends Controller
 {
     public function index()
     {
-        $list_pertanian = pertanian::all()->map(function($pertanian) {
+        $list_pertanian = pertanian::all()->map(function ($pertanian) {
             $pertanian->formatted_tanggal = Carbon::parse($pertanian->tanggal)->translatedFormat('d F Y');
             return $pertanian;
         });
@@ -56,10 +56,12 @@ class PgsbPertanianController extends Controller
     }
 
 
-    public function edit( Pertanian $pertanian)
+    public function edit($id)
     {
-        $data['pertanian'] = $pertanian;
-        return view('comdev.site_pgsb.pertanian.edit', $data);
+        $pertanian = Pertanian::findOrFail($id);
+        // Pastikan tanggal adalah objek Carbon
+        $pertanian->tanggal = \Carbon\Carbon::parse($pertanian->tanggal);
+        return view('comdev.site_pgsb.pertanian.edit', ['pertanian' => $pertanian]);
     }
 
 
@@ -68,39 +70,39 @@ class PgsbPertanianController extends Controller
 
     public function update(Request $request, $id)
     {
-         // Mengambil laporan dari basis data berdasarkan ID
-         $pertanian = Pertanian::findOrFail($id);
+        // Mengambil laporan dari basis data berdasarkan ID
+        $pertanian = Pertanian::findOrFail($id);
 
-         // Menetapkan nilai properti dari permintaan
-         $pertanian->nama_desa = $request->nama_desa;
-         $pertanian->komuditas = $request->komuditas;
-         $pertanian->luas_lahan = $request->luas_lahan;
-         $pertanian->hasil_sebelum = $request->hasil_sebelum;
-         $pertanian->hasil_target = $request->hasil_target;
-         $pertanian->hasil_akhir = $request->hasil_akhir;
-         $pertanian->keterangan = $request->keterangan;
-         $pertanian->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
-         $pertanian->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
+        // Menetapkan nilai properti dari permintaan
+        $pertanian->nama_desa = $request->nama_desa;
+        $pertanian->komuditas = $request->komuditas;
+        $pertanian->luas_lahan = $request->luas_lahan;
+        $pertanian->hasil_sebelum = $request->hasil_sebelum;
+        $pertanian->hasil_target = $request->hasil_target;
+        $pertanian->hasil_akhir = $request->hasil_akhir;
+        $pertanian->keterangan = $request->keterangan;
+        $pertanian->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
+        $pertanian->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
 
 
 
         $pertanian->save();
-        if(request('file_foto')) $pertanian->handleUploadFoto();
+        if (request('file_foto')) $pertanian->handleUploadFoto();
         return redirect('comdev/site_pgsb/pertanian');
     }
 
     public function destroy(Pertanian $pertanian)
     {
-            $pertanian->delete();
-            $pertanian->handleDeleteFoto();
-            return redirect()->back()->with('success', 'Data pertanian berhasil dihapus.');
+        $pertanian->delete();
+        $pertanian->handleDeleteFoto();
+        return redirect()->back()->with('success', 'Data pertanian berhasil dihapus.');
     }
 
 
     public function show($id)
     {
         $pertanian = Pertanian::findOrFail($id);
-        return view('comdev.site_pgsb.pertanian.show', compact('pertanian'));
+        $pertanian->tanggal = \Carbon\Carbon::parse($pertanian->tanggal); // Pastikan tanggal adalah objek Carbon
+        return view('comdev.site_pgsb.pertanian.show', ['pertanian' => $pertanian]);
     }
-
 }

@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Comdev\site_sk;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_sk\Tpom;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class TpomController extends Controller
 {
     public function index()
     {
-        $data['list_tpom'] = Tpom::all();
-        return view('comdev.site_sk.tpom.index', $data);
+        $list_tpom = Tpom::all()->map(function ($tpom) {
+            $tpom->formatted_tanggal_patroli = Carbon::parse($tpom->tanggal_patroli)->format('d-m-Y');
+            return $tpom;
+        });
+        return view('comdev.site_sk.tpom.index', ['list_tpom' => $list_tpom]);
     }
-
     public function create()
     {
         return view('comdev.site_sk.tpom.create');
@@ -111,7 +115,10 @@ class TpomController extends Controller
 
     public function show($id)
     {
+
         $tpom = Tpom::findOrFail($id);
+        $tpom->formatted_tanggal_patroli = Carbon::parse($tpom->tanggal_patroli)->translatedFormat('j F Y');
+
         return view('comdev.site_sk.tpom.show', compact('tpom'));
     }
 

@@ -22,12 +22,12 @@
                                 <thead class="bg-secondary text-white">
                                     <tr>
                                         <th rowspan="2" style="padding: 6px; text-align: center;">No</th>
-                                        <th rowspan="2" style="padding: 6px; text-align: center;">Aksi</th>
+                                        <th style="padding: 6px" width="50" rowspan="2">Aksi</th>
                                         <th rowspan="2" style="padding: 6px; text-align: center;">Nama Desa</th>
                                         {{-- <th rowspan="2" style="padding: 6px; text-align: center;">Komoditas</th> --}}
                                         <th colspan="4" style="text-align: center; padding: 6px;">Produksi</th>
                                         <th colspan="2" style="text-align: center; padding: 6px;">Jumlah Penerima Manfaat</th>
-                                        <th rowspan="2" style="padding: 6px; text-align: center;">Tanggal Kegiatan</th>
+                                        {{-- <th rowspan="2" style="padding: 6px; text-align: center;">Tanggal Kegiatan</th> --}}
                                     </tr>
                                     <tr style="text-align: center;">
                                         <th style="padding: 6px;">Sebelum</th>
@@ -42,7 +42,7 @@
                                     @foreach ($list_pertanian as $pertanian)
                                     <tr>
                                         <td class="text-center" style="padding: 6px;">{{ $loop->iteration }}</td>
-                                        <td class="text-center" style="padding: 6px;">
+                                        <td style="padding: 2px">
                                             <div class="btn-group">
                                                 <x-template.button.info-button url="comdev/site_sk/pertanian" id="{{ $pertanian->id }}" />
                                                 <x-template.button.edit-button url="comdev/site_sk/pertanian" id="{{ $pertanian->id }}" />
@@ -51,13 +51,13 @@
                                         </td>
                                         <td class="text-left" style="padding: 6px;">{{ $pertanian->nama_desa }}</td>
                                         {{-- <td style="padding: 6px;">{{ $pertanian->komuditas }}</td> --}}
-                                        <td class="text-right" style="padding: 6px;">{{ $pertanian->hasil_sebelum }}</td>
-                                        <td class="text-right" style="padding: 6px;">{{ $pertanian->hasil_target }}</td>
-                                        <td class="text-right" style="padding: 6px;">{{ $pertanian->hasil_akhir }}</td>
+                                        <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $pertanian->hasil_sebelum }}</td>
+                                        <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $pertanian->hasil_target }}</td>
+                                        <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $pertanian->hasil_akhir }}</td>
                                         <td class="text-left" style="padding: 6px;">{{ $pertanian->keterangan }}</td>
-                                        <td class="text-right" style="padding: 6px;">{{ $pertanian->jumlah_penerima_laki_laki }}</td>
-                                        <td class="text-right" style="padding: 6px;">{{ $pertanian->jumlah_penerima_perempuan }}</td>
-                                        <td class="text-left" style="padding: 6px;">{{ $pertanian->formatted_tanggal }}</td>
+                                        <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $pertanian->jumlah_penerima_laki_laki }}</td>
+                                        <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $pertanian->jumlah_penerima_perempuan }}</td>
+                                        {{-- <td class="text-left" style="padding: 6px;">{{ $pertanian->formatted_tanggal }}</td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>

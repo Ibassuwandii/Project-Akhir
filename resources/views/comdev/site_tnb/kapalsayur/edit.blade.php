@@ -1,83 +1,83 @@
 <x-module.comdev>
-    <div class="card mt-2">
-        <div class="card-header bg-cyan text-white">
-            <h5 class="card-title">Edit Data Kapal Sayur Lokasi TNB</h5>
+    <x-utils.notif />
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="card-title m-0"><b>Edit Data Kapal Sayur Site TNB</b></h4>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('comdev/site_tnb/kapalsayur/' . $kapalsayur->id) }}" enctype="multipart/form-data">
+            <form action="{{ url('comdev/site_tnb/kapalsayur/' . $kapalsayur->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="tanggal_trip" class="control-label">Tanggal Trip</label>
-                                <input type="date" name="tanggal_trip" id="tanggal_trip" class="form-control @error('tanggal_trip') is-invalid @enderror" value="{{ old('tanggal_trip', $kapalsayur->tanggal_trip) }}">
-                                @error('tanggal_trip')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nama" class="font-weight-bold">Nama</label>
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama"
+                                placeholder="Masukkan Nama" value="{{ old('nama', $kapalsayur->nama) }}" required>
+                            @error('nama')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="jumlah_trip" class="control-label">Jumlah Trip</label>
-                                <input type="text" name="jumlah_trip" id="jumlah_trip" class="form-control @error('jumlah_trip') is-invalid @enderror" value="{{ old('jumlah_trip', $kapalsayur->jumlah_trip) }}">
-                                @error('jumlah_trip')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="form-group">
+                            <label for="id_nama" class="font-weight-bold">ID Nama</label>
+                            <input type="text" class="form-control @error('id_nama') is-invalid @enderror" name="id_nama" id="id_nama"
+                                placeholder="Masukkan ID Nama" value="{{ old('id_nama', $kapalsayur->id_nama) }}" required>
+                            @error('id_nama')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="hasil_penjualan" class="control-label">Hasil Penjualan</label>
-                                <input type="text" name="hasil_penjualan" id="hasil_penjualan" class="form-control @error('hasil_penjualan') is-invalid @enderror" value="{{ old('hasil_penjualan', $kapalsayur->hasil_penjualan) }}">
-                                @error('hasil_penjualan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="form-group">
+                            <label for="jenis_kelamin" class="font-weight-bold">Jenis Kelamin</label>
+                            <select class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" id="jenis_kelamin" required>
+                                <option value="" disabled {{ old('jenis_kelamin', $kapalsayur->jenis_kelamin) == '' ? 'selected' : '' }}>Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki" {{ old('jenis_kelamin', $kapalsayur->jenis_kelamin) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                <option value="Perempuan" {{ old('jenis_kelamin', $kapalsayur->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                            </select>
+                            @error('jenis_kelamin')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal_trip" class="font-weight-bold">Tanggal Trip</label>
+                            <input type="date" class="form-control @error('tanggal_trip') is-invalid @enderror" name="tanggal_trip" id="tanggal_trip"
+                                value="{{ old('tanggal_trip', $kapalsayur->tanggal_trip) }}" required>
+                            @error('tanggal_trip')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="jumlah_trip" class="font-weight-bold">Jumlah Trip</label>
+                            <input type="number" class="form-control @error('jumlah_trip') is-invalid @enderror" name="jumlah_trip" id="jumlah_trip"
+                                placeholder="Masukkan Jumlah Trip" value="{{ old('jumlah_trip', $kapalsayur->jumlah_trip) }}" required>
+                            @error('jumlah_trip')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="hasil_penjualan" class="font-weight-bold">Hasil Penjualan</label>
+                            <input type="number" class="form-control @error('hasil_penjualan') is-invalid @enderror" name="hasil_penjualan" id="hasil_penjualan"
+                                placeholder="Masukkan Hasil Penjualan" value="{{ old('hasil_penjualan', $kapalsayur->hasil_penjualan) }}" required>
+                            @error('hasil_penjualan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="iuran" class="font-weight-bold">Iuran</label>
+                            <input type="number" class="form-control @error('iuran') is-invalid @enderror" name="iuran" id="iuran"
+                                placeholder="Masukkan Jumlah Iuran" value="{{ old('iuran', $kapalsayur->iuran) }}" required>
+                            @error('iuran')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="keterangan" class="control-label">Keterangan</label>
-                                <input type="text" name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror" value="{{ old('keterangan', $kapalsayur->keterangan) }}">
-                                @error('keterangan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="file_foto">Foto</label>
-                                <input type="file" name="file_foto" class="form-control-file @error('file_foto') is-invalid @enderror" id="file_foto">
-                                @error('file_foto')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                @if($kapalsayur->file_foto)
-                                    <img src="{{ asset('storage/' . $kapalsayur->file_foto) }}" alt="Current Foto" class="img-thumbnail mt-2" width="150">
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 offset-md-4 d-flex justify-content-end">
-                        <a href="{{ url('comdev/site_tnb/kapalsayur') }}" class="btn btn-secondary mr-2">
-                            <i class="fas fa-times-circle"></i> Batal
-                        </a>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save"></i> Simpan
-                        </button>
-                    </div>
+                </div>
+                <div class="col-md-8 offset-md-4 d-flex justify-content-end">
+                    <a href="{{ url('comdev/site_tnb/kapalsayur') }}" class="btn btn-secondary mr-2">
+                        <i class="fas fa-times-circle"></i> Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Simpan
+                    </button>
                 </div>
             </form>
         </div>

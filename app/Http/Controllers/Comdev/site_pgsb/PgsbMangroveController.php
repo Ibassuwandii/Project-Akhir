@@ -32,7 +32,7 @@ class PgsbMangroveController extends Controller
             'bibit_hidup' => 'required',
             'bibit_mati' => 'required',
             'tanggal' => 'required',
-            'keterangan' => 'required',
+            'lokasi' => 'required',
 
         ]);
 
@@ -42,7 +42,7 @@ class PgsbMangroveController extends Controller
         $mangrove->bibit_hidup = $request->bibit_hidup;
         $mangrove->bibit_mati = $request->bibit_mati;
         $mangrove->tanggal = $request->tanggal;
-        $mangrove->keterangan = $request->keterangan;
+        $mangrove->lokasi = $request->lokasi;
 
         $mangrove->handleUploadFoto();
         $mangrove->save();
@@ -50,10 +50,16 @@ class PgsbMangroveController extends Controller
         return redirect('comdev/site_pgsb/mangrove'); // Redirect ke index
     }
 
-    public function edit( Mangrove $mangrove)
+    public function edit($id)
     {
-        $data['mangrove'] = $mangrove;
-        return view('comdev/site_pgsb/mangrove/edit', $data);
+
+        $mangrove = Mangrove::findOrFail($id);
+
+        if (is_string($mangrove->tanggal)) {
+            $mangrove->tanggal = Carbon::parse($mangrove->tanggal);
+        }
+
+        return view('comdev.site_pgsb.mangrove.edit', compact('mangrove'));
     }
 
 
@@ -68,7 +74,7 @@ class PgsbMangroveController extends Controller
         $mangrove->bibit_hidup = $request->bibit_hidup;
         $mangrove->bibit_mati = $request->bibit_mati;
         $mangrove->tanggal = $request->tanggal;
-        $mangrove->keterangan = $request->keterangan;
+        $mangrove->lokasi = $request->lokasi;
 
         $mangrove->save();
         if(request('file_foto')) $mangrove->handleUploadFoto();

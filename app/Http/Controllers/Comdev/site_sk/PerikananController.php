@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Comdev\site_sk;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_sk\Perikanan;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class PerikananController extends Controller
 {
     public function index()
     {
-        $data['list_perikanan'] = Perikanan::all();
-        return view('comdev.site_sk.perikanan.index', $data);
+        $list_perikanan = Perikanan::all()->map(function ($perikanan) {
+            $perikanan->formatted_tanggal = Carbon::parse($perikanan->tanggal)->format('d-m-Y');
+            return $perikanan;
+        });
+        return view('comdev.site_sk.perikanan.index', ['list_perikanan' => $list_perikanan]);
     }
 
     public function create()
@@ -31,7 +36,8 @@ class PerikananController extends Controller
             'keterangan' => 'required',
             'jumlah_penerima_laki_laki' => 'required',
             'jumlah_penerima_perempuan' => 'required',
-            'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'tanggal' => 'required',
+            // 'file_foto' => 'required|image|mimes:jpeg,png,jpg,gif',
         ], [
             'nama_desa.required' => 'Field Nama Desa wajib diisi.',
             'komuditas.required' => 'Field Komuditas wajib diisi.',
@@ -42,9 +48,9 @@ class PerikananController extends Controller
             'keterangan.required' => 'Field Keterangan wajib diisi.',
             'jumlah_penerima_laki_laki.required' => 'Field Jumlah Penerima Laki-Laki wajib diisi.',
             'jumlah_penerima_perempuan.required' => 'Field Jumlah Penerima Perempuan wajib diisi.',
-            'file_foto.required' => 'Field Foto wajib diisi.',
-            'file_foto.image' => 'File harus berupa gambar.',
-            'file_foto.mimes' => 'File harus berupa gambar dengan format jpeg, png, jpg, atau gif.',
+            // 'file_foto.required' => 'Field Foto wajib diisi.',
+            // 'file_foto.image' => 'File harus berupa gambar.',
+            // 'file_foto.mimes' => 'File harus berupa gambar dengan format jpeg, png, jpg, atau gif.',
         ]);
 
         $perikanan = new Perikanan;
@@ -57,6 +63,7 @@ class PerikananController extends Controller
         $perikanan->keterangan = $request->keterangan;
         $perikanan->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
         $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
+        $perikanan->tanggal = $request->tanggal;
 
         $perikanan->handleUploadFoto();
         $perikanan->save();
@@ -82,6 +89,7 @@ class PerikananController extends Controller
             'keterangan' => 'required',
             'jumlah_penerima_laki_laki' => 'required',
             'jumlah_penerima_perempuan' => 'required',
+            'tanggal' => 'required',
             'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ], [
             'nama_desa.required' => 'Field Nama Desa wajib diisi.',
@@ -107,9 +115,10 @@ class PerikananController extends Controller
         $perikanan->keterangan = $request->keterangan;
         $perikanan->jumlah_penerima_laki_laki = $request->jumlah_penerima_laki_laki;
         $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
+        $perikanan->tanggal = $request->tanggal;
 
         $perikanan->save();
-        if($request->hasFile('file_foto')) $perikanan->handleUploadFoto();
+        if ($request->hasFile('file_foto')) $perikanan->handleUploadFoto();
 
         return redirect('comdev/site_sk/perikanan')->with('update', 'Data perikanan berhasil diperbarui.');
     }
@@ -123,10 +132,10 @@ class PerikananController extends Controller
 
     public function show($id)
     {
-        $perikanan = Perikanan::findOrFail($id); // Ambil data perikanan berdasarkan ID
+        $perikanan = Perikanan::findOrFail($id);
+        $perikanan->formatted_tanggal = Carbon::parse($perikanan->tanggal)->translatedFormat('d F Y');
 
-        // Render view 'show' dan kirimkan data $perikanan
-        return view('comdev.site_sk.perikanan.show', compact('perikanan'));
+        return view('comdev.site_sk.perikanan.show', ['perikanan' => $perikanan]);
     }
 
     public function batal()
