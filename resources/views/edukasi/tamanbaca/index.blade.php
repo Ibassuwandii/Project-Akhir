@@ -7,7 +7,7 @@
                     <h4 class="card-title m-0"><b>Data Taman Baca</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('edukasi/tamanbaca/create') }}" class="btn btn-success">
+                    <a href="{{ url('edukasi/tamanbaca/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>

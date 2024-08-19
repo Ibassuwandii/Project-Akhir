@@ -159,3 +159,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 
 
+Route::post('comdevview/dokumentasi/{id}/comment', [DokumentasiController::class, 'storeComment'])
+    ->name('comdevview.dokumentasi.storeComment');

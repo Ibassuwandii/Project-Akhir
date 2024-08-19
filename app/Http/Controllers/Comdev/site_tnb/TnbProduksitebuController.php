@@ -30,7 +30,7 @@ class TnbProduksitebuController extends Controller
             'tanggal_produksi' => 'required|date',
             'produksi' => 'required',
             'hasil_penjualan' => 'required',
-            'keterangan' => 'required|string|max:255',
+            // 'keterangan' => 'required|string|max:255',
             'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nama_dusun.required' => 'Field Nama Dusun wajib diisi.',
@@ -48,7 +48,7 @@ class TnbProduksitebuController extends Controller
         $produksitebu->tanggal_produksi = $request->tanggal_produksi;
         $produksitebu->produksi = $request->produksi;
         $produksitebu->hasil_penjualan = $request->hasil_penjualan;
-        $produksitebu->keterangan = $request->keterangan;
+        // $produksitebu->keterangan = $request->keterangan;
 
         $produksitebu->save();
 
@@ -72,7 +72,7 @@ class TnbProduksitebuController extends Controller
             'tanggal_produksi' => 'required|date',
             'produksi' => 'required',
             'hasil_penjualan' => 'required',
-            'keterangan' => 'required|string|max:255',
+            // 'keterangan' => 'required|string|max:255',
             'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nama_dusun.required' => 'Field Nama Dusun wajib diisi.',
@@ -90,7 +90,7 @@ class TnbProduksitebuController extends Controller
         $produksitebu->tanggal_produksi = $request->tanggal_produksi;
         $produksitebu->produksi = $request->produksi;
         $produksitebu->hasil_penjualan = $request->hasil_penjualan;
-        $produksitebu->keterangan = $request->keterangan;
+        // $produksitebu->keterangan = $request->keterangan;
 
         if ($request->hasFile('file_foto')) {
             $produksitebu->handleUploadFoto();

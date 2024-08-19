@@ -5,10 +5,9 @@ namespace App\Services\comdev;
 use App\Models\comdev\dokumentasi\Dokumentasi;
 
 class DokumentasiService
-{
-    public function getAllDokumentasi()
+{ public function getAllDokumentasi()
     {
-
-        return Dokumentasi::all();
+        // Ambil data dokumentasi dan komentar terkait
+        return Dokumentasi::with('comment')->get();
     }
 }

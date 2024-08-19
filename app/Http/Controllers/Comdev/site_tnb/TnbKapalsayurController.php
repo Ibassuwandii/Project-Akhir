@@ -7,6 +7,7 @@ use App\Models\comdev\site_tnb\KapalSayur;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
+
 class TnbKapalsayurController extends Controller
 {
     public function index()
@@ -69,7 +70,7 @@ class TnbKapalsayurController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'id_nama' => 'required|unique:site_tnb__kapalsayur',
+            // 'id_nama' => 'required|unique:site_tnb__kapalsayur',
             'jenis_kelamin' => 'required',
             'tanggal_trip' => 'required',
             'jumlah_trip' => 'required',
@@ -126,4 +127,5 @@ class TnbKapalsayurController extends Controller
     {
         return redirect('comdev/site_tnb/kapalsayur');
     }
+
 }

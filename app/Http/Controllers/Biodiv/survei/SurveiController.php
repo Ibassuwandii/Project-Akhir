@@ -54,7 +54,7 @@ class SurveiController extends Controller
         $survei->observation = $request->observation;
         $survei->save();
 
-        return redirect('biodiv/survei')->with('success', 'Data survei berhasil disimpan.');
+        return redirect('biodiv/survei')->with('success', 'Data aksisampah berhasil disimpan.');
     }
 
     public function edit($id)

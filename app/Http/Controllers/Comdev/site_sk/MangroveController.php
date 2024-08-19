@@ -26,7 +26,7 @@ class MangroveController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'semester' => 'required',
+            // 'semester' => 'required',
             'bibit_disemai' => 'required|numeric',
             'bibit_hidup' => 'required|numeric',
             'bibit_mati' => 'required|numeric',
@@ -78,7 +78,7 @@ class MangroveController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'semester' => 'required',
+            // 'semester' => 'required',
             'bibit_disemai' => 'required|numeric',
             'bibit_hidup' => 'required|numeric',
             'bibit_mati' => 'required|numeric',

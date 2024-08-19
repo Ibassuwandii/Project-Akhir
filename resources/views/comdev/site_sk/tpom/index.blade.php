@@ -10,7 +10,7 @@
                                 <h4 class="card-title m-0"><b>Data Tpom Site Sk</b></h4>
                             </div>
                             <div>
-                                <a href="{{ url('comdev/site_sk/tpom/create') }}" class="btn btn-success">
+                                <a href="{{ url('comdev/site_sk/tpom/create') }}" class="btn btn-info">
                                     <i class="fas fa-plus-circle"></i> Tambah Data
                                 </a>
                             </div>
@@ -30,7 +30,7 @@
                                     </tr>
                                     <tr>
                                         <th style="padding: 6px">Titik Koordinat</th>
-                                        <th style="padding: 6px">Luas Lahan</th>
+                                        <th style="padding: 6px">Luas Lahan (Ha)</th>
                                         <th style="padding: 6px">Pemilik Lahan</th>
                                     </tr>
                                 </thead>

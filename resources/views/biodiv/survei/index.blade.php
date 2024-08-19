@@ -7,7 +7,7 @@
                     <h4 class="card-title m-0"><b>Observation Details</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('biodiv/survei/create') }}" class="btn btn-success">
+                    <a href="{{ url('biodiv/survei/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>

@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -27,68 +28,79 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('check-role', [AuthController::class, 'checkRole']);
 
 // rote admin//
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::prefix('admin')
         ->middleware('can:yiari-admin')
-        ->group(function(){
+        ->group(function () {
             include "_/admin.php";
-    });
-
+        });
 });
 // akhir admin//
 
 
 // route comdevv//
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::prefix('comdev')
         ->middleware('can:divisi-comdev')
-        ->group(function(){
+        ->group(function () {
             include "_/comdev.php";
-    });
+        });
 });
 // akhir conmdev//
 
 
 // route divisi edukasi//
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::prefix('edukasi')
         ->middleware('can:divisi-edukasi')
-        ->group(function(){
+        ->group(function () {
             include "_/edukasi.php";
-    });
+        });
 });
 //akhir route divisi edukasi//
 
 // route divisi biodif//
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::prefix('biodiv')
         ->middleware('can:divisi-biodiv')
-        ->group(function(){
+        ->group(function () {
             include "_/biodiv.php";
-    });
+        });
 });
+
 //akhir route divisi biodif//
 
 
 // rote comdevview//
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::prefix('comdevview')
         ->middleware('can:divisi-comdevview')
-        ->group(function(){
-        include "_/comdevview.php";
-    });
+        ->group(function () {
+            include "_/comdevview.php";
+        });
 });
 // akhir comdevview//
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::prefix('edukasiview')
         ->middleware('can:divisi-edukasiview')
-        ->group(function(){
-        include "_/edukasiview.php";
-    });
+        ->group(function () {
+            include "_/edukasiview.php";
+        });
 });
 
+// akhir comdevview//
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('biodivview')
+        ->middleware('can:divisi-biodivview')
+        ->group(function () {
+            include "_/biodivview.php";
+        });
+});
+
+// akhir comdevview//
 
 Route::middleware(['checkRole:admin'])->group(function () {
     // Rute yang memerlukan peran 'admin'

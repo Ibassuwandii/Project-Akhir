@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\edukasi\Dokumentasi;
+namespace App\Http\Controllers\biodiv\Dokumentasi;
 
 use carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
-use App\Models\edukasi\Dokumentasi\Dokumentasi;
+use App\Models\biodiv\Dokumentasi\Dokumentasi;
 
 class DokumentasiController extends Controller
 {
@@ -16,12 +15,12 @@ class DokumentasiController extends Controller
             $dokumentasi->formatted_tanggal_kegiatan = Carbon::parse($dokumentasi->tanggal_kegiatan)->translatedFormat('d F Y');
             return $dokumentasi;
         });
-        return view('edukasi.dokumentasi.index', compact('list_dokumentasi'));
+        return view('biodiv.dokumentasi.index', compact('list_dokumentasi'));
     }
 
     public function create()
     {
-        return view('edukasi.dokumentasi.create');
+        return view('biodiv.dokumentasi.create');
     }
 
     public function store(Request $request)
@@ -38,13 +37,13 @@ class DokumentasiController extends Controller
         $dokumentasi->link_foto = $request->link_foto;
         $dokumentasi->save();
 
-        return redirect('edukasi/dokumentasi')->with('create', 'Data dokumentasi berhasil disimpan.');
+        return redirect('biodiv/dokumentasi')->with('create', 'Data dokumentasi berhasil disimpan.');
     }
 
     public function edit($id)
     {
         $data = Dokumentasi::find($id);
-        return view('edukasi.dokumentasi.edit', compact('data'));
+        return view('biodiv.dokumentasi.edit', compact('data'));
     }
 
 
@@ -60,7 +59,7 @@ class DokumentasiController extends Controller
 
         $dokumentasi->save();
 
-        return redirect('edukasi/dokumentasi')->with('update', 'Data Berhasil Diupdate');
+        return redirect('biodiv/dokumentasi')->with('update', 'Data Berhasil Diupdate');
     }
 
     public function destroy(Dokumentasi $dokumentasi)
@@ -73,10 +72,10 @@ class DokumentasiController extends Controller
     public function show($id)
     {
         $dokumentasi = Dokumentasi::findOrFail($id);
-        return view('edukasi.dokumentasi.show', compact('dokumentasi'));
+        return view('biodiv.dokumentasi.show', compact('dokumentasi'));
     }
 
     function batal(){
-        return redirect('edukasi/dokumentasi');
+        return redirect('biodiv/dokumentasi');
     }
 }

@@ -7,7 +7,7 @@
                     <h4 class="card-title m-0"><b>Data Dokumen Comdev</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('comdev/dokumen/create') }}" class="btn btn-success">
+                    <a href="{{ url('comdev/dokumen/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>

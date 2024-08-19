@@ -4,10 +4,10 @@
         <div class="card-header bg-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
                 <div style="padding-left: 15px;">
-                    <h4 class="card-title m-0"><b>Data Laporan Biodiv</b></h4>
+                    <h4 class="card-title m-0"><b>Biodiv Report Data</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('biodiv/laporan/create') }}" class="btn btn-success">
+                    <a href="{{ url('biodiv/laporan/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>
@@ -38,28 +38,29 @@
                     </thead>
                     <tbody>
                         @foreach ($list_laporan as $laporan)
-                        <tr class="laporan-row" data-jenis="{{ $laporan->jenis_laporan }}">
-                            <td style="padding: 2px">{{ $loop->iteration }}</td>
-                            <td style="padding: 2px">
-                                <div class="btn-group">
-                                    {{-- <x-template.button.info-button url="biodiv/laporan" id="{{ $laporan->id }}" /> --}}
-                                    <x-template.button.edit-button url="biodiv/laporan" id="{{ $laporan->id }}" />
-                                    <x-template.button.delete-button id="{{ $laporan->id }}" path="" />
-                                </div>
-                            </td>
-                            <td class="text-left" style="padding: 2px">{{ $laporan->jenis_laporan }}</td>
-                            <td class="text-left" style="padding: 2px">{{ $laporan->formatted_tanggal_dibuat }}</td>
-                            <td class="text-left" style="padding: 2px">{{ $laporan->judul_laporan }}</td>
-                            <td style="padding: 2px">
-                                @if ($laporan->file_pdf)
-                                    <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank" class="text-primary" download="{{ $laporan->file_pdf }}">
-                                        <i class="far fa-file-pdf"></i> Unduh PDF
-                                    </a>
-                                @else
-                                    <span class="text-muted">Tidak ada file</span>
-                                @endif
-                            </td>
-                        </tr>
+                            <tr class="laporan-row" data-jenis="{{ $laporan->jenis_laporan }}">
+                                <td style="padding: 2px">{{ $loop->iteration }}</td>
+                                <td style="padding: 2px">
+                                    <div class="btn-group">
+                                        {{-- <x-template.button.info-button url="biodiv/laporan" id="{{ $laporan->id }}" /> --}}
+                                        <x-template.button.edit-button url="biodiv/laporan" id="{{ $laporan->id }}" />
+                                        <x-template.button.delete-button id="{{ $laporan->id }}" path="" />
+                                    </div>
+                                </td>
+                                <td class="text-left" style="padding: 2px">{{ $laporan->jenis_laporan }}</td>
+                                <td class="text-left" style="padding: 2px">{{ $laporan->formatted_tanggal_dibuat }}</td>
+                                <td class="text-left" style="padding: 2px">{{ $laporan->judul_laporan }}</td>
+                                <td style="padding: 2px">
+                                    @if ($laporan->file_pdf)
+                                        <a href="{{ url('public') }}/{{ $laporan->file_pdf }}" target="_blank"
+                                            class="text-primary" download="{{ $laporan->file_pdf }}">
+                                            <i class="far fa-file-pdf"></i> Unduh PDF
+                                        </a>
+                                    @else
+                                        <span class="text-muted">Tidak ada file</span>
+                                    @endif
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

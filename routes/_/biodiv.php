@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\biodiv\survei\SurveiController;
 use App\Http\Controllers\biodiv\laporan\LaporanController;
 use App\Http\Controllers\Comdev\Dokumen\DokumenController;
-use App\Http\Controllers\biodiv\orangutan\OrangutanController;
 use App\Http\Controllers\biodiv\dashboard\DashboardController;
-use App\Http\Controllers\Comdev\Dokumentasi\DokumentasiController;
+use App\Http\Controllers\biodiv\orangutan\OrangutanController;
+use App\Http\Controllers\biodiv\Dokumentasi\DokumentasiController;
 use App\Http\Controllers\biodiv\antropogenik\AntropogenikController;
 // use App\Http\Controllers\Comdev\laporan\LaporanController as LaporanLaporanController;
 
@@ -17,7 +17,7 @@ use App\Http\Controllers\biodiv\antropogenik\AntropogenikController;
 Route::redirect('/', 'dokumentasi');
 Route::resource('dokumentasi', DokumentasiController::class);
 Route::controller(DokumentasiController::class)->group(function () {
-    Route::get('comdev/dokumentasi', 'batal');
+    Route::get('biodiv/dokumentasi', 'batal');
 });
 
 Route::redirect('/', 'dokumen');

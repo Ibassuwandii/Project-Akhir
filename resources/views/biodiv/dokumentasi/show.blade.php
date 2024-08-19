@@ -1,8 +1,8 @@
-<x-module.edukasi>
+<x-module.biodiv>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <x-template.button.back-button url="edukasi/laporan" />
+                <x-template.button.back-button url="biodiv/laporan" />
                 <div class="card mt-2">
                     <div class="card-header bg-cyan text-white">
                         <h5 class="card-title">Detail Data Laporan</h5>
@@ -37,4 +37,4 @@
             </div>
         </div>
     </div>
-</x-module.edukasi>
+</x-module.biodiv>

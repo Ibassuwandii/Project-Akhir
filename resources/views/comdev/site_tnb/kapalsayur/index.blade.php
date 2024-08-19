@@ -10,7 +10,7 @@
                                 <h4 class="card-title m-0"><b>Data Kapal Sayur Site TNB</b></h4>
                             </div>
                             <div>
-                                <a href="{{ url('comdev/site_tnb/kapalsayur/create') }}" class="btn btn-success">
+                                <a href="{{ url('comdev/site_tnb/kapalsayur/create') }}" class="btn btn-info">
                                     <i class="fas fa-plus-circle"></i> Tambah Data
                                 </a>
                             </div>
@@ -46,10 +46,10 @@
                                                         path="" />
                                                 </div>
                                             </td>
-                                            <td class="text-left">{{ $kapalsayur->nama }}</td>
+                                            <td style="padding: 6px" class="text-left">{{ $kapalsayur->nama }}</td>
                                             <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $kapalsayur->id_nama }}</td>
-                                            <td class="text-left">{{ $kapalsayur->jenis_kelamin }}</td>
-                                            <td class="text-left">{{ $kapalsayur->formatted_tanggal_trip }}</td>
+                                            <td style="padding: 6px" class="text-left">{{ $kapalsayur->jenis_kelamin }}</td>
+                                            <td style="padding: 6px" class="text-left">{{ $kapalsayur->formatted_tanggal_trip }}</td>
                                             <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $kapalsayur->jumlah_trip }}</td>
                                             <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $kapalsayur->hasil_penjualan }}</td>
                                             <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $kapalsayur->iuran }}</td>

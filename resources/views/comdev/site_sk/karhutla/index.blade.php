@@ -10,7 +10,7 @@
                                 <h4 class="card-title m-0"><b>Data Patroli Karhutla Site SK</b></h4>
                             </div>
                             <div>
-                                <a href="{{ url('comdev/site_sk/karhutla/create') }}" class="btn btn-success">
+                                <a href="{{ url('comdev/site_sk/karhutla/create') }}" class="btn btn-info">
                                     <i class="fas fa-plus-circle"></i> Tambah Data
                                 </a>
                             </div>
@@ -30,7 +30,7 @@
                                     </tr>
                                     <tr style="text-align: center">
                                         <th  style="padding: 6px">Titik Koordinat</th>
-                                        <th  style="padding: 6px">Luas Lahan</th>
+                                        <th  style="padding: 6px">Luas Lahan (Ha)</th>
                                         <th  style="padding: 6px">Pemilik Lahan</th>
                                     </tr>
                                 </thead>
@@ -50,7 +50,7 @@
                                             </td>
                                             <td class="text-left" style="padding: 6px">{{ $karhutla->jangkauan_patroli }}</td>
                                             <td class="text-left" style="padding: 6px">{{ $karhutla->titik_koordinat }}</td>
-                                            <td class="text-left" style="padding: 6px">{{ $karhutla->luas_lahan }}</td>
+                                            <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $karhutla->luas_lahan }}</td>
                                             <td class="text-left" style="padding: 6px">{{ $karhutla->pemilik_lahan }}</td>
                                             {{-- <td style="padding: 6px">{{ $karhutla->sosialisasi }}</td> --}}
                                         </tr>

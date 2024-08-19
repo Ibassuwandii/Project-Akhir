@@ -7,7 +7,7 @@
                     <h4 class="card-title m-0"><b>Data Zwageri IG</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('edukasi/instagram/create') }}" class="btn btn-success">
+                    <a href="{{ url('edukasi/instagram/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>

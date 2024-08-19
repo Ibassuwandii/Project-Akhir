@@ -34,6 +34,7 @@ class AntropogenikController extends Controller
             'observasi' => 'required|string',
             'pengamatan' => 'required|string',
             'kuantitas' => 'required|numeric',
+            // 'comments' => 'nullable|string',
         ], [
             'bulan.required' => 'Bulan tidak boleh kosong.',
             'metode.required' => 'Metode tidak boleh kosong.',
@@ -48,6 +49,7 @@ class AntropogenikController extends Controller
         $antropogenik->observasi = $request->observasi;
         $antropogenik->pengamatan = $request->pengamatan;
         $antropogenik->kuantitas = $request->kuantitas;
+        // $antropogenik->comments = $request->comments;
         $antropogenik->save();
 
         return redirect('biodiv/antropogenik')->with('success', 'Data antropogenik berhasil disimpan.');
@@ -67,6 +69,7 @@ class AntropogenikController extends Controller
             'observasi' => 'required|string',
             'pengamatan' => 'required|string',
             'kuantitas' => 'required|numeric',
+            // 'comments' => 'nullable|string',
         ], [
             'bulan.required' => 'Bulan tidak boleh kosong.',
             'metode.required' => 'Metode tidak boleh kosong.',
@@ -81,6 +84,7 @@ class AntropogenikController extends Controller
         $antropogenik->observasi = $request->observasi;
         $antropogenik->pengamatan = $request->pengamatan;
         $antropogenik->kuantitas = $request->kuantitas;
+        // $antropogenik->comments = $request->comments;
         $antropogenik->save();
 
         return redirect('biodiv/antropogenik')->with('update', 'Data antropogenik berhasil diperbarui.');

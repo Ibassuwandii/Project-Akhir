@@ -12,7 +12,10 @@ class PegawaiController extends Controller
     protected $jabatanList = [
         'Manager',
         'Staff',
-        'Admin',
+        'Admin Divisi Comdev',
+        'Admin Divisi Edukasi',
+        'Admin Divisi Biodiv',
+        'Super Admin',
         'HR',
         // Tambahkan jabatan lain sesuai kebutuhan
     ];

@@ -5,13 +5,14 @@ use App\Http\Controllers\Comdevview\PetaController;
 use App\Http\Controllers\Comdevview\DokumenController;
 use App\Http\Controllers\Comdevview\LaporanController;
 use App\Http\Controllers\Comdevview\DokumentasiController;
-use App\Http\Controllers\Comdevview\site_sk\TpomController;
+use App\Http\Controllers\Comdevview\site_pgsb\TpomController;
 use App\Http\Controllers\Comdevview\site_sk\KarhutlaController;
-use App\Http\Controllers\Comdevview\site_sk\MangroveController;
 use App\Http\Controllers\Comdevview\site_sk\RangkongController;
 use App\Http\Controllers\Comdevview\site_sk\BangusmanController;
-use App\Http\Controllers\Comdevview\site_sk\PerikananController;
-use App\Http\Controllers\Comdevview\site_sk\PertanianController;
+use App\Http\Controllers\Comdevview\site_pgsb\MangroveController;
+use App\Http\Controllers\Comdevview\site_pgsb\PerikananController;
+use App\Http\Controllers\Comdevview\site_pgsb\PertanianController;
+use App\Http\Controllers\Comdevview\site_tnb\KapalsayurController;
 
 Route::redirect('/', 'comdevview/dokumen');
 Route::get('dokumen', [DokumenController::class, 'index']);
@@ -59,6 +60,9 @@ Route::get('site_tnb/pertanian', [PertanianController::class, 'index']);
 Route::redirect('/', 'comdevview/site_tnb/perikanan');
 Route::get('site_tnb/perikanan', [PerikananController::class, 'index']);
 
+Route::redirect('/', 'comdevview/site_tnb/kapalsayur');
+Route::get('site_tnb/kapalsayur', [KapalsayurController::class, 'index']);
+
 
 
 // site PGSB //
@@ -73,3 +77,5 @@ Route::get('site_pgsb/mangrove', [MangroveController::class, 'index']);
 
 Route::redirect('/', 'comdevview/site_pgsb/tpom');
 Route::get('site_pgsb/tpom', [TpomController::class, 'index']);
+
+Route::post('/comdevview/dokumentasi/{id}/comment', [DokumentasiController::class, 'storeComment'])->name('dokumentasi.storeComment');

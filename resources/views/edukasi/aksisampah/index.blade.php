@@ -7,7 +7,7 @@
                     <h4 class="card-title m-0"><b>Data Aksi Sampah</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('edukasi/aksisampah/create') }}" class="btn btn-success">
+                    <a href="{{ url('edukasi/aksisampah/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>
@@ -26,7 +26,7 @@
                             <th style="padding: 6px" colspan="2" class="text-center">Sampah</th>
                         </tr>
                         <tr class="bg-secondary text-white">
-                            <th style="padding: 6px; width: 90px;" class="text-center">Total</th>
+                            <th style="padding: 6px; width: 90px;" class="text-center">Total (Kg)</th>
                             <th style="padding: 6px; width: 150px;" class="text-center">Jenis</th>
                         </tr>
                     </thead>

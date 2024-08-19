@@ -65,7 +65,7 @@ class PerikananController extends Controller
         $perikanan->jumlah_penerima_perempuan = $request->jumlah_penerima_perempuan;
         $perikanan->tanggal = $request->tanggal;
 
-        $perikanan->handleUploadFoto();
+        // $perikanan->handleUploadFoto();
         $perikanan->save();
 
         return redirect('comdev/site_sk/perikanan')->with('create', 'Data perikanan berhasil ditambahkan.');
@@ -90,7 +90,7 @@ class PerikananController extends Controller
             'jumlah_penerima_laki_laki' => 'required',
             'jumlah_penerima_perempuan' => 'required',
             'tanggal' => 'required',
-            'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            // 'file_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ], [
             'nama_desa.required' => 'Field Nama Desa wajib diisi.',
             'komuditas.required' => 'Field Komuditas wajib diisi.',
@@ -101,8 +101,8 @@ class PerikananController extends Controller
             'keterangan.required' => 'Field Keterangan wajib diisi.',
             'jumlah_penerima_laki_laki.required' => 'Field Jumlah Penerima Laki-Laki wajib diisi.',
             'jumlah_penerima_perempuan.required' => 'Field Jumlah Penerima Perempuan wajib diisi.',
-            'file_foto.image' => 'File harus berupa gambar.',
-            'file_foto.mimes' => 'File harus berupa gambar dengan format jpeg, png, jpg, atau gif.',
+            // 'file_foto.image' => 'File harus berupa gambar.',
+            // 'file_foto.mimes' => 'File harus berupa gambar dengan format jpeg, png, jpg, atau gif.',
         ]);
 
         $perikanan = Perikanan::findOrFail($id);
@@ -118,7 +118,7 @@ class PerikananController extends Controller
         $perikanan->tanggal = $request->tanggal;
 
         $perikanan->save();
-        if ($request->hasFile('file_foto')) $perikanan->handleUploadFoto();
+        // if ($request->hasFile('file_foto')) $perikanan->handleUploadFoto();
 
         return redirect('comdev/site_sk/perikanan')->with('update', 'Data perikanan berhasil diperbarui.');
     }

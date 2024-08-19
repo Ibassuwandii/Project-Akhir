@@ -21,7 +21,7 @@ class TpomController extends Controller
         $listTpom = $this->tpomservice->getAllTpom();
 
         // Tampilkan view dengan data peta
-        return view('comdevview.site_pgsb.index', ['listTpom' => $listTpom]);
+        return view('comdevview.site_pgsb.tpom.index', ['listTpom' => $listTpom]);
     }
 
 }

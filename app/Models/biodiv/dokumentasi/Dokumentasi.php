@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\edukasi\Dokumentasi;
+namespace App\Models\biodiv\Dokumentasi;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Dokumentasi extends Model
 {
-    protected $table ='edukasi__dokumentasi';
+    protected $table ='biodiv__dokumentasi';
 }

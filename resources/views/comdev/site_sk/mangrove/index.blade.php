@@ -10,7 +10,7 @@
                                 <h4 class="card-title m-0"><b>Data Konservasi Manggrove</b></h4>
                             </div>
                             <div>
-                                <a href="{{ url('comdev/site_sk/mangrove/create') }}" class="btn btn-success">
+                                <a href="{{ url('comdev/site_sk/mangrove/create') }}" class="btn btn-info">
                                     <i class="fas fa-plus-circle"></i> Tambah Data
                                 </a>
                             </div>
@@ -23,7 +23,7 @@
                                     <tr>
                                         <th style="padding: 6px" width="50" rowspan="2">No</th>
                                         <th style="padding: 6px" width="50" rowspan="2">Aksi</th>
-                                        <th style="padding: 2px 20px 1px 1px;" rowspan="2">Semester</th>
+                                        {{-- <th style="padding: 2px 20px 1px 1px;" rowspan="2">Semester</th> --}}
                                         <th style="padding: 2px 20px 1px 1px;" colspan="3" style="text-align: center">Data Bibit</th>
                                         <th style="padding: 2px 20px 1px 1px;" rowspan="2">Tanggal Penanaman</th>
                                         <th style="padding: 2px 20px 1px 1px;" rowspan="2">Lokasi</th>
@@ -47,8 +47,8 @@
                                                 <x-template.button.delete-button  id="{{$mangrove->id}}" path="" />
                                             </div>
                                         </td>
-                                        <td style="padding: 2px" class="text-left">{{ $mangrove->semester }}</td>
-                                        <td style="padding: 2px" class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_hidup }}</td>
+                                        {{-- <td style="padding: 2px" class="text-left">{{ $mangrove->semester }}</td> --}}
+                                        <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_disemai }}</td>
                                         <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_mati }}</td>
                                         <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $mangrove->bibit_hidup }}</td>
                                         <td style="padding: 2px" class="text-left">{{ $mangrove->formatted_tanggal }}</td>

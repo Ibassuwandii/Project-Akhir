@@ -9,12 +9,12 @@
                 @method('PUT')
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-group">
                                 <label for="semester" class="control-label">Semester </label>
                                 <input type="text" name="semester" id="semester" class="form-control" value="{{ $mangrove->semester }}">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="bibit_disemai" class="control-label">Disemai</label>

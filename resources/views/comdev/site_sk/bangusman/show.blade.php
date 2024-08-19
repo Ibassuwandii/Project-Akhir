@@ -31,21 +31,10 @@
                             <p>{{ $bangusman->masa_pengembalian }}</p>
                         </div>
                         <div class="form-group">
-                            <label for="tanggal_investasi" class="control-label">Tanggal Investasi</label>
-                            <p>{{ $bangusman->tanggal_investasi }}</p>
+                            <label for="tanggal_investasi" class="font-weight-bold">Tanggal Kegiatan</label>
+                            <p class="form-control-plaintext">{{ \Carbon\Carbon::parse($bangusman->tanggal_investasi)->translatedFormat('d F Y') }}</p>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Dokumentasi:</label><br>
-                    @if ($bangusman->file_foto)
-                        <a href="{{ url('public') }}/{{ $bangusman->file_foto }}" target="_blank">
-                            <img src="{{ url('public') }}/{{ $bangusman->file_foto }}" alt="Gambar Bangusman"
-                                 style="max-width: 400px; max-height: 400px;">
-                        </a>
-                    @else
-                        <p>Tidak ada gambar</p>
-                    @endif
                 </div>
             </div>
         </div>

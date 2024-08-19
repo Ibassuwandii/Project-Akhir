@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Comdev\site_sk;
 use App\Http\Controllers\Controller;
 use App\Models\comdev\site_sk\Bangusman;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class BangusmanController extends Controller
 {
     public function index()
     {
-        $data['list_bangusman'] = Bangusman::all();
-        return view('comdev.site_sk.bangusman.index', $data);
+        $list_bangusman = bangusman::all()->map(function ($bangusman) {
+            $bangusman->formatted_tanggal_investasi = Carbon::parse($bangusman->tangga_investasi)->format('d-m-Y');
+            return $bangusman;
+        });
+        return view('comdev.site_sk.bangusman.index', ['list_bangusman' => $list_bangusman]);
     }
-
     public function create()
     {
         return view('comdev.site_sk.bangusman.create');

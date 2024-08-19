@@ -7,7 +7,7 @@
                     <h4 class="card-title m-0"><b>Data Produksi Gula Tebu Site TNB</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('comdev/site_tnb/produksitebu/create') }}" class="btn btn-success">
+                    <a href="{{ url('comdev/site_tnb/produksitebu/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>
@@ -22,9 +22,9 @@
                             <th style="padding: 6px" width="10">Aksi</th>
                             <th style="padding: 6px">Nama Dusun</th>
                             <th style="padding: 6px">Tanggal Produksi</th>
-                            <th style="padding: 6px">Produksi</th>
+                            <th style="padding: 6px">Produksi (Butir)</th>
                             <th style="padding: 6px">Hasil Penjualan</th>
-                            <th style="padding: 6px">Keterangan</th>
+                            {{-- <th style="padding: 6px">Keterangan</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -41,8 +41,8 @@
                             <td class="text-left" style="padding: 2px">{{ $produksitebu->nama_dusun}}</td>
                             <td class="text-left" style="padding: 2px">{{ $produksitebu->formatted_tanggal_produksi }}</td>
                             <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $produksitebu->produksi }}</td>
-                            <td class="text-right" style="padding: 2px 20px 1px 1px;">{{ $produksitebu->hasil_penjualan }}</td>
-                            <td class="text-left" style="padding: 2px">{{ $produksitebu->keterangan }}</td>
+                            <td class="text-right" style="padding: 2px 30px 1px 1px;">{{ $produksitebu->hasil_penjualan }}</td>
+                            {{-- <td class="text-left" style="padding: 2px">{{ $produksitebu->keterangan }}</td> --}}
 
                         </tr>
                         @endforeach

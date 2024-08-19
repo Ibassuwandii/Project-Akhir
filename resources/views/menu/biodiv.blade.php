@@ -39,7 +39,7 @@
 
     </ul>
 </li>
-<x-template.menu.menu-item title="Dokumen Kerja Sama" url="biodiv/dokumen" icon="far fa-folder-open" />
-<x-template.menu.menu-item title="Dokumentasi" url="biodiv/dokumentasi" icon="far fa-images" />
-<x-template.menu.menu-item title="Laporan" url="biodiv/laporan" icon="far fa-file-pdf" />
+{{-- <x-template.menu.menu-item title="Dokumen Kerja Sama" url="biodiv/dokumen" icon="far fa-folder-open" /> --}}
+<x-template.menu.menu-item title="Documentation" url="biodiv/dokumentasi" icon="far fa-images" />
+<x-template.menu.menu-item title="Report" url="biodiv/laporan" icon="far fa-file-pdf" />
 </li>

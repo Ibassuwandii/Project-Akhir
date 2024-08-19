@@ -7,7 +7,7 @@
                     <h4 class="card-title m-0"><b>Daftar Pegawai</b></h4>
                 </div>
                 <div>
-                    <a href="{{ url('admin/master-data/pegawai/create') }}" class="btn btn-success">
+                    <a href="{{ url('admin/master-data/pegawai/create') }}" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i> Tambah Data
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                             <td style="padding: 2px">{{ $loop->iteration }}</td>
                             <td class="text-center" style="padding: 2px">
                                 <div class="btn-group">
-                                    {{-- <x-template.button.info-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" /> --}}
+                                    <x-template.button.info-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
                                     <x-template.button.edit-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
                                     <x-template.button.delete-button id="{{ $pegawai->id }}" path="" />
                                 </div>

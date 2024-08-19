@@ -9,7 +9,7 @@
                             Peta Divisi edukasi
                         </div>
                         <div class="float-right">
-                            <a href="{{ url('edukasi/peta/create') }}" class="btn btn-success">
+                            <a href="{{ url('edukasi/peta/create') }}" class="btn btn-info">
                                 <i class="fas fa-plus-circle"></i> Tambah Data
                             </a>
                         </div>

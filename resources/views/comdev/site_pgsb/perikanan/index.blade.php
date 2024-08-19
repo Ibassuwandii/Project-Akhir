@@ -10,7 +10,7 @@
                                 <h4 class="card-title m-0"><b>Data Perikanan Site PGSB</b></h4>
                             </div>
                             <div>
-                                <a href="{{ url('comdev/site_pgsb/perikanan/create') }}" class="btn btn-success">
+                                <a href="{{ url('comdev/site_pgsb/perikanan/create') }}" class="btn btn-info">
                                     <i class="fas fa-plus-circle"></i> Tambah Data
                                 </a>
                             </div>

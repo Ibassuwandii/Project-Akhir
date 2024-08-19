@@ -9,7 +9,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="semester" class="font-weight-bold">Semester</label>
                             <input type="text" class="form-control @error('semester') is-invalid @enderror"
                                 name="semester" id="semester" placeholder="Masukkan Semester"
@@ -17,7 +17,7 @@
                             @error('semester')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="bibit_disemai" class="font-weight-bold">Bibit Disemai</label>
                             <input type="number" class="form-control @error('bibit_disemai') is-invalid @enderror"

@@ -1,4 +1,4 @@
-<x-module.edukasi>
+<x-module.biodiv>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -7,7 +7,7 @@
                         <h5 class="card-title">Edit Data Dokumentasi</h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('edukasi/dokumentasi/'.$data->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('biodiv/dokumentasi/'.$data->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -34,7 +34,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4 d-flex justify-content-end">
-                                    <a href="{{ url('edukasi/dokumentasi') }}" class="btn btn-secondary mr-2">
+                                    <a href="{{ url('biodiv/dokumentasi') }}" class="btn btn-secondary mr-2">
                                         <i class="fas fa-times-circle"></i> Batal
                                     </a>
                                     <button type="submit" class="btn btn-primary">
@@ -48,4 +48,4 @@
             </div>
         </div>
     </div>
-</x-module.edukasi>
+</x-module.biodiv>

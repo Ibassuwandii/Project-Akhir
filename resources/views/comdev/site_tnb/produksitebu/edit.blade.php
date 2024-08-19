@@ -44,14 +44,14 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="keterangan" class="font-weight-bold">Keterangan</label>
                             <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan"
                                 placeholder="Masukkan Keterangan">{{ old('keterangan', $produksitebu->keterangan) }}</textarea>
                             @error('keterangan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-md-8 offset-md-4 d-flex justify-content-end">
